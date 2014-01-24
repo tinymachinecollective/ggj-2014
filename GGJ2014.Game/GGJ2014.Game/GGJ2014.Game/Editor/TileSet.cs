@@ -10,7 +10,6 @@ namespace GGJ2014.Game.Editor
     public class TileSet
     {
         public string Name;
-        public Texture2D SourceAsset;
         public int TileWidth;
         public int TileHeight;
     }
