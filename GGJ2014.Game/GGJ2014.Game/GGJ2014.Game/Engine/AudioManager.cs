@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Audio;
-using System.Collections.Generic;
+    using System.Collections.Generic;
     using System;
 
     /// <summary>
@@ -276,7 +276,7 @@ using System.Collections.Generic;
 
             return cue;
         }
-        
+
         public Cue FadeIn(Cue cue, float fadeTime, float minVolume, float maxVolume)
         {
             if (!cue.IsPlaying)
@@ -333,9 +333,9 @@ using System.Collections.Generic;
 
         public void SetMusicVolume(float volume)
         {
-            this.musicVolume = volume;          
+            this.musicVolume = volume;
         }
-        
+
         public void SetSFXVolume(float volume)
         {
             this.SFXVolume = volume;
@@ -353,7 +353,7 @@ using System.Collections.Generic;
 
         public void AdjustMusicVolume(float volume)
         {
-            this.audioEngine.GetCategory("Music").SetVolume(volume * this.globalVolume);  
+            this.audioEngine.GetCategory("Music").SetVolume(volume * this.globalVolume);
         }
 
         public void AdjustSFXVolume(float volume)

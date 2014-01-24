@@ -10,7 +10,7 @@ namespace GGJ2014.Game.Engine
     using GGJ2014.Game.Engine.Graphics;
     using GGJ2014.Game.Engine.Physics;
 
-    public class Player : IMoveable
+    public class Player : Sprite, IMoveable
     {
         public static bool InputFrozen = false;
         private const int ShieldMaxHealth = 5;
@@ -67,7 +67,6 @@ namespace GGJ2014.Game.Engine
 
         public Player()
         {
-
             this.TimeSinceLastDash = 100;
             this.Speed = Player.MaxSpeed;
             this.Health = Player.MaxHealth;
