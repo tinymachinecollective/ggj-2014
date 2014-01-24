@@ -130,6 +130,7 @@
     <Compile Include="Engine\Controls\MouseInputController.cs" />
     <Compile Include="Engine\Controls\XboxInputController.cs" />
     <Compile Include="Engine\Controls\XboxUtility.cs" />
+    <Compile Include="Engine\Monster.cs" />
     <Compile Include="Engine\GameContext.cs" />
     <Compile Include="Engine\GeometryUtility.cs" />
     <Compile Include="Engine\Graphics\DashSprite.cs" />
