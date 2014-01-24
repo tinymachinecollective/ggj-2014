@@ -1,13 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using GGJ2014.Game.Engine;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
+using GGJ2014.Game.Logic;
 
 namespace GGJ2014.Game
 {
@@ -16,11 +12,9 @@ namespace GGJ2014.Game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
-        Texture2D cat;
-        Vector2 position;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private ScreenManager screenManager;
 
         public Game1()
         {
@@ -36,8 +30,6 @@ namespace GGJ2014.Game
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -47,10 +39,23 @@ namespace GGJ2014.Game
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            cat = this.Content.Load<Texture2D>("lion");
+            this.graphics.PreferredBackBufferWidth = 1024;
+            this.graphics.PreferredBackBufferHeight = 768;
+            this.graphics.ApplyChanges();
+
+            this.screenManager = new ScreenManager();
+
+            BigEvilStatic.Init(this.screenManager, this.Content, this.GraphicsDevice.Viewport);
+
+            this.screenManager.ScreensEmpty += new EventHandler(ScreenManagerEmpty);
+            this.screenManager.OpenScreen(new GameScreen(this.GraphicsDevice));
+        }
+
+        private void ScreenManagerEmpty(object sender, EventArgs e)
+        {
+            this.Exit();
         }
 
         /// <summary>
@@ -71,12 +76,11 @@ namespace GGJ2014.Game
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                position += new Vector2(0, 1);
+                this.Exit();
             }
+
+            this.screenManager.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -88,16 +92,8 @@ namespace GGJ2014.Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            this.screenManager.Draw();
             base.Draw(gameTime);
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(cat, position, Color.White);
-
-            spriteBatch.End();
-
         }
     }
 }
