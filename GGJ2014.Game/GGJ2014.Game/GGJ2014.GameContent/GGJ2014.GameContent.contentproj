@@ -126,10 +126,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\grassland_tiles.png">
-      <Name>grassland_tiles</Name>
+    <Compile Include="textures\grass_and_water.png">
+      <Name>grass_and_water</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\image_index.csv">
+      <Name>image_index</Name>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
