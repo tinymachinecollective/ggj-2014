@@ -61,7 +61,7 @@ using System.Collections.Generic;
         /// </summary>
         private AudioManager()
         {
-            this.audioEngine = new AudioEngine("Content\\PurgatoryXACT.xgs");
+            this.audioEngine = new AudioEngine("Content\\XACT.xgs");
             this.waveBank = new WaveBank(this.audioEngine, "Content\\Wave Bank.xwb");
             this.soundBank = new SoundBank(this.audioEngine, "Content\\Sound Bank.xsb");
             this.CueQueue = new Queue<Cue>();
