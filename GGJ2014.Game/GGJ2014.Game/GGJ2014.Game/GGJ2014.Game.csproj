@@ -107,6 +107,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editor\Layer.cs" />
+    <Compile Include="Editor\Placer.cs" />
+    <Compile Include="Editor\TileSet.cs" />
     <Compile Include="Engine\Animation\Delay.cs" />
     <Compile Include="Engine\Animation\ExpandDeathEffect.cs" />
     <Compile Include="Engine\Animation\FadeEffect.cs" />
@@ -153,6 +156,7 @@
     <Compile Include="Engine\UI\Form.cs" />
     <Compile Include="Engine\UI\NumberFont.cs" />
     <Compile Include="Engine\UI\SpriteControl.cs" />
+    <Compile Include="Logic\EditorScreen.cs" />
     <Compile Include="Logic\GameScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
