@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GGJ2014.Game", "GGJ2014.Game\GGJ2014.Game\GGJ2014.Game.csproj", "{C5EC8168-E462-4EE0-9D74-7AC061989AAA}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GGJ2014.GameContent", "GGJ2014.Game\GGJ2014.GameContent\GGJ2014.GameContent.contentproj", "{4BE37288-BDA0-42BD-BCB7-703330D932B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5EC8168-E462-4EE0-9D74-7AC061989AAA}.Debug|x86.ActiveCfg = Debug|x86
+		{C5EC8168-E462-4EE0-9D74-7AC061989AAA}.Debug|x86.Build.0 = Debug|x86
+		{C5EC8168-E462-4EE0-9D74-7AC061989AAA}.Release|x86.ActiveCfg = Release|x86
+		{C5EC8168-E462-4EE0-9D74-7AC061989AAA}.Release|x86.Build.0 = Release|x86
+		{4BE37288-BDA0-42BD-BCB7-703330D932B7}.Debug|x86.ActiveCfg = Debug|x86
+		{4BE37288-BDA0-42BD-BCB7-703330D932B7}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
