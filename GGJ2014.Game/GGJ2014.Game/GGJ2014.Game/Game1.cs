@@ -31,6 +31,7 @@ namespace GGJ2014.Game
         protected override void Initialize()
         {
             base.Initialize();
+            this.IsMouseVisible = true;
         }
 
         /// <summary>

@@ -13,12 +13,6 @@ namespace GGJ2014.Game.Engine.Controls
             this.controls = new KeyboardManager(up, down, left, right, shoot, dash);
         }
 
-        protected override bool FirePressed()
-        {
-            this.controls.Update();
-            return this.controls.ShootControlPressed();
-        }
-
         protected override Vector2 GetMovementDirection()
         {
             this.controls.Update();
@@ -46,12 +40,6 @@ namespace GGJ2014.Game.Engine.Controls
             }
 
             return movementDirection;
-        }
-
-        protected override bool DashPressed()
-        {
-            this.controls.Update();
-            return controls.DashControlPressed();
         }
     }
 }

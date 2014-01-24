@@ -13,22 +13,10 @@ namespace GGJ2014.Game.Engine.Controls
             this.playerIndex = player;
         }
 
-        protected override bool FirePressed()
-        {
-            GamePadState state = GamePad.GetState(this.playerIndex);
-            return state.Triggers.Right > 0.5f;
-        }
-
         protected override Vector2 GetMovementDirection()
         {
             GamePadState state = GamePad.GetState(this.playerIndex);
             return state.ThumbSticks.Left * new Vector2(1f, -1f);
-        }
-
-        protected override bool DashPressed()
-        {
-            GamePadState state = GamePad.GetState(this.playerIndex);
-            return state.IsButtonDown(Buttons.A);
         }
     }
 }

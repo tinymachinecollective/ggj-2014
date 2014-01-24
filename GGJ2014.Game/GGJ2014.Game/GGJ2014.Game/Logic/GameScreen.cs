@@ -1,6 +1,7 @@
 ﻿using GGJ2014.Game.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GGJ2014.Game.Engine.Controls;
 
 namespace GGJ2014.Game.Logic
 {
@@ -12,18 +13,20 @@ namespace GGJ2014.Game.Logic
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {
             this.spriteBatch = new SpriteBatch(graphicsDevice);
+            this.LoadContent();
         }
 
         public void LoadContent()
         {
             this.player = new Player();
+            this.player.Initialize(new MouseInputController(player));
         }
 
         public override void Draw(Bounds bounds)
         {
             this.spriteBatch.Begin();
 
-            this.player.Draw(this.spriteBatch, bounds);
+            this.player.Draw(spriteBatch);
 
             this.spriteBatch.End();
         }

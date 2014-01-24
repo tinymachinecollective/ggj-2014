@@ -3,12 +3,12 @@ namespace GGJ2014.Game.Engine
 {
     using System;
     using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     using GGJ2014.Game.Engine.Animation;
     using GGJ2014.Game.Engine.Controls;
     using GGJ2014.Game.Engine.Graphics;
     using GGJ2014.Game.Engine.Physics;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public class Player : Sprite, IMoveable
     {
@@ -29,23 +29,14 @@ namespace GGJ2014.Game.Engine
 
         private Vector2 direction;
         public Vector2 MovementDirection { get; set; }
-        private DirectionalSprite sprite;
-        public Vector2 BulletDirection { get; set; }
         private List<float> xPenetrations;
         private List<float> yPenetrations;
-        public float ShootCooldown { get; set; }
-        public float ShootTimer { get; set; }
-
-        public Vector2 DashVelocity { get; set; }
 
         public const float DashCooldownTime = 1;
         public float TimeSinceLastDash { get; set; }
 
         public const float SpiralShotTime = 5;
         public float TimeSinceSpiralBegan { get; set; }
-
-        private List<DashSprite> dashPath;
-        private Vector2 lastDashSprite;
 
         public Sprite BulletSprite { get; set; }
         public string BulletSpriteName { get; private set; }
@@ -57,7 +48,6 @@ namespace GGJ2014.Game.Engine
         public int BulletBounce { get; set; }
         
         public int ShieldHealth { get; set; }
-        private Embellishment shield;
 
         public TimeSpan NoClipTime { get; set; }
 
@@ -65,7 +55,7 @@ namespace GGJ2014.Game.Engine
 
         private Rectangle collisionRectangle;
 
-        public Player()
+        public Player() : base(BigEvilStatic.Content.Load<Texture2D>("lion_placeholder"), 27, 27)
         {
             this.TimeSinceLastDash = 100;
             this.Speed = Player.MaxSpeed;
@@ -76,30 +66,12 @@ namespace GGJ2014.Game.Engine
 
             this.xPenetrations = new List<float>();
             this.yPenetrations = new List<float>();
-
-            this.ShootCooldown = 0.2f;
         }
 
-        public void Initialize(InputController controller, DirectionalSprite sprite, string bulletSpriteName)
+        public void Initialize(InputController controller)
         {
             this.inputController = controller;
-            this.sprite = sprite;
-
-            Texture2D bulletTexture = BigEvilStatic.Content.Load<Texture2D>(bulletSpriteName);
-            this.BulletSprite = new Sprite(bulletTexture, bulletTexture.Width, bulletTexture.Height);
-            this.BulletSpriteName = bulletSpriteName;
-
-            this.collisionRectangle = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            this.Spawn();
-            
-            //if (this.playerNumber == PlayerNumber.PlayerOne)
-            //{
-            //    this.position = new Vector2(Level.TileWidth) * 55;
-            //}
-            //else if (this.playerNumber == PlayerNumber.PlayerTwo)
-            //{
-            //    this.position = new Vector2(Level.TileWidth * 127, Level.TileWidth * 141);
-            //}
+            this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
         }
 
         public Vector2 Position
@@ -126,68 +98,28 @@ namespace GGJ2014.Game.Engine
 
         public void Update(GameTime gameTime)
         {
+            this.UpdateMovement(gameTime);
         }
 
-        public void Draw(SpriteBatch batch, Bounds bounds)
+        public void Draw(SpriteBatch spriteBatch)
         {
+            this.Draw(spriteBatch, this.position);
         }
 
         private void UpdateMovement(GameTime gameTime)
         {
             this.inputController.UpdateMovement(this, gameTime);
 
-            if (this.DashVelocity != Vector2.Zero)
+            if (!InputFrozen)
             {
-                this.LastPosition = this.Position;
-                this.position += DashVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                this.DashVelocity -= 30 * this.Speed * this.MovementDirection * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                if (DashVelocity.LengthSquared() <= Speed * Speed)
+                // Update player direction. Dont change if movement direction has no length
+                if (MovementDirection.LengthSquared() != 0)
                 {
-                    this.DashVelocity = Vector2.Zero;
-                }
-            }
-            else
-            {
-                this.lastDashSprite = new Vector2(float.PositiveInfinity);
-                this.LastPosition = this.Position;
-                this.position += MovementDirection * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-
-            this.deathNum = 0;
-            this.CheckForCollisions();
-
-            // Update dash path transparency.
-            for (int i = dashPath.Count - 1; i >= 0; --i )
-            {
-                dashPath[i].update(gameTime);
-                if (dashPath[i].RemoveFromList)
-                {
-                    dashPath.RemoveAt(i);
+                    this.direction = MovementDirection;
                 }
             }
 
-            if(this.DashVelocity != Vector2.Zero)
-            {   
-                float distanceCheck = 20;
-
-                if(Vector2.DistanceSquared(lastDashSprite, this.position) > distanceCheck * distanceCheck)
-                {
-                    if (float.IsInfinity(this.lastDashSprite.X))
-                    {
-                        this.lastDashSprite = this.position;
-                    }
-                    else
-                    {
-                        Vector2 posChange = (this.position - lastDashSprite);
-                        posChange.Normalize();
-                        lastDashSprite += (posChange * distanceCheck);
-                    }
-
-                    DashSprite dashSprite = new DashSprite(this.sprite.CreateSprite(this.MovementDirection), lastDashSprite);
-                    this.dashPath.Add(dashSprite);
-                }
-            }
+            this.position += MovementDirection * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         private void CheckForCollisions()
@@ -200,11 +132,6 @@ namespace GGJ2014.Game.Engine
 
             if (this.Position != this.LastPosition)
             {
-                //Vector2 tempPosition = this.position;
-                //int tempHeight = collisionRectangle.Height;
-                //collisionRectangle.Height = tempHeight / 2;
-                //this.position.Y += (float)tempHeight / 4;
-
                 this.xPenetrations.Clear();
                 this.yPenetrations.Clear();
                 List<Rectangle> possibleRectangles = new List<Rectangle>(); // other collision rectangles
