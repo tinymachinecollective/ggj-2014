@@ -19,6 +19,9 @@ namespace GGJ2014.Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D cat;
+        Vector2 position;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,7 +50,7 @@ namespace GGJ2014.Game
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            cat = this.Content.Load<Texture2D>("lion");
         }
 
         /// <summary>
@@ -70,7 +73,10 @@ namespace GGJ2014.Game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                position += new Vector2(0, 1);
+            }
 
             base.Update(gameTime);
         }
@@ -86,6 +92,12 @@ namespace GGJ2014.Game
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(cat, position, Color.White);
+
+            spriteBatch.End();
+
         }
     }
 }
