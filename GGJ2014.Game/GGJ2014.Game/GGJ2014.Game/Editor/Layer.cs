@@ -16,7 +16,7 @@ namespace GGJ2014.Game.Editor
 
         public void Initialize()
         {
-            this.texture2d = BigEvilStatic.Content.Load<Texture2D>(this.TileSet);
+            this.texture2d = BigEvilStatic.Content.Load<Texture2D>("textures\\" + this.TileSet);
         }
 
         private Rectangle GetSourceRectangle(int index)
@@ -57,7 +57,7 @@ namespace GGJ2014.Game.Editor
             this.Tiles.Add(new Tile()
             {
                 Position = position,
-                Index = index
+                Index = currentIndex
             });
         }
     }

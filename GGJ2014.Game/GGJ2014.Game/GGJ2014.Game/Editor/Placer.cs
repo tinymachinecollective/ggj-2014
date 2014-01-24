@@ -21,7 +21,7 @@ namespace GGJ2014.Game.Editor
 
         public void Initialize()
         {
-            string tileDefinitionFile = "image_index.csv";
+            string tileDefinitionFile = "Content\\textures\\image_index.csv";
 
             foreach (string tileDef in File.ReadAllLines(tileDefinitionFile))
             {
@@ -29,7 +29,7 @@ namespace GGJ2014.Game.Editor
                 tilesets.Add(new TileSet()
                 {
                     Name = components[0],
-                    SourceAsset = BigEvilStatic.Content.Load<Texture2D>(components[0]),
+                    SourceAsset = BigEvilStatic.Content.Load<Texture2D>("textures\\" + components[0]),
                     TileWidth = int.Parse(components[1]),
                     TileHeight = int.Parse(components[2])
                 });
@@ -52,7 +52,6 @@ namespace GGJ2014.Game.Editor
             if (!placed && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 this.layers[currentLayer].AddTile(position, currentIndex);
-
                 placed = true;
             }
             else

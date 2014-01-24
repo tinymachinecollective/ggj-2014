@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using GGJ2014.Game.Engine.Controls;
+using Microsoft.Xna.Framework.Input;
 
 namespace GGJ2014.Game.Logic
 {
@@ -34,6 +35,11 @@ namespace GGJ2014.Game.Logic
         public override void Update(GameTime time)
         {
             player.Update(time);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.F2))
+            {
+                BigEvilStatic.ScreenManager.OpenScreen(new EditorScreen(this.Device));
+            }
         }
     }
 }

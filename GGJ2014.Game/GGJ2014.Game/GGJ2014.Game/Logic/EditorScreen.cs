@@ -20,6 +20,7 @@ namespace GGJ2014.Game.Logic
         public void LoadContent()
         {
             this.placer = new Placer();
+            this.placer.Initialize();
         }
 
         public override void Draw(Bounds bounds)
