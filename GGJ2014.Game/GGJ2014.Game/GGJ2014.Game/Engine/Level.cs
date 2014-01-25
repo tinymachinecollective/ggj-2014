@@ -18,7 +18,7 @@ namespace GGJ2014.Game.Engine
         private List<Character> registeredCharacters = new List<Character>();
         private List<Rectangle> collisionRectangles = new List<Rectangle>();
 
-        public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
+        public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
 
         public Level()
         {

@@ -32,29 +32,11 @@ namespace GGJ2014.Game.Logic
 
             this.monsters = new List<Monster>();
 
-            //  find how many spawns there are in this level
-            int numSpawns = this.level.spawnPoints.Count;
-
             //  Create monsters
-            for (int i = 0; i < 4; i++)
+            foreach (var spawnPoint in this.level.SpawnPoints)
             {
-                SpawnPoint spawn = this.level.spawnPoints[i%numSpawns];
-
                 var monster = new Monster("user", 16, 16, 150, 200, 10);
-                monster.Initialize(new AIController(monster, player, random), spawn.X, spawn.Y);
-                //monster.Initialize(new AIController(monster, player, random));
-
-                /*
-                var randomVector = new Vector2((float)random.NextDouble() * 300 + 150, (float)random.NextDouble() * 300 + 150);
-                
-                int randomNumber = random.Next(4);
-
-                
-                if (randomNumber == 0) monster.Position += randomVector;
-                if (randomNumber == 1) monster.Position -= randomVector;
-                if (randomNumber == 2) monster.Position += new Vector2(randomVector.X, -randomVector.Y);
-                if (randomNumber == 3) monster.Position += new Vector2(-randomVector.X, randomVector.Y);
-                */
+                monster.Initialize(new AIController(monster, player, random), spawnPoint.X, spawnPoint.Y);
 
                 this.level.RegisterCharacter(monster);
                 this.monsters.Add(monster);
@@ -73,7 +55,7 @@ namespace GGJ2014.Game.Logic
             this.level.Draw(spriteBatch, cameraPos);
 
             //  draw monsters
-            int h = 0;
+            int h = -10;
             foreach (var monster in this.monsters)
             {
                 monster.Draw(spriteBatch, cameraPos);

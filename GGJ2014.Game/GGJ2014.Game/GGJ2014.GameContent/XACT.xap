@@ -49,7 +49,7 @@ Global Settings
         Name = Default;
         Public = 1;
         Background Music = 0;
-        Volume = 0;
+        Volume = 250;
 
         Category Entry
         {
@@ -75,7 +75,7 @@ Global Settings
         Name = Music;
         Public = 1;
         Background Music = 1;
-        Volume = -600;
+        Volume = 0;
 
         Category Entry
         {

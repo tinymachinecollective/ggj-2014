@@ -27,7 +27,7 @@ namespace GGJ2014.Game.Engine
             : base(texture, width, height)
         {
             this.CanCollide = true;
-            this.Maneuverability = 10f;
+            this.Maneuverability = 5f;
         }
 
         public virtual void Initialize(InputController controller, float startX = 0, float startY = 0)
@@ -43,7 +43,7 @@ namespace GGJ2014.Game.Engine
             this.InputController.UpdateMovement(this, gameTime);
             this.MovementDirection += (this.TargetDirection - this.MovementDirection) * Maneuverability * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (this.TargetDirection.Length() > 0.1f)
+            if (this.TargetDirection.Length() > 0.1f && this.MovementDirection.Length() > 0)
             {
                 this.MovementDirection = Vector2.Normalize(this.MovementDirection);
                 actualSpeed += Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -52,15 +52,24 @@ namespace GGJ2014.Game.Engine
             else
             {
                 actualSpeed -= Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (actualSpeed < 0) actualSpeed = 0;
+
+                if (actualSpeed < 0)
+                {
+                    actualSpeed = 0;
+                    this.MovementDirection = Vector2.Zero;
+                }
             }
 
-            Vector2 newPosition = Position + (MovementDirection * actualSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+            Vector2 delta = MovementDirection * actualSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 newPosition = Position + delta;
 
-            if (!InputFrozen && this.Level.PositionIsValid(LastPosition, newPosition))
+            if (!InputFrozen)
             {
-                LastPosition = this.Position;
-                this.Position = newPosition;
+                if (this.Level.PositionIsValid(LastPosition, newPosition))
+                {
+                    LastPosition = this.Position;
+                    this.Position = newPosition;
+                }
             }
         }
 
