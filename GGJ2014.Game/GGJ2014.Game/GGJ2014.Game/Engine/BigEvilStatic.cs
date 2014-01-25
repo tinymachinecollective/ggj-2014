@@ -10,6 +10,8 @@ namespace GGJ2014.Game.Engine
 
     public static class BigEvilStatic
     {
+        private static SpriteFont defaultfont;
+
         public static ScreenManager ScreenManager { get; private set; }
 
         public static ContentManager Content { get; private set; }
@@ -21,6 +23,16 @@ namespace GGJ2014.Game.Engine
             ScreenManager = screenManager;
             Content = manager;
             Viewport = viewport;
+        }
+
+        public static SpriteFont GetDefaultFont()
+        {
+            if (defaultfont == null)
+            {
+                defaultfont = Content.Load<SpriteFont>("DefaultFont");
+            }
+
+            return defaultfont;
         }
 
         public static KeyboardInputController CreateControlSchemeWASD()

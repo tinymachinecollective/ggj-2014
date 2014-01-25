@@ -10,7 +10,7 @@ namespace GGJ2014.Game.Editor
         public string TileSet;
         public int TileSetWidth;
         public int TileSetHeight;
-        private List<Tile> Tiles = new List<Tile>();
+        public List<Tile> Tiles = new List<Tile>();
 
         private Texture2D texture2d;
 
@@ -30,20 +30,24 @@ namespace GGJ2014.Game.Editor
 
         public int MaxIndex()
         {
-            return (texture2d.Width / TileSetWidth) * (texture2d.Height / TileSetHeight);
+            return (texture2d.Width / TileSetWidth) * (texture2d.Height / TileSetHeight) - 1;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)
         {
             foreach (var tile in this.Tiles)
-            {
-                this.DrawTile(spriteBatch, tile, Color.White);
+            { 
+                this.DrawTile(spriteBatch, tile, Color.White, cameraPos);
             }
         }
 
-        public void DrawTile(SpriteBatch spriteBatch, Tile tile, Color color)
+        public void DrawTile(SpriteBatch spriteBatch, Tile tile, Color color, Vector2 cameraPos)
         {
-            spriteBatch.Draw(texture2d, new Rectangle((int)tile.Position.X, (int)tile.Position.Y, TileSetWidth, TileSetHeight), GetSourceRectangle(tile.Index),  color);
+            spriteBatch.Draw(
+                texture2d,
+                new Rectangle((int)(tile.Position.X - cameraPos.X), (int)(tile.Position.Y - cameraPos.Y), TileSetWidth, TileSetHeight),
+                GetSourceRectangle(tile.Index),
+                color);
         }
 
         public class Tile
@@ -59,6 +63,14 @@ namespace GGJ2014.Game.Editor
                 Position = position,
                 Index = currentIndex
             });
+        }
+
+        public void RemoveLastTile()
+        {
+            if (this.Tiles.Count > 0)
+            {
+                this.Tiles.RemoveAt(this.Tiles.Count - 1);
+            }
         }
     }
 }
