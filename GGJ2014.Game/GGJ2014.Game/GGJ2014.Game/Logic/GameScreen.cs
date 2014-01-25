@@ -32,19 +32,29 @@ namespace GGJ2014.Game.Logic
 
             this.monsters = new List<Monster>();
 
+            //  find how many spawns there are in this level
+            int numSpawns = this.level.spawnPoints.Count;
+
             //  Create monsters
             for (int i = 0; i < 4; i++)
             {
-                var monster = new Monster("user", 16, 16, 150, 200, 10);
-                monster.Initialize(new AIController(monster, player, random));
+                SpawnPoint spawn = this.level.spawnPoints[i%numSpawns];
 
+                var monster = new Monster("user", 16, 16, 150, 200, 10);
+                monster.Initialize(new AIController(monster, player, random), spawn.X, spawn.Y);
+                //monster.Initialize(new AIController(monster, player, random));
+
+                /*
                 var randomVector = new Vector2((float)random.NextDouble() * 300 + 150, (float)random.NextDouble() * 300 + 150);
+                
                 int randomNumber = random.Next(4);
 
+                
                 if (randomNumber == 0) monster.Position += randomVector;
                 if (randomNumber == 1) monster.Position -= randomVector;
                 if (randomNumber == 2) monster.Position += new Vector2(randomVector.X, -randomVector.Y);
                 if (randomNumber == 3) monster.Position += new Vector2(-randomVector.X, randomVector.Y);
+                */
 
                 this.level.RegisterCharacter(monster);
                 this.monsters.Add(monster);
@@ -62,9 +72,17 @@ namespace GGJ2014.Game.Logic
 
             this.level.Draw(spriteBatch, cameraPos);
 
+            //  draw monsters
+            int h = 0;
             foreach (var monster in this.monsters)
             {
                 monster.Draw(spriteBatch, cameraPos);
+
+                h = h - 23;
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                    "Monster: " + monster.Position + " started @ " + monster.StartPosition + " leash " + monster.TetherLength,
+                    new Vector2(10f, BigEvilStatic.Viewport.Height + h),
+                    Color.Green);
             }
 
             this.player.Draw(spriteBatch, cameraPos);
