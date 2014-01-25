@@ -9,13 +9,17 @@ namespace GGJ2014.Game.Engine.Controls
     {
         private Monster monster;
 
-        //  test code
+        //  AI variables
         private Random rng = new Random();
-        private const int lower = -500;
-        private const int upper = 500;
+        private const int lower = 0;
+        private const int upper = 100;
 
         //  Limiting factors
         private const float fogOfWarDistance = 200;
+
+        //  persistence
+        private float lastDirection = 0;
+
 
         //  Core functions
         public AIController(Monster monster)
@@ -72,10 +76,24 @@ namespace GGJ2014.Game.Engine.Controls
 
         private Vector2 MoveToRandomLocation()
         {
-            float offsetX = (rng.Next(lower, upper) - rng.Next(lower, upper));
-            float offsetY = (rng.Next(lower, upper) - rng.Next(lower, upper));
 
-            return new Vector2(offsetX, offsetY);
+            float direction = (float)((lastDirection + rng.NextDouble() - 0.5) % 360); 
+            float distance = rng.Next(lower, upper);
+
+            lastDirection = direction;
+
+            Vector2 move;
+
+            float offsetX = distance * (float)Math.Cos(direction);
+            float offsetY = distance * (float)Math.Sin(direction);
+
+            move = new Vector2(offsetX, offsetY);
+            if (move.Length() > 10)
+            {
+                return move;
+            }
+
+            return Vector2.Zero;
         }
 
 
