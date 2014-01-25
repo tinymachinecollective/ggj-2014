@@ -143,7 +143,6 @@
                 this.currentMusic.Stop(AudioStopOptions.Immediate);
             }
 
-            cue = AudioManager.Instance.LoadCue(cue.Name);
             this.currentMusic = cue;
             this.currentMusic.Play();
         }
@@ -154,7 +153,6 @@
         /// <param name="cue">The music cue that is to be played.</param>
         public void QueueMusic(Cue cue)
         {
-            cue = AudioManager.Instance.LoadCue(cue.Name);
             this.nextMusic = cue;
         }
 
@@ -164,7 +162,6 @@
         /// <param name="cue">The music cue that is to be played.</param>
         public void AndThenQueueMusic(Cue cue)
         {
-            cue = AudioManager.Instance.LoadCue(cue.Name);
             this.nextNextMusic = cue;
         }
 

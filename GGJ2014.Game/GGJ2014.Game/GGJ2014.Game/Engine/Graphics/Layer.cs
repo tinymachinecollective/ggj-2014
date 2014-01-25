@@ -25,8 +25,6 @@ namespace GGJ2014.Engine.Graphics
             int row = index / tilesPerRow;
             int column = index % tilesPerRow;
 
-            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "(row, col): " + row * TileSetWidth + " " + column * TileSetHeight, new Vector2(500f, 10f), Color.Red);
-
             return new Rectangle(column * TileSetWidth, row * TileSetHeight, TileSetWidth, TileSetHeight);
         }
 

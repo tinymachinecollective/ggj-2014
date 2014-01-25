@@ -4,6 +4,7 @@ namespace GGJ2014.Game.Engine.Controls
     using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
+    using GGJ2014.Game.Logic;
 
     public class AIController : InputController
     {
@@ -45,8 +46,8 @@ namespace GGJ2014.Game.Engine.Controls
                 //  can see player!
                 //  approach player
 
-                AudioManager.Instance.QueueMusic(AudioManager.Instance.LoadCue("music-LoudLoop"));
-                AudioManager.Instance.AndThenQueueMusic(AudioManager.Instance.LoadCue("music-QuietLoop"));
+                AudioManager.Instance.QueueMusic(Music.LoadLoop);
+                AudioManager.Instance.AndThenQueueMusic(Music.QuietLoop);
                 move = MoveTowardsPlayer(player.Position);
             }
 

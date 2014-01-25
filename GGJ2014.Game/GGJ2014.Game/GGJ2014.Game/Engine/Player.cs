@@ -5,12 +5,15 @@ namespace GGJ2014.Game.Engine
     using GGJ2014.Game.Engine.Graphics;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
     public class Player : Character
     {
         private Fade fade = new Fade();
         private int lives = 3;
         private Delay gameEnd = new Delay(1000);
+        private Cue humanVoice;
+        private Cue endGame;
 
         public Player() : base(BigEvilStatic.Content.Load<Texture2D>("cog"), 16, 16)
         {
@@ -21,6 +24,8 @@ namespace GGJ2014.Game.Engine
         {
             base.Initialize(controller);
             this.fade.Initialize();
+            this.humanVoice = AudioManager.Instance.LoadCue("human");
+            this.endGame = AudioManager.Instance.LoadCue("monster-laugh");
         }
 
         public override void OnCollision(Character character)
@@ -28,9 +33,9 @@ namespace GGJ2014.Game.Engine
             if (character is Monster)
             {
                 lives--;
-                this.Effects.Add(new PainEffect());
-                AudioManager.Instance.LoadCue("human").Play();
 
+                AudioManager.Instance.PlayCue(ref humanVoice, false);
+                this.Effects.Add(new PainEffect());
                 (character as Monster).Destroy();
 
                 if (lives == 0)
@@ -51,6 +56,7 @@ namespace GGJ2014.Game.Engine
 
                 if (gameEnd.Over())
                 {
+                    AudioManager.Instance.PlayCue(ref endGame, false);
                     fade.Start();
                 }
             }

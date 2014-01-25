@@ -50,8 +50,8 @@ namespace GGJ2014.Game.Logic
                 this.monsters.Add(monster);
             }
 
-            AudioManager.Instance.PlayMusic(AudioManager.Instance.LoadCue("music-Intro"));
-            AudioManager.Instance.QueueMusic(AudioManager.Instance.LoadCue("music-QuietLoop"));
+            AudioManager.Instance.PlayMusic(Music.Intro);
+            AudioManager.Instance.QueueMusic(Music.QuietLoop);
         }
 
         public override void Draw(Bounds bounds)

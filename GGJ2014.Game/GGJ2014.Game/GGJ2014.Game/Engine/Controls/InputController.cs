@@ -7,11 +7,11 @@ namespace GGJ2014.Game.Engine.Controls
     {
         public void UpdateMovement(Character character, GameTime gameTime)
         {
-            character.MovementDirection = this.GetMovementDirection(gameTime);
+            character.TargetDirection = this.GetMovementDirection(gameTime);
 
-            if (character.MovementDirection.LengthSquared() != 0)
+            if (character.TargetDirection.LengthSquared() != 0)
             {
-                character.MovementDirection = Vector2.Normalize(character.MovementDirection);
+                character.TargetDirection = Vector2.Normalize(character.TargetDirection);
             }
         }
 
