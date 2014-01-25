@@ -41,7 +41,7 @@ namespace GGJ2014.Game.Engine
 
         public static Level Load()
         {
-            XmlSerializer xs = new XmlSerializer(typeof(List<Layer>));
+            XmlSerializer xs = new XmlSerializer(typeof(Level));
             Level level = null;
 
             if (File.Exists("level.xml"))
