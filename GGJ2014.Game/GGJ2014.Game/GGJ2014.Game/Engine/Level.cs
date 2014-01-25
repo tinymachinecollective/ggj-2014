@@ -12,14 +12,26 @@ namespace GGJ2014.Game.Engine
     public class Level
     {
         private static readonly Random rng = new Random();
+        private bool drawWalkLayer;
+
         public List<Layer> Layers = new List<Layer>();
+        public Layer WalkLayer = new Layer();
 
         public Level()
         {
+            this.WalkLayer.Tiles = new List<Layer.Tile>();
+            this.WalkLayer.TileSet = "grass_and_water";
+            this.WalkLayer.TileSetWidth = 64;
+            this.WalkLayer.TileSetHeight = 64;
         }
 
         public virtual void Update(GameTime gameTime)
         {
+        }
+
+        public void SetDrawsWalkLayer(bool drawWalkLayer)
+        {
+            this.drawWalkLayer = drawWalkLayer;
         }
 
         public Vector2 FindSpawnPoint(bool playerSafe)
@@ -54,6 +66,8 @@ namespace GGJ2014.Game.Engine
                     {
                         layer.Initialize();
                     }
+
+                    level.WalkLayer.Initialize();
                 }
             }
 
@@ -64,7 +78,12 @@ namespace GGJ2014.Game.Engine
         {
             for (int i = 0; i < this.Layers.Count; i++)
             {
-                this.Layers[i].Draw(spriteBatch, cameraPos);
+                this.Layers[i].Draw(spriteBatch, cameraPos, Color.White);
+            }
+
+            if (drawWalkLayer)
+            {
+                this.WalkLayer.Draw(spriteBatch, cameraPos, Color.Red);
             }
         }
     }

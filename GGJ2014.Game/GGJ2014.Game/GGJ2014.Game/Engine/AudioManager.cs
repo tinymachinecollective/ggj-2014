@@ -139,7 +139,17 @@
             }
 
             cue = AudioManager.Instance.LoadCue(cue.Name);
+            this.currentMusic = cue;
+            this.currentMusic.Play();
+        }
 
+        /// <summary>
+        /// Plays a music cue that has already been loaded.
+        /// </summary>
+        /// <param name="cue">The music cue that is to be played.</param>
+        public void QueueMusic(Cue cue)
+        {
+            cue = AudioManager.Instance.LoadCue(cue.Name);
             this.nextMusic = cue;
         }
 

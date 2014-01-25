@@ -133,6 +133,106 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="audio\Suits-Come-Here-Kitty_1.wav">
+      <Name>Suits-Come-Here-Kitty_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Get-Over-Here_1.wav">
+      <Name>Suits-Get-Over-Here_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Here-Kitty-Kitty-Kitty_1.wav">
+      <Name>Suits-Here-Kitty-Kitty-Kitty_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Meow-1_1.wav">
+      <Name>Suits-Meow-1_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Meow-2_1.wav">
+      <Name>Suits-Meow-2_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Meow-3_1.wav">
+      <Name>Suits-Meow-3_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Meow-4_1.wav">
+      <Name>Suits-Meow-4_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Meow-Long-1_1.wav">
+      <Name>Suits-Meow-Long-1_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Monster-1_1.wav">
+      <Name>Suits-Monster-1_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Monster-2_1.wav">
+      <Name>Suits-Monster-2_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Monster-3_1.wav">
+      <Name>Suits-Monster-3_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Monster-Laugh_1.wav">
+      <Name>Suits-Monster-Laugh_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Purr-Meow-1_1.wav">
+      <Name>Suits-Purr-Meow-1_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Purr-Meow-2_1.wav">
+      <Name>Suits-Purr-Meow-2_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Purr-Meow-3_1.wav">
+      <Name>Suits-Purr-Meow-3_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Purr-Meow-4_1.wav">
+      <Name>Suits-Purr-Meow-4_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits-Purr-Shocked_1.wav">
+      <Name>Suits-Purr-Shocked_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits2-Intro_1.wav">
+      <Name>Suits2-Intro_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits2-LoudLoop_1.wav">
+      <Name>Suits2-LoudLoop_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
+    <None Include="audio\Suits2-QuietLoop_1.wav">
+      <Name>Suits2-QuietLoop_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </None>
     <Content Include="textures\image_index.csv">
       <Name>image_index</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

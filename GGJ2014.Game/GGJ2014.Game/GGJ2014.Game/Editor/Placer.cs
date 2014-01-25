@@ -27,6 +27,8 @@ namespace GGJ2014.Game.Editor
         Vector2 lastMousePos;
         Vector2 cameraPos;
 
+        private bool editWalkLayer;
+
         public void Initialize()
         {
             string tileDefinitionFile = "Content\\textures\\image_index.csv";
@@ -186,6 +188,21 @@ namespace GGJ2014.Game.Editor
                     this.saved = false;
                     keyPressed = true;
                 }
+
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    if (this.editWalkLayer)
+                    {
+                        this.level.SetDrawsWalkLayer(false);
+                        this.editWalkLayer = false;
+                    }
+                    else
+                    {
+                        this.level.SetDrawsWalkLayer(true);
+                        this.editWalkLayer = true;
+                    }
+                    keyPressed = true;
+                }
             }
 
             if (Keyboard.GetState().GetPressedKeys().Length == 0)
@@ -198,9 +215,13 @@ namespace GGJ2014.Game.Editor
         {
             this.level.Draw(spriteBatch, this.cameraPos);
 
-            if (!this.cameraMoving)
+            if (!this.cameraMoving && !this.editWalkLayer)
             {
                 this.level.GetLayer(this.currentLayer).DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.White, Vector2.Zero);
+            }
+            else
+            {
+                this.level.WalkLayer.DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.Yellow, Vector2.Zero);
             }
 
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Tileset: " + this.tilesets[this.currentTileSet].Name, new Vector2(10f, 10f), Color.White);

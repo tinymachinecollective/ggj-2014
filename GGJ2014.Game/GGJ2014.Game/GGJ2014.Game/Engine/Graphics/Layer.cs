@@ -33,11 +33,11 @@ namespace GGJ2014.Engine.Graphics
             return (texture2d.Width / TileSetWidth) * (texture2d.Height / TileSetHeight) - 1;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)
+        public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos, Color color)
         {
             foreach (var tile in this.Tiles)
-            { 
-                this.DrawTile(spriteBatch, tile, Color.White, cameraPos);
+            {
+                this.DrawTile(spriteBatch, tile, color, cameraPos);
             }
         }
 
