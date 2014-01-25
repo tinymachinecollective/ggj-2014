@@ -109,9 +109,9 @@ namespace GGJ2014.Game.Engine
             this.MonsterUpdateMovement(gameTime, playerPosition);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)
         {
-            this.Draw(spriteBatch, this.position);
+            this.Draw(spriteBatch, this.position, cameraPos);
         }
 
         private void MonsterUpdateMovement(GameTime gameTime, Vector2 playerPosition)

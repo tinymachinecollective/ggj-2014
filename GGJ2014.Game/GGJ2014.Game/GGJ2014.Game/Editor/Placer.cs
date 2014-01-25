@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
+using GGJ2014.Engine.Graphics;
 using GGJ2014.Game.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Xml.Serialization;
 
 namespace GGJ2014.Game.Editor
 {
@@ -12,7 +13,7 @@ namespace GGJ2014.Game.Editor
     {
         private Vector2 position;
         private List<TileSet> tilesets = new List<TileSet>();
-        private List<Layer> layers = new List<Layer>();
+        private Level level = new Level();
 
         private int currentIndex;
         private int currentTileSet;
@@ -54,7 +55,7 @@ namespace GGJ2014.Game.Editor
             };
 
             layer.Initialize();
-            this.layers.Add(layer);
+            this.level.AddLayer(layer);
         }
 
         public void Update()
@@ -87,7 +88,7 @@ namespace GGJ2014.Game.Editor
 
             if (!placed && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                this.layers[currentLayer].AddTile(position + cameraPos, currentIndex);
+                this.level.GetLayer(currentLayer).AddTile(position + cameraPos, currentIndex);
                 placed = true;
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
@@ -111,10 +112,10 @@ namespace GGJ2014.Game.Editor
                     this.currentTileSet++;
                     if (this.currentTileSet >= this.tilesets.Count) this.currentTileSet = 0;
 
-                    this.layers[currentLayer].TileSet = this.tilesets[this.currentTileSet].Name;
-                    this.layers[currentLayer].TileSetWidth = this.tilesets[this.currentTileSet].TileWidth;
-                    this.layers[currentLayer].TileSetHeight = this.tilesets[this.currentTileSet].TileHeight;
-                    this.layers[currentLayer].Initialize();
+                    this.level.GetLayer(currentLayer).TileSet = this.tilesets[this.currentTileSet].Name;
+                    this.level.GetLayer(currentLayer).TileSetWidth = this.tilesets[this.currentTileSet].TileWidth;
+                    this.level.GetLayer(currentLayer).TileSetHeight = this.tilesets[this.currentTileSet].TileHeight;
+                    this.level.GetLayer(currentLayer).Initialize();
 
                     this.currentIndex = 0;
                     keyPressed = true;
@@ -123,20 +124,20 @@ namespace GGJ2014.Game.Editor
                 if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
                 {
                     this.currentIndex--;
-                    if (this.currentIndex < 0) this.currentIndex = this.layers[this.currentLayer].MaxIndex();
+                    if (this.currentIndex < 0) this.currentIndex = this.level.GetLayer(currentLayer).MaxIndex();
                     keyPressed = true;
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.PageUp))
                 {
                     this.currentIndex++;
-                    if (this.currentIndex > this.layers[this.currentLayer].MaxIndex()) this.currentIndex = 0;
+                    if (this.currentIndex > this.level.GetLayer(currentLayer).MaxIndex()) this.currentIndex = 0;
                     keyPressed = true;
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Back))
                 {
-                    this.layers[this.currentLayer].RemoveLastTile();
+                    this.level.GetLayer(currentLayer).RemoveLastTile();
                     keyPressed = true;
                 }
 
@@ -150,24 +151,24 @@ namespace GGJ2014.Game.Editor
                 if (Keyboard.GetState().IsKeyDown(Keys.Home))
                 {
                     this.currentLayer++;
-                    if (this.currentLayer >= this.layers.Count) this.currentLayer = 0;
+                    if (this.currentLayer >= this.level.LayerCount) this.currentLayer = 0;
                     keyPressed = true;
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.End))
                 {
                     this.currentLayer--;
-                    if (this.currentLayer == 0) this.currentLayer = this.layers.Count - 1;
+                    if (this.currentLayer == 0) this.currentLayer = this.level.LayerCount - 1;
                     keyPressed = true;
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
-                    XmlSerializer xs = new XmlSerializer(typeof(List<Layer>));
+                    XmlSerializer xs = new XmlSerializer(typeof(Level));
 
                     using (var fileStream = File.Open("level.xml", FileMode.Create))
                     {
-                        xs.Serialize(fileStream, this.layers);
+                        xs.Serialize(fileStream, this.level.LayerCount);
                     }
 
                     this.saved = true;
@@ -176,20 +177,11 @@ namespace GGJ2014.Game.Editor
 
                 if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
-                    XmlSerializer xs = new XmlSerializer(typeof(List<Layer>));
+                    this.level.Load();
 
-                    using (var fileStream = File.Open("level.xml", FileMode.Open))
-                    {
-                        this.layers = xs.Deserialize(fileStream) as List<Layer>;
-                        this.currentLayer = 0;
-                        this.currentIndex = 0;
-                        this.currentTileSet = 0;
-
-                        foreach (var layer in layers)
-                        {
-                            layer.Initialize();
-                        }
-                    }
+                    this.currentLayer = 0;
+                    this.currentIndex = 0;
+                    this.currentTileSet = 0;
 
                     this.saved = false;
                     keyPressed = true;
@@ -204,14 +196,11 @@ namespace GGJ2014.Game.Editor
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < this.layers.Count; i++)
-            {
-                this.layers[i].Draw(spriteBatch, cameraPos);
+            this.level.Draw(spriteBatch, this.cameraPos);
 
-                if (i == currentLayer && !this.cameraMoving)
-                {
-                    this.layers[i].DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.White, Vector2.Zero);
-                }
+            if (!this.cameraMoving)
+            {
+                this.level.GetLayer(this.currentLayer).DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.White, Vector2.Zero);
             }
 
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Tileset: " + this.tilesets[this.currentTileSet].Name, new Vector2(10f, 10f), Color.White);

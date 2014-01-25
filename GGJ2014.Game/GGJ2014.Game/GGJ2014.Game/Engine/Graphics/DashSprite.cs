@@ -20,9 +20,9 @@ namespace GGJ2014.Game.Engine.Graphics
             this.position = position;
         }
 
-        public void Draw(SpriteBatch batch, Bounds bounds)
+        public void Draw(SpriteBatch batch, Bounds bounds, Vector2 cameraPos)
         {
-            sprite.Draw(batch, bounds.AdjustPoint(this.position));
+            sprite.Draw(batch, bounds.AdjustPoint(this.position), cameraPos);
         }
 
         public void update(GameTime time)

@@ -74,5 +74,10 @@ namespace GGJ2014.Game.Engine
         {
             return new Sprite(Content.Load<Texture2D>("lifewins"), 1024, 768);
         }
+
+        internal static Vector2 GetScreenCentre()
+        {
+            return new Vector2(Viewport.Width / 2f, Viewport.Height / 2f);
+        }
     }
 }

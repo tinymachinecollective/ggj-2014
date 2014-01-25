@@ -96,29 +96,29 @@ namespace GGJ2014.Game.Engine.Graphics
             this.rightSprite = new Sprite(rightTexture, rightTexture.Width, upTexture.Height);
         }
 
-        public void Draw(Vector2 direction, SpriteBatch batch, Vector2 point)
+        public void Draw(Vector2 direction, SpriteBatch batch, Vector2 point, Vector2 cameraPos)
         {
             if (direction.Y > 0)
             {
-                downSprite.Draw(batch, point);
+                downSprite.Draw(batch, point, cameraPos);
                 return;
             }
 
             if (direction.Y < 0)
             {
-                upSprite.Draw(batch, point);
+                upSprite.Draw(batch, point, cameraPos);
                 return;
             }
 
             if (direction.X > 0)
             {
-                rightSprite.Draw(batch, point);
+                rightSprite.Draw(batch, point, cameraPos);
                 return;
             }
 
             if (direction.X < 0)
             {
-                leftSprite.Draw(batch, point);
+                leftSprite.Draw(batch, point, cameraPos);
                 return;
             }
         }

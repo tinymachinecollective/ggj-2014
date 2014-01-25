@@ -35,11 +35,11 @@ namespace GGJ2014.Game.Engine.UI
 
             if (this.HasFocus)
             {
-                this.HoverState.Draw(batch, this.Position);
+                this.HoverState.Draw(batch, this.Position, Vector2.Zero);
             }
             else
             {
-                this.NormalState.Draw(batch, this.Position);
+                this.NormalState.Draw(batch, this.Position, Vector2.Zero);
             }
         }
     }

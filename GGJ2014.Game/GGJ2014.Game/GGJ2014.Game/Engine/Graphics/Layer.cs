@@ -3,7 +3,7 @@ using GGJ2014.Game.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GGJ2014.Game.Editor
+namespace GGJ2014.Engine.Graphics
 {
     public class Layer
     {

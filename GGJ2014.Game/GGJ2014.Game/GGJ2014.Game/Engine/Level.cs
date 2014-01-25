@@ -3,43 +3,19 @@ namespace GGJ2014.Game.Engine
 {
     using System;
     using System.Collections.Generic;
+    using GGJ2014.Engine.Graphics;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using GGJ2014.Game.Engine.Graphics;
-    using Microsoft.Xna.Framework.Audio;
-    using GGJ2014.Game.Engine.Animation;
+    using System.Xml.Serialization;
+    using System.IO;
 
     public class Level
     {
         private static readonly Random rng = new Random();
+        private List<Layer> layers = new List<Layer>();
 
-        protected Sprite purgatoryOverlay;
-
-        protected int HalfTilesWideOnScreen;
-        protected int HalfTilesLongOnScreen;
-
-        public const int TileWidth = 32;
-
-        protected List<Rectangle> rectangles;
-        protected Sprite backgroundGround;
-        protected Cue pickupSFX;
-        private const int MaxPickups = 30;
-
-        protected Sprite purgatoryText, findPortalText;
-
-        protected Level()
+        public Level()
         {
-            this.purgatoryOverlay = new Sprite(BigEvilStatic.Content.Load<Texture2D>("WhiteOut"), 48, 48);
-            this.purgatoryOverlay.Zoom = 100f;
-            this.purgatoryOverlay.Alpha = 0f;
-
-            Texture2D purgTextTex = BigEvilStatic.Content.Load<Texture2D>("purgatory");
-            Texture2D portalTextTex = BigEvilStatic.Content.Load<Texture2D>("findportal");
-
-            purgatoryText = new Sprite(purgTextTex, purgTextTex.Width, purgTextTex.Height);
-            purgatoryText.Alpha = 0;
-            findPortalText = new Sprite(portalTextTex, portalTextTex.Width, portalTextTex.Height);
-            findPortalText.Alpha = 0;
         }
 
         public virtual void Update(GameTime gameTime)
@@ -51,8 +27,39 @@ namespace GGJ2014.Game.Engine
             return Vector2.Zero;
         }
 
-        public virtual void Draw(SpriteBatch batch, Bounds bounds)
+        public void AddLayer(Layer layer)
         {
+            this.layers.Add(layer);
+        }
+
+        public Layer GetLayer(int layerIndex)
+        {
+            return this.layers[layerIndex];
+        }
+
+        public int LayerCount { get { return this.layers.Count; } }
+
+        public void Load()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(List<Layer>));
+
+            using (var fileStream = File.Open("level.xml", FileMode.Open))
+            {
+                this.layers = xs.Deserialize(fileStream) as List<Layer>;
+
+                foreach (var layer in layers)
+                {
+                    layer.Initialize();
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)
+        {
+            for (int i = 0; i < this.layers.Count; i++)
+            {
+                this.layers[i].Draw(spriteBatch, cameraPos);
+            }
         }
     }
 }

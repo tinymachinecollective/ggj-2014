@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using GGJ2014.Game.Engine.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GGJ2014.Game.Engine.Graphics;
 
 namespace GGJ2014.Game.Engine.UI
 {
@@ -26,7 +22,7 @@ namespace GGJ2014.Game.Engine.UI
 
         public override void Draw(SpriteBatch batch)
         {
-            this.sprite.Draw(batch, Position);
+            this.sprite.Draw(batch, Position, Vector2.Zero);
         }
     }
 }

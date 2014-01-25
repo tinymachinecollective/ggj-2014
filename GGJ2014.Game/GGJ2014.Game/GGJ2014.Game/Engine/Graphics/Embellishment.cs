@@ -48,17 +48,16 @@ namespace GGJ2014.Game.Engine.Graphics
             }
         }
 
-        public void Draw(SpriteBatch batch, Vector2 parentPosition, float parentZoom, float parentRotation)
+        public void Draw(SpriteBatch batch, Vector2 parentPosition, Vector2 cameraPos, float parentZoom, float parentRotation)
         {
             if (!Destroyed)
             {
                 this.EmbellishmentSprite.Zoom = parentZoom;
                 this.EmbellishmentSprite.Rotation = parentRotation;
-                this.EmbellishmentSprite.Draw(batch, parentPosition + Offset);
+                this.EmbellishmentSprite.Draw(batch, parentPosition + Offset, cameraPos);
             }
             else
             {
-                int x = 3;
             }
         }
 

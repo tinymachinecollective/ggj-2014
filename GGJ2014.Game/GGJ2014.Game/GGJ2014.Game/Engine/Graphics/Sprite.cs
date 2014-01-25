@@ -102,13 +102,13 @@ namespace GGJ2014.Game.Engine.Graphics
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 point, bool fromTopLeft = false)
+        public void Draw(SpriteBatch spriteBatch, Vector2 point, Vector2 cameraPosition, bool fromTopLeft = false)
         {
             Color multipliedTint = this.Tint * this.Alpha;
 
             spriteBatch.Draw(
                 this.Texture2D,
-                point,
+                point - cameraPosition,
                 this.GetSourceRectangle(),
                 multipliedTint,
                 this.Rotation,
@@ -119,7 +119,7 @@ namespace GGJ2014.Game.Engine.Graphics
 
             for (int i = this.Embellishments.Count - 1; i >= 0; --i)
             {
-                this.Embellishments[i].Draw(spriteBatch, point, this.Zoom, this.Rotation);
+                this.Embellishments[i].Draw(spriteBatch, point, cameraPosition, this.Zoom, this.Rotation);
             }
         }
 

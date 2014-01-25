@@ -1,7 +1,7 @@
 ﻿using GGJ2014.Game.Engine;
+using GGJ2014.Game.Engine.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GGJ2014.Game.Engine.Controls;
 using Microsoft.Xna.Framework.Input;
 
 namespace GGJ2014.Game.Logic
@@ -11,6 +11,7 @@ namespace GGJ2014.Game.Logic
         private Player player;
         private Monster monster;
         private SpriteBatch spriteBatch;
+        private Level level;
 
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {
@@ -26,20 +27,26 @@ namespace GGJ2014.Game.Logic
             this.monster = new Monster();
             this.monster.Initialize(new AIController(monster));
 
+            this.level = new Level();
+            this.level.Load();
         }
 
         public override void Draw(Bounds bounds)
         {
             this.spriteBatch.Begin();
 
-            this.player.Draw(spriteBatch);
-            this.monster.Draw(spriteBatch);
+            Vector2 cameraPos = player.Position - BigEvilStatic.GetScreenCentre();
+
+            this.level.Draw(spriteBatch, cameraPos);
+            this.player.Draw(spriteBatch, cameraPos);
+            this.monster.Draw(spriteBatch, cameraPos);
 
             this.spriteBatch.End();
         }
 
         public override void Update(GameTime time)
         {
+            this.level.Update(time);
             player.Update(time);
             monster.Update(time, player.Position);
 

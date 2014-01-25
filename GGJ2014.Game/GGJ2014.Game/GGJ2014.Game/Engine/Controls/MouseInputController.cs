@@ -20,7 +20,7 @@ namespace GGJ2014.Game.Engine.Controls
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                Vector2 diff = new Vector2(mouseState.X, mouseState.Y) - player.Position;
+                Vector2 diff = new Vector2(mouseState.X, mouseState.Y) - BigEvilStatic.GetScreenCentre();
 
                 if (diff.Length() > 10)
                 {

@@ -107,7 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Editor\Layer.cs" />
+    <Compile Include="Engine\Graphics\Layer.cs" />
     <Compile Include="Editor\Placer.cs" />
     <Compile Include="Editor\TileSet.cs" />
     <Compile Include="Engine\Animation\Delay.cs" />
