@@ -81,8 +81,7 @@ namespace GGJ2014.Game.Logic
         public override void Draw(Bounds bounds)
         {
             //  Draw background
-            this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Opaque, SamplerState.LinearWrap,
-                DepthStencilState.Default, RasterizerState.CullNone);
+            this.spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Opaque, SamplerState.LinearWrap, DepthStencilState.DepthRead, RasterizerState.CullNone);
             Rectangle baseRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, BigEvilStatic.Viewport.Width, BigEvilStatic.Viewport.Height);
             spriteBatch.Draw(baseTile, Vector2.Zero, baseRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
             this.spriteBatch.End();
