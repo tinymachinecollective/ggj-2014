@@ -47,7 +47,11 @@ namespace GGJ2014.Engine.Graphics
                 texture2d,
                 new Rectangle((int)(tile.Position.X - cameraPos.X), (int)(tile.Position.Y - cameraPos.Y), TileSetWidth, TileSetHeight),
                 GetSourceRectangle(tile.Index),
-                color);
+                color,
+                0f,
+                new Vector2(TileSetWidth / 2f, TileSetHeight / 2f),
+                SpriteEffects.None,
+                1f);
         }
 
         public class Tile
