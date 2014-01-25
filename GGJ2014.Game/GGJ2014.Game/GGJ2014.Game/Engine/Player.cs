@@ -38,7 +38,7 @@ using Microsoft.Xna.Framework.Audio;
                 this.Effects.Add(new PainEffect());
                 (character as Monster).Destroy();
 
-                if (lives == 0)
+                if (lives <= 0)
                 {
                     InputFrozen = true;
                 }
@@ -50,7 +50,7 @@ using Microsoft.Xna.Framework.Audio;
             base.Update(gameTime);
             this.fade.Update(gameTime);
 
-            if (lives == 0 && !fade.Fading)
+            if (lives <= 0 && !fade.Fading)
             {
                 gameEnd.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds);
 
