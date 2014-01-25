@@ -11,12 +11,11 @@ namespace GGJ2014.Game.Engine.Controls
 
         //  test code
         private Random rng = new Random();
-        private int lower = -400;
-        private int upper = 500;
+        private const int lower = -500;
+        private const int upper = 500;
 
         //  Limiting factors
-        private int fogOfWarDistance = 100;
-        private int maxSpeed = 350;
+        private const float fogOfWarDistance = 200;
 
         //  Core functions
         public AIController(Monster monster)
@@ -37,14 +36,14 @@ namespace GGJ2014.Game.Engine.Controls
         protected Vector2 GetMovementDirection(Vector2 playerPosition)
         {
 
-            double distanceFromPlayer = GetDistanceFromPlayer(playerPosition);
+            float distanceFromPlayer = GetDistanceFromPlayer(playerPosition);
             Vector2 move;
 
             if (distanceFromPlayer > fogOfWarDistance) 
             {
                 //  player is too far away
                 //  random movement
-                move = MoveRandomly();
+                move = MoveToRandomLocation();
             }
             else 
             {
@@ -53,40 +52,35 @@ namespace GGJ2014.Game.Engine.Controls
                 move = MoveTowardsPlayer(playerPosition);
             }
 
-            //Vector2 diff = new Vector2(rng.Next(lower, upper) + playerPosition.X, rng.Next(lower, upper) + playerPosition.Y) - monster.Position;
-            Vector2 diff = move - monster.Position;
-
-            if (diff.Length() > 10)
+            
+            if (move.Length() > 10)
             {
-                return diff;
+                return move;
             }
-
             return Vector2.Zero;
+
+            
         }
 
         //  AI code
-        private double GetDistanceFromPlayer(Vector2 playerposition)
+        private float GetDistanceFromPlayer(Vector2 playerposition)
         {
-            double xdist = monster.Position.X - playerposition.X;
-            double ydist = monster.Position.Y - playerposition.Y;
-
-            return Math.Sqrt(xdist * xdist + ydist * ydist);
+            return (monster.Position - playerposition).Length();
         }
 
-        private Vector2 MoveRandomly()
+        private Vector2 MoveToRandomLocation()
         {
-            float offsetX = rng.Next(lower, upper) - rng.Next(lower, upper);
-            float offsetY = rng.Next(lower, upper) - rng.Next(lower, upper);
+            float offsetX = (rng.Next(lower, upper) - rng.Next(lower, upper));
+            float offsetY = (rng.Next(lower, upper) - rng.Next(lower, upper));
 
             return new Vector2(offsetX, offsetY);
         }
 
+
         private Vector2 MoveTowardsPlayer(Vector2 playerPosition)
         {
-            float moveX = playerPosition.X % maxSpeed;
-            float moveY = playerPosition.Y % maxSpeed;
-
-            return new Vector2(moveX, moveY);
+            return playerPosition - monster.Position;
         }
+
     }
 }

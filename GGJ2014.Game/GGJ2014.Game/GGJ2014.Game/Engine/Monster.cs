@@ -16,13 +16,15 @@ namespace GGJ2014.Game.Engine
         private AIController inputController;
         private Rectangle collisionRectangle;
         private GrowShrinkEffect effect;
-        private Vector2 position;
+        private Vector2 position = BigEvilStatic.GetScreenCentre();    // start in the middle of the screen
+
+        public Vector2 MovementDirection { get; set; }
 
         //  Public constants
         public static bool InputFrozen = false;
-        public const int MaxHealth = 12;
-        public const float MaxEnergy = 10;
-        public const float MaxSpeed = 350;
+        //public const int MaxHealth = 12;
+        //public const float MaxEnergy = 10;
+        public const float MaxSpeed = 300;
         public const int MaxBounce = 20;
         public const float BulletSpeed = 500f;
         public const float EnergyPerShot = 1f;
@@ -45,7 +47,6 @@ namespace GGJ2014.Game.Engine
 
         public float Speed { get; set; }
 
-        public Vector2 MovementDirection { get; set; }
         public float TimeSinceLastDash { get; set; }
 
         public float TimeSinceSpiralBegan { get; set; }
@@ -68,8 +69,8 @@ namespace GGJ2014.Game.Engine
         {
             this.TimeSinceLastDash = 100;
             this.Speed = Monster.MaxSpeed;
-            this.Health = Monster.MaxHealth;
-            this.Energy = Monster.MaxEnergy;
+            //this.Health = Monster.MaxHealth;
+            //this.Energy = Monster.MaxEnergy;
             this.direction = new Vector2(0, 1);
             this.effect = new GrowShrinkEffect(750f, 0.02f);
 
@@ -99,8 +100,8 @@ namespace GGJ2014.Game.Engine
         {
             this.position = this.Level.FindSpawnPoint(true);
             this.LastPosition = this.position;
-            this.Health = Monster.MaxHealth;
-            this.Energy = Monster.MaxEnergy;
+            //this.Health = Monster.MaxHealth;
+            //this.Energy = Monster.MaxEnergy;
             this.Speed = Monster.MaxSpeed;
         }
 
@@ -129,6 +130,7 @@ namespace GGJ2014.Game.Engine
 
             this.position += MovementDirection * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
+
 
         private void CheckForCollisions()
         {
