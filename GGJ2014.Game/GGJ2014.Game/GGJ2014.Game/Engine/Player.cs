@@ -10,6 +10,7 @@ namespace GGJ2014.Game.Engine
     {
         private Fade fade = new Fade();
         private int lives = 3;
+        private Delay gameEnd = new Delay(1000);
 
         public Player() : base(BigEvilStatic.Content.Load<Texture2D>("cog"), 16, 16)
         {
@@ -34,16 +35,24 @@ namespace GGJ2014.Game.Engine
                 if (lives == 0)
                 {
                     InputFrozen = true;
-                    fade.Start();
                 }
             }
-            
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             this.fade.Update(gameTime);
+
+            if (lives == 0 && !fade.Fading)
+            {
+                gameEnd.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds);
+
+                if (gameEnd.Over())
+                {
+                    fade.Start();
+                }
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)

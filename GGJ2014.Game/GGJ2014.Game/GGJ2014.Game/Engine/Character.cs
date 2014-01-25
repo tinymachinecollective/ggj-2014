@@ -57,7 +57,11 @@ namespace GGJ2014.Game.Engine
 
         public virtual void Update(GameTime gameTime)
         {
-            this.UpdateMovement(gameTime);
+            if (!InputFrozen)
+            {
+                this.UpdateMovement(gameTime);
+            }
+
             this.UpdateEffects(gameTime);
             this.UpdateAnimation(gameTime);
             this.CheckForCollisions();

@@ -36,7 +36,7 @@ namespace GGJ2014.Game.Logic
             for (int i = 0; i < 4; i++)
             {
                 var monster = new Monster("user", 16, 16, 150, 200);
-                monster.Initialize(new AIController(monster, player));
+                monster.Initialize(new AIController(monster, player, random));
 
                 var randomVector = new Vector2((float)random.NextDouble() * 300 + 150, (float)random.NextDouble() * 300 + 150);
                 int randomNumber = random.Next(4);

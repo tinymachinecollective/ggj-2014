@@ -10,7 +10,7 @@ namespace GGJ2014.Game.Engine.Controls
         private Monster monster;
 
         //  AI variables
-        private Random rng = new Random();
+        private Random rng;
         private const int lower = 0;
         private const int upper = 100;
         private float timeSinceMove = 0;
@@ -20,10 +20,11 @@ namespace GGJ2014.Game.Engine.Controls
         private Player player;
 
         //  Core functions
-        public AIController(Monster monster, Player player)
+        public AIController(Monster monster, Player player, Random random)
         {
             this.monster = monster;
             this.player = player;
+            this.rng = random;
         }
 
         protected override Vector2 GetMovementDirection(GameTime gameTime)
