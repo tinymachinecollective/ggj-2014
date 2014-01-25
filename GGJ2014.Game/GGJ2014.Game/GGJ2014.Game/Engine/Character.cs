@@ -10,7 +10,7 @@ namespace GGJ2014.Game.Engine
     public abstract class Character : Sprite, IMoveable
     {
         public static bool InputFrozen = false;
-        private InputController inputController;
+        public InputController InputController { get; set; }
         public Vector2 MovementDirection { get; set; }
         public float Speed { get; set; }
         public Vector2 Position { get; set; }
@@ -33,13 +33,13 @@ namespace GGJ2014.Game.Engine
 
         public void Initialize(InputController controller)
         {
-            this.inputController = controller;
+            this.InputController = controller;
             this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
         }
 
         protected void UpdateMovement(GameTime gameTime)
         {
-            this.inputController.UpdateMovement(this, gameTime);
+            this.InputController.UpdateMovement(this, gameTime);
 
             if (!InputFrozen)
             {

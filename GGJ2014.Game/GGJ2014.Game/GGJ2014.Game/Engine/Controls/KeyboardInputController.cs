@@ -13,7 +13,7 @@ namespace GGJ2014.Game.Engine.Controls
             this.controls = new KeyboardManager(up, down, left, right, shoot, dash);
         }
 
-        protected override Vector2 GetMovementDirection()
+        protected override Vector2 GetMovementDirection(GameTime gameTime)
         {
             this.controls.Update();
 

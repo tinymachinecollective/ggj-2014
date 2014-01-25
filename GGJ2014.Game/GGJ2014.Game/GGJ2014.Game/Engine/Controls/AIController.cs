@@ -13,6 +13,7 @@ namespace GGJ2014.Game.Engine.Controls
         private Random rng = new Random();
         private const int lower = 0;
         private const int upper = 100;
+        public float timeSinceMove = 0;
 
         //  persistence
         private float lastDirection = 0;
@@ -25,16 +26,19 @@ namespace GGJ2014.Game.Engine.Controls
             this.player = player;
         }
 
-        protected override Vector2 GetMovementDirection()
+        protected override Vector2 GetMovementDirection(GameTime gameTime)
         {
             float distanceFromPlayer = GetDistanceFromPlayer(this.player.Position);
             Vector2 move;
+
+
+            timeSinceMove += gameTime.ElapsedGameTime.Seconds;
 
             if (distanceFromPlayer > monster.LineOfSight) 
             {
                 //  player is too far away
                 //  random movement
-                move = MoveToRandomLocation();
+                move = MoveToRandomLocation(gameTime);
             }
             else 
             {
@@ -62,10 +66,20 @@ namespace GGJ2014.Game.Engine.Controls
             return (monster.Position - playerposition).Length();
         }
 
-        private Vector2 MoveToRandomLocation()
+        private Vector2 MoveToRandomLocation(GameTime gameTime)
         {
+            float direction;
 
-            float direction = (float)((lastDirection + rng.NextDouble() - 0.5) % 360); 
+            if (timeSinceMove > 10.0)
+            {
+                direction = (float)((lastDirection + (rng.NextDouble()-0.5)*10) % 360);
+                timeSinceMove = 0;
+            }
+            else
+            {
+                direction = lastDirection;
+            }
+
             float distance = rng.Next(lower, upper);
 
             lastDirection = direction;
