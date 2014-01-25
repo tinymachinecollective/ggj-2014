@@ -20,7 +20,7 @@ namespace GGJ2014.Game.Engine.Controls
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                Vector2 diff = new Vector2(mouseState.X, mouseState.Y) - BigEvilStatic.GetScreenCentre();
+                Vector2 diff = GetMouseDirection();
 
                 if (diff.Length() > 10)
                 {
@@ -29,6 +29,12 @@ namespace GGJ2014.Game.Engine.Controls
             }
 
             return Vector2.Zero;
+        }
+
+        public Vector2 GetMouseDirection()
+        {
+            MouseState mouseState = Mouse.GetState();
+            return new Vector2(mouseState.X, mouseState.Y) - BigEvilStatic.GetScreenCentre();
         }
     }
 }

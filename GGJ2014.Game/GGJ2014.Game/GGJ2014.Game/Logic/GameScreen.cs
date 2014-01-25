@@ -5,6 +5,7 @@ using GGJ2014.Game.Engine.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using GGJ2014.Game.Engine.Graphics3D;
 
 namespace GGJ2014.Game.Logic
 {
@@ -90,6 +91,8 @@ namespace GGJ2014.Game.Logic
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Track: " + AudioManager.Instance.CurrentTrack, new Vector2(10f, 56f), Color.White);
 
             this.spriteBatch.End();
+
+            BigEvilStatic.Renderer.Draw();
         }
 
         public override void Update(GameTime gameTime)

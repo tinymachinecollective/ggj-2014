@@ -7,22 +7,24 @@ namespace GGJ2014.Game.Engine
     using Microsoft.Xna.Framework.Input;
     using GGJ2014.Game.Engine.Controls;
     using GGJ2014.Game.Engine.Graphics;
+using GGJ2014.Game.Engine.Graphics3D;
 
     public static class BigEvilStatic
     {
         private static SpriteFont defaultfont;
+        private static Renderer renderer;
 
         public static ScreenManager ScreenManager { get; private set; }
-
         public static ContentManager Content { get; private set; }
-
         public static Viewport Viewport { get; private set; }
+        public static GraphicsDevice GraphicsDevice { get; private set; }
 
-        public static void Init(ScreenManager screenManager, ContentManager manager, Viewport viewport)
+        public static void Init(ScreenManager screenManager, GraphicsDevice device, ContentManager manager, Viewport viewport)
         {
             ScreenManager = screenManager;
             Content = manager;
             Viewport = viewport;
+            GraphicsDevice = device;
         }
 
         public static SpriteFont GetDefaultFont()
@@ -78,6 +80,19 @@ namespace GGJ2014.Game.Engine
         internal static Vector2 GetScreenCentre()
         {
             return new Vector2(Viewport.Width / 2f, Viewport.Height / 2f);
+        }
+
+        public static Renderer Renderer
+        {
+            get
+            {
+                if (renderer == null)
+                {
+                    renderer = new Renderer(GraphicsDevice);
+                }
+
+                return renderer;
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GGJ2014.Game.Engine
         public bool CanCollide { get; protected set; }
         public float Maneuverability { get; set; }
         private Rectangle collisionRectangle;
-        private float actualSpeed;
+        protected float ActualSpeed { get; private set; }
 
         public Vector2 StartPosition { get; set; }
 
@@ -48,21 +48,21 @@ namespace GGJ2014.Game.Engine
             if (this.TargetDirection.Length() > 0.1f && this.MovementDirection.Length() > 0)
             {
                 this.MovementDirection = Vector2.Normalize(this.MovementDirection);
-                actualSpeed += Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (actualSpeed >= Speed) actualSpeed = Speed;
+                ActualSpeed += Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (ActualSpeed >= Speed) ActualSpeed = Speed;
             }
             else
             {
-                actualSpeed -= Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                ActualSpeed -= Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (actualSpeed < 0)
+                if (ActualSpeed < 0)
                 {
-                    actualSpeed = 0;
-                    this.MovementDirection = Vector2.Zero;
+                    ActualSpeed = 0;
+                    //this.MovementDirection = Vector2.Zero;
                 }
             }
 
-            Vector2 delta = MovementDirection * actualSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 delta = MovementDirection * ActualSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 newPosition = Position + delta;
 
             if (!InputFrozen)

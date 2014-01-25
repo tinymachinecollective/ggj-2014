@@ -110,6 +110,8 @@
     <Compile Include="Engine\Antelope.cs" />
     <Compile Include="Engine\Character.cs" />
     <Compile Include="Engine\Controls\AntelopeController.cs" />
+    <Compile Include="Engine\Graphics3D\Animation3D.cs" />
+    <Compile Include="Engine\Graphics3D\TiltAnimation.cs" />
     <Compile Include="Engine\Graphics\Fade.cs" />
     <Compile Include="Engine\Graphics\Layer.cs" />
     <Compile Include="Editor\Placer.cs" />
@@ -157,6 +159,8 @@
     <Compile Include="Engine\ScreenManager.cs" />
     <Compile Include="Engine\ScreenTypeEventArgs.cs" />
     <Compile Include="Engine\SpawnPoint.cs" />
+    <Compile Include="Engine\Graphics3D\Model3D.cs" />
+    <Compile Include="Engine\Graphics3D\Renderer.cs" />
     <Compile Include="Engine\UI\Button.cs" />
     <Compile Include="Engine\UI\Clock.cs" />
     <Compile Include="Engine\UI\Control.cs" />

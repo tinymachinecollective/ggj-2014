@@ -48,7 +48,7 @@ namespace GGJ2014.Game
 
             this.screenManager = new ScreenManager();
 
-            BigEvilStatic.Init(this.screenManager, this.Content, this.GraphicsDevice.Viewport);
+            BigEvilStatic.Init(this.screenManager, this.GraphicsDevice, this.Content, this.GraphicsDevice.Viewport);
 
             this.screenManager.ScreensEmpty += new EventHandler(ScreenManagerEmpty);
             this.screenManager.OpenScreen(new GameScreen(this.GraphicsDevice));

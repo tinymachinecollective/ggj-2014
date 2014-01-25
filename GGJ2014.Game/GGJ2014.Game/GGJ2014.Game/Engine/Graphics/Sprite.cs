@@ -22,6 +22,7 @@ namespace GGJ2014.Game.Engine.Graphics
         public Texture2D Texture2D { get; private set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        public bool PauseEffects { get; set; }
 
         private TimeSpan sinceLastFrame = TimeSpan.Zero;
 
@@ -55,6 +56,11 @@ namespace GGJ2014.Game.Engine.Graphics
 
         public void UpdateEffects(GameTime time)
         {
+            if (this.PauseEffects)
+            {
+                return;
+            }
+
             for (int i = Effects.Count - 1; i >= 0; --i)
             {
                 Effects[i].Update(this, time);
