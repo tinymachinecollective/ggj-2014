@@ -49,6 +49,8 @@ namespace GGJ2014.Game.Engine.Controls
             {
                 //  can see player!
                 //  approach player
+
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.LoadCue("music-LoudLoop")); ;
                 move = MoveTowardsPlayer(playerPosition);
             }
 
