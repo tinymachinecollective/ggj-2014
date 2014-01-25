@@ -27,8 +27,7 @@ namespace GGJ2014.Game.Logic
             this.monster = new Monster();
             this.monster.Initialize(new AIController(monster));
 
-            this.level = new Level();
-            this.level.Load();
+            this.level = Level.Load();
         }
 
         public override void Draw(Bounds bounds)

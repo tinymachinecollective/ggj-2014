@@ -168,7 +168,7 @@ namespace GGJ2014.Game.Editor
 
                     using (var fileStream = File.Open("level.xml", FileMode.Create))
                     {
-                        xs.Serialize(fileStream, this.level.LayerCount);
+                        xs.Serialize(fileStream, this.level);
                     }
 
                     this.saved = true;
@@ -177,7 +177,7 @@ namespace GGJ2014.Game.Editor
 
                 if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
-                    this.level.Load();
+                    this.level = Level.Load();
 
                     this.currentLayer = 0;
                     this.currentIndex = 0;

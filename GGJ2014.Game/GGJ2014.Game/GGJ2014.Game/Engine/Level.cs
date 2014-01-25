@@ -12,7 +12,7 @@ namespace GGJ2014.Game.Engine
     public class Level
     {
         private static readonly Random rng = new Random();
-        private List<Layer> layers = new List<Layer>();
+        public List<Layer> Layers = new List<Layer>();
 
         public Level()
         {
@@ -29,36 +29,42 @@ namespace GGJ2014.Game.Engine
 
         public void AddLayer(Layer layer)
         {
-            this.layers.Add(layer);
+            this.Layers.Add(layer);
         }
 
         public Layer GetLayer(int layerIndex)
         {
-            return this.layers[layerIndex];
+            return this.Layers[layerIndex];
         }
 
-        public int LayerCount { get { return this.layers.Count; } }
+        public int LayerCount { get { return this.Layers.Count; } }
 
-        public void Load()
+        public static Level Load()
         {
             XmlSerializer xs = new XmlSerializer(typeof(List<Layer>));
+            Level level = null;
 
-            using (var fileStream = File.Open("level.xml", FileMode.Open))
+            if (File.Exists("level.xml"))
             {
-                this.layers = xs.Deserialize(fileStream) as List<Layer>;
-
-                foreach (var layer in layers)
+                using (var fileStream = File.Open("level.xml", FileMode.Open))
                 {
-                    layer.Initialize();
+                    level = xs.Deserialize(fileStream) as Level;
+
+                    foreach (var layer in level.Layers)
+                    {
+                        layer.Initialize();
+                    }
                 }
             }
+
+            return level ?? new Level();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)
         {
-            for (int i = 0; i < this.layers.Count; i++)
+            for (int i = 0; i < this.Layers.Count; i++)
             {
-                this.layers[i].Draw(spriteBatch, cameraPos);
+                this.Layers[i].Draw(spriteBatch, cameraPos);
             }
         }
     }
