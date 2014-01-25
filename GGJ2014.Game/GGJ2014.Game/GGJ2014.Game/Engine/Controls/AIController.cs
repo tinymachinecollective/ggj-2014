@@ -5,7 +5,7 @@ namespace GGJ2014.Game.Engine.Controls
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
 
-    public class AIController 
+    public class AIController : InputController
     {
         private Monster monster;
 
@@ -19,28 +19,18 @@ namespace GGJ2014.Game.Engine.Controls
 
         //  persistence
         private float lastDirection = 0;
-
+        private Player player;
 
         //  Core functions
-        public AIController(Monster monster)
+        public AIController(Monster monster, Player player)
         {
             this.monster = monster;
+            this.player = player;
         }
 
-        public void MonsterUpdateMovement(Monster monster, GameTime gameTime, Vector2 playerPosition)
+        protected override Vector2 GetMovementDirection()
         {
-            monster.MovementDirection = this.GetMovementDirection(playerPosition);
-
-            if (monster.MovementDirection.LengthSquared() != 0)
-            {
-                monster.MovementDirection = Vector2.Normalize(monster.MovementDirection);
-            }
-        }
-
-        protected Vector2 GetMovementDirection(Vector2 playerPosition)
-        {
-
-            float distanceFromPlayer = GetDistanceFromPlayer(playerPosition);
+            float distanceFromPlayer = GetDistanceFromPlayer(this.player.Position);
             Vector2 move;
 
             if (distanceFromPlayer > fogOfWarDistance) 
@@ -54,8 +44,9 @@ namespace GGJ2014.Game.Engine.Controls
                 //  can see player!
                 //  approach player
 
-                AudioManager.Instance.PlayMusic(AudioManager.Instance.LoadCue("music-LoudLoop")); ;
-                move = MoveTowardsPlayer(playerPosition);
+                AudioManager.Instance.QueueMusic(AudioManager.Instance.LoadCue("music-LoudLoop"));
+                AudioManager.Instance.AndThenQueueMusic(AudioManager.Instance.LoadCue("music-QuietLoop"));
+                move = MoveTowardsPlayer(player.Position);
             }
 
             

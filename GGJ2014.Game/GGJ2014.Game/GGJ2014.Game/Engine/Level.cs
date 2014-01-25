@@ -16,13 +16,21 @@ namespace GGJ2014.Game.Engine
 
         public List<Layer> Layers = new List<Layer>();
         public Layer WalkLayer = new Layer();
+        private List<Character> registeredCharacters = new List<Character>();
 
         public Level()
         {
             this.WalkLayer.Tiles = new List<Layer.Tile>();
-            this.WalkLayer.TileSet = "grass_and_water";
+            this.WalkLayer.TileSet = "WALK";
             this.WalkLayer.TileSetWidth = 64;
             this.WalkLayer.TileSetHeight = 64;
+            this.WalkLayer.Initialize();
+        }
+
+        public void RegisterCharacter(Character character)
+        {
+            this.registeredCharacters.Add(character);
+            character.Level = this;
         }
 
         public virtual void Update(GameTime gameTime)
@@ -85,6 +93,16 @@ namespace GGJ2014.Game.Engine
             {
                 this.WalkLayer.Draw(spriteBatch, cameraPos, Color.Red);
             }
+        }
+
+        public IEnumerable<Rectangle> GetCollisionRectangles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool PositionIsValid(Vector2 newPosition)
+        {
+            return true;
         }
     }
 }

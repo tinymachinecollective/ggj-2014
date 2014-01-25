@@ -5,13 +5,13 @@ namespace GGJ2014.Game.Engine.Controls
 
     public abstract class InputController
     {
-        public void UpdateMovement(Player player, GameTime gameTime)
+        public void UpdateMovement(Character character, GameTime gameTime)
         {
-            player.MovementDirection = this.GetMovementDirection();
+            character.MovementDirection = this.GetMovementDirection();
 
-            if (player.MovementDirection.LengthSquared() != 0)
+            if (character.MovementDirection.LengthSquared() != 0)
             {
-                player.MovementDirection = Vector2.Normalize(player.MovementDirection);
+                character.MovementDirection = Vector2.Normalize(character.MovementDirection);
             }
         }
 

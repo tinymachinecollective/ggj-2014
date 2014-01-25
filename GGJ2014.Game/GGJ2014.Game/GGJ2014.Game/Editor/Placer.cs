@@ -87,10 +87,11 @@ namespace GGJ2014.Game.Editor
             }
 
             this.position = new Vector2(x, y);
+            var currentLayer = this.editWalkLayer ? this.level.WalkLayer : this.level.GetLayer(this.currentLayer);
 
             if (!placed && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                this.level.GetLayer(currentLayer).AddTile(position + cameraPos, currentIndex);
+                currentLayer.AddTile(position + cameraPos, currentIndex);
                 placed = true;
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
@@ -109,100 +110,7 @@ namespace GGJ2014.Game.Editor
 
             if (!keyPressed)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Tab))
-                {
-                    this.currentTileSet++;
-                    if (this.currentTileSet >= this.tilesets.Count) this.currentTileSet = 0;
-
-                    this.level.GetLayer(currentLayer).TileSet = this.tilesets[this.currentTileSet].Name;
-                    this.level.GetLayer(currentLayer).TileSetWidth = this.tilesets[this.currentTileSet].TileWidth;
-                    this.level.GetLayer(currentLayer).TileSetHeight = this.tilesets[this.currentTileSet].TileHeight;
-                    this.level.GetLayer(currentLayer).Initialize();
-
-                    this.currentIndex = 0;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
-                {
-                    this.currentIndex--;
-                    if (this.currentIndex < 0) this.currentIndex = this.level.GetLayer(currentLayer).MaxIndex();
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.PageUp))
-                {
-                    this.currentIndex++;
-                    if (this.currentIndex > this.level.GetLayer(currentLayer).MaxIndex()) this.currentIndex = 0;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Back))
-                {
-                    this.level.GetLayer(currentLayer).RemoveLastTile();
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                {
-                    this.AddLayer();
-                    this.currentLayer++;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Home))
-                {
-                    this.currentLayer++;
-                    if (this.currentLayer >= this.level.LayerCount) this.currentLayer = 0;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.End))
-                {
-                    this.currentLayer--;
-                    if (this.currentLayer == 0) this.currentLayer = this.level.LayerCount - 1;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
-                {
-                    XmlSerializer xs = new XmlSerializer(typeof(Level));
-
-                    using (var fileStream = File.Open("level.xml", FileMode.Create))
-                    {
-                        xs.Serialize(fileStream, this.level);
-                    }
-
-                    this.saved = true;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.L))
-                {
-                    this.level = Level.Load();
-
-                    this.currentLayer = 0;
-                    this.currentIndex = 0;
-                    this.currentTileSet = 0;
-
-                    this.saved = false;
-                    keyPressed = true;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    if (this.editWalkLayer)
-                    {
-                        this.level.SetDrawsWalkLayer(false);
-                        this.editWalkLayer = false;
-                    }
-                    else
-                    {
-                        this.level.SetDrawsWalkLayer(true);
-                        this.editWalkLayer = true;
-                    }
-                    keyPressed = true;
-                }
+                ProcessInput();
             }
 
             if (Keyboard.GetState().GetPressedKeys().Length == 0)
@@ -211,22 +119,127 @@ namespace GGJ2014.Game.Editor
             }
         }
 
+        private void ProcessInput()
+        {
+            var currentLayer = this.editWalkLayer ? this.level.WalkLayer : this.level.GetLayer(this.currentLayer);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Tab))
+            {
+                this.currentTileSet++;
+                if (this.currentTileSet >= this.tilesets.Count) this.currentTileSet = 0;
+
+                currentLayer.TileSet = this.tilesets[this.currentTileSet].Name;
+                currentLayer.TileSetWidth = this.tilesets[this.currentTileSet].TileWidth;
+                currentLayer.TileSetHeight = this.tilesets[this.currentTileSet].TileHeight;
+                currentLayer.Initialize();
+
+                this.currentIndex = 0;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
+            {
+                this.currentIndex--;
+                if (this.currentIndex < 0) this.currentIndex = currentLayer.MaxIndex();
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.PageUp))
+            {
+                this.currentIndex++;
+                if (this.currentIndex > currentLayer.MaxIndex()) this.currentIndex = 0;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Back))
+            {
+                currentLayer.RemoveLastTile();
+            }
+
+            if (!this.editWalkLayer)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    this.AddLayer();
+                    this.currentLayer++;
+                }
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Home))
+                {
+                    this.currentLayer++;
+                    if (this.currentLayer >= this.level.LayerCount) this.currentLayer = 0;
+                }
+
+                if (Keyboard.GetState().IsKeyDown(Keys.End))
+                {
+                    this.currentLayer--;
+                    if (this.currentLayer == 0) this.currentLayer = this.level.LayerCount - 1;
+                }
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(Level));
+
+                using (var fileStream = File.Open("level.xml", FileMode.Create))
+                {
+                    xs.Serialize(fileStream, this.level);
+                }
+
+                this.saved = true;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                this.level = Level.Load();
+
+                this.currentLayer = 0;
+                this.currentIndex = 0;
+                this.currentTileSet = 0;
+
+                this.saved = false;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                if (this.editWalkLayer)
+                {
+                    this.editWalkLayer = false;
+                }
+                else
+                {
+                    this.editWalkLayer = true;
+                }
+            }
+
+            if (Keyboard.GetState().GetPressedKeys().Length > 0)
+            {
+                keyPressed = true;
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             this.level.Draw(spriteBatch, this.cameraPos);
+            this.level.SetDrawsWalkLayer(this.editWalkLayer);
 
             if (!this.cameraMoving && !this.editWalkLayer)
             {
                 this.level.GetLayer(this.currentLayer).DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.White, Vector2.Zero);
             }
-            else
+            else if (this.editWalkLayer)
             {
-                this.level.WalkLayer.DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.Yellow, Vector2.Zero);
+                this.level.WalkLayer.DrawTile(spriteBatch, new Layer.Tile() { Index = currentIndex, Position = position }, Color.Red, Vector2.Zero);
             }
 
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Tileset: " + this.tilesets[this.currentTileSet].Name, new Vector2(10f, 10f), Color.White);
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Tile: " + this.currentIndex, new Vector2(10f, 33f), Color.White);
-            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Layer: " + this.currentLayer, new Vector2(10f, 56f), Color.White);
+
+            if (this.editWalkLayer)
+            {
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Layer: Walk Layer", new Vector2(10f, 56f), Color.White);
+            }
+            else
+            {
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Layer: " + this.currentLayer, new Vector2(10f, 56f), Color.White);
+            }
 
             if (saved)
             {

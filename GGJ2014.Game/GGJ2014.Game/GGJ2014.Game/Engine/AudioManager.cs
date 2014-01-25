@@ -56,6 +56,11 @@
         private Cue nextMusic;
 
         /// <summary>
+        /// The cue for the next NEXT music to be played.
+        /// </summary>
+        private Cue nextNextMusic;
+
+        /// <summary>
         /// Prevents a default instance of the AudioManager class from being created. 
         /// Initialises the class and points to the audio engine.
         /// </summary>
@@ -153,12 +158,28 @@
             this.nextMusic = cue;
         }
 
+        /// <summary>
+        /// Plays a music cue that has already been loaded.
+        /// </summary>
+        /// <param name="cue">The music cue that is to be played.</param>
+        public void AndThenQueueMusic(Cue cue)
+        {
+            cue = AudioManager.Instance.LoadCue(cue.Name);
+            this.nextNextMusic = cue;
+        }
+
         public void Update(GameTime gameTime)
         {
             if ((this.currentMusic == null || this.currentMusic.IsStopped) && this.nextMusic != null)
             {
                 this.currentMusic = AudioManager.Instance.LoadCue(this.nextMusic.Name);
                 this.currentMusic.Play();
+
+                if (this.nextNextMusic != null)
+                {
+                    this.nextMusic = this.nextNextMusic;
+                    this.nextNextMusic = null;
+                }
             }
 
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -385,6 +406,8 @@
         {
             return -96 + volume * (6 - (-96));
         }
+
+        public string CurrentTrack { get { return this.currentMusic.Name; } }
     }
 
     public class FadeInfo
