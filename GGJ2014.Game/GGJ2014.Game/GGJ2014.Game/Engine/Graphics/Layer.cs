@@ -19,13 +19,15 @@ namespace GGJ2014.Engine.Graphics
             this.texture2d = BigEvilStatic.Content.Load<Texture2D>("textures\\" + this.TileSet);
         }
 
-        private Rectangle GetSourceRectangle(int index)
+        private Rectangle GetSourceRectangle(int index, SpriteBatch spriteBatch = null)
         {
             int tilesPerRow = texture2d.Width / TileSetWidth;
             int row = index / tilesPerRow;
             int column = index % tilesPerRow;
 
-            return new Rectangle(column * TileSetHeight, row * TileSetWidth, TileSetWidth, TileSetHeight);
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "(row, col): " + row * TileSetWidth + " " + column * TileSetHeight, new Vector2(500f, 10f), Color.Red);
+
+            return new Rectangle(column * TileSetWidth, row * TileSetHeight, TileSetWidth, TileSetHeight);
         }
 
         public int MaxIndex()
@@ -46,12 +48,14 @@ namespace GGJ2014.Engine.Graphics
             spriteBatch.Draw(
                 texture2d,
                 new Rectangle((int)(tile.Position.X - cameraPos.X), (int)(tile.Position.Y - cameraPos.Y), TileSetWidth, TileSetHeight),
-                GetSourceRectangle(tile.Index),
+                GetSourceRectangle(tile.Index, spriteBatch),
+                //GetSourceRectangle(tile.Index),
                 color,
                 0f,
                 new Vector2(TileSetWidth / 2f, TileSetHeight / 2f),
                 SpriteEffects.None,
                 1f);
+
         }
 
         public class Tile
