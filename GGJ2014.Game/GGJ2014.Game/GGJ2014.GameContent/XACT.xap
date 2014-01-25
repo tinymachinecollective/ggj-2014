@@ -75,7 +75,7 @@ Global Settings
         Name = Music;
         Public = 1;
         Background Music = 1;
-        Volume = 0;
+        Volume = -600;
 
         Category Entry
         {
@@ -856,7 +856,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Music;
         }
 
         Track
@@ -903,7 +903,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Music;
         }
 
         Track
@@ -1749,7 +1749,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Music;
         }
 
         Track

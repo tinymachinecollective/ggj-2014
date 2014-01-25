@@ -29,6 +29,7 @@ namespace GGJ2014.Game.Engine
             {
                 lives--;
                 this.Effects.Add(new PainEffect());
+                AudioManager.Instance.LoadCue("human").Play();
 
                 (character as Monster).Destroy();
 

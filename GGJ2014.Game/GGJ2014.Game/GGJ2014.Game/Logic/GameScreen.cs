@@ -1,10 +1,10 @@
-﻿using GGJ2014.Game.Engine;
+﻿using System;
+using System.Collections.Generic;
+using GGJ2014.Game.Engine;
 using GGJ2014.Game.Engine.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System;
 
 namespace GGJ2014.Game.Logic
 {
