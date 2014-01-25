@@ -30,12 +30,14 @@ namespace GGJ2014.Game.Engine
             this.Maneuverability = 5f;
         }
 
-        public virtual void Initialize(InputController controller, float startX = 0, float startY = 0)
+        public virtual void Initialize(InputController controller, float startX, float startY)
         {
             this.InputController = controller;
             this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
 
             this.StartPosition = new Vector2(startX, startY);
+
+            this.Position = StartPosition;
         }
 
         protected void UpdateMovement(GameTime gameTime)

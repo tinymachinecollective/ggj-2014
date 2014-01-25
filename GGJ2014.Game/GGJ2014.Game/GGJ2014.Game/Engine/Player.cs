@@ -22,7 +22,7 @@ using Microsoft.Xna.Framework.Audio;
 
         public override void Initialize(Controls.InputController controller, float startX = 0, float startY = 0)
         {
-            base.Initialize(controller);
+            base.Initialize(controller, startX, startY);
             this.fade.Initialize();
             this.humanVoice = AudioManager.Instance.LoadCue("human");
             this.endGame = AudioManager.Instance.LoadCue("monster-laugh");
@@ -50,7 +50,7 @@ using Microsoft.Xna.Framework.Audio;
             base.Update(gameTime);
             this.fade.Update(gameTime);
 
-            if (lives == 0 && !fade.Fading)
+            if (lives <= 0 && !fade.Fading)
             {
                 gameEnd.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds);
 

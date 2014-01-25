@@ -27,7 +27,7 @@ namespace GGJ2014.Game.Logic
             this.level = Level.Load();
 
             this.player = new Player();
-            this.player.Initialize(new MouseInputController(player));
+            this.player.Initialize(new MouseInputController(player), 0 , 0);
             this.level.RegisterCharacter(this.player);
 
             this.monsters = new List<Monster>();
