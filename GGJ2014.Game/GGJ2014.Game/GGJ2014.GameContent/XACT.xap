@@ -303,31 +303,8 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Bank Last Revised Low = 26704804;
-    Bank Last Revised High = 30349685;
-
-    Wave
-    {
-        Name = ding;
-        File = ..\..\..\..\..\..\..\..\Windows\Media\ding.wav;
-        Build Settings Last Modified Low = 282323820;
-        Build Settings Last Modified High = 30349548;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 70016;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2929426343;
-            Last Modified High = 30009867;
-        }
-    }
+    Bank Last Revised Low = 3536405289;
+    Bank Last Revised High = 30349734;
 
     Wave
     {
@@ -802,55 +779,8 @@ Sound Bank
 
     Sound
     {
-        Name = ding;
-        Volume = -1200;
-        Pitch = 0;
-        Priority = 0;
-
-        Category Entry
-        {
-            Name = Default;
-        }
-
-        Track
-        {
-            Volume = 0;
-            Use Filter = 0;
-
-            Play Wave Event
-            {
-                Break Loop = 0;
-                Use Speaker Position = 0;
-                Use Center Speaker = 1;
-                New Speaker Position On Loop = 1;
-                Speaker Position Angle = 0.000000;
-                Speaker Position Arc = 0.000000;
-
-                Event Header
-                {
-                    Timestamp = 0;
-                    Relative = 0;
-                    Random Recurrence = 0;
-                    Random Offset = 0;
-                }
-
-                Wave Entry
-                {
-                    Bank Name = Wave Bank;
-                    Bank Index = 0;
-                    Entry Name = ding;
-                    Entry Index = 0;
-                    Weight = 255;
-                    Weight Min = 0;
-                }
-            }
-        }
-    }
-
-    Sound
-    {
         Name = Suits2-QuietLoop_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -886,7 +816,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits2-QuietLoop_1;
-                    Entry Index = 1;
+                    Entry Index = 0;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -897,7 +827,7 @@ Sound Bank
     Sound
     {
         Name = Suits2-Intro_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -933,7 +863,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits2-Intro_1;
-                    Entry Index = 2;
+                    Entry Index = 1;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -944,7 +874,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Purr-Shocked_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -980,7 +910,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Purr-Shocked_1;
-                    Entry Index = 3;
+                    Entry Index = 2;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -991,7 +921,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Purr-Meow-4_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1027,7 +957,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Purr-Meow-4_1;
-                    Entry Index = 4;
+                    Entry Index = 3;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1038,7 +968,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Purr-Meow-3_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1074,7 +1004,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Purr-Meow-3_1;
-                    Entry Index = 5;
+                    Entry Index = 4;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1085,7 +1015,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Purr-Meow-2_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1121,7 +1051,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Purr-Meow-2_1;
-                    Entry Index = 6;
+                    Entry Index = 5;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1132,7 +1062,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Monster-Laugh_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1168,7 +1098,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Monster-Laugh_1;
-                    Entry Index = 7;
+                    Entry Index = 6;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1179,7 +1109,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Purr-Meow-1_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1215,7 +1145,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Purr-Meow-1_1;
-                    Entry Index = 8;
+                    Entry Index = 7;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1226,7 +1156,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Monster-3_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1262,7 +1192,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Monster-3_1;
-                    Entry Index = 9;
+                    Entry Index = 8;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1273,7 +1203,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Monster-2_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1309,7 +1239,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Monster-2_1;
-                    Entry Index = 10;
+                    Entry Index = 9;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1320,7 +1250,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Monster-1_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1356,7 +1286,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Monster-1_1;
-                    Entry Index = 11;
+                    Entry Index = 10;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1367,7 +1297,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Meow-4_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1403,7 +1333,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Meow-4_1;
-                    Entry Index = 12;
+                    Entry Index = 11;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1414,7 +1344,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Meow-Long-1_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1450,7 +1380,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Meow-Long-1_1;
-                    Entry Index = 13;
+                    Entry Index = 12;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1461,7 +1391,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Meow-2_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1497,7 +1427,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Meow-2_1;
-                    Entry Index = 14;
+                    Entry Index = 13;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1508,7 +1438,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Meow-3_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1544,7 +1474,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Meow-3_1;
-                    Entry Index = 15;
+                    Entry Index = 14;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1555,7 +1485,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Get-Over-Here_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1591,7 +1521,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Get-Over-Here_1;
-                    Entry Index = 16;
+                    Entry Index = 15;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1602,7 +1532,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Here-Kitty-Kitty-Kitty_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1638,7 +1568,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Here-Kitty-Kitty-Kitty_1;
-                    Entry Index = 17;
+                    Entry Index = 16;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1649,7 +1579,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Meow-1_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1685,7 +1615,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Meow-1_1;
-                    Entry Index = 18;
+                    Entry Index = 17;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1696,7 +1626,7 @@ Sound Bank
     Sound
     {
         Name = Suits-Come-Here-Kitty_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1732,7 +1662,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits-Come-Here-Kitty_1;
-                    Entry Index = 19;
+                    Entry Index = 18;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -1743,7 +1673,7 @@ Sound Bank
     Sound
     {
         Name = Suits2-LoudLoop_1;
-        Volume = -1200;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -1779,31 +1709,11 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = Suits2-LoudLoop_1;
-                    Entry Index = 20;
+                    Entry Index = 19;
                     Weight = 255;
                     Weight Min = 0;
                 }
             }
-        }
-    }
-
-    Cue
-    {
-        Name = ding;
-
-        Variation
-        {
-            Variation Type = 3;
-            Variation Table Type = 1;
-            New Variation on Loop = 0;
-        }
-
-        Sound Entry
-        {
-            Name = ding;
-            Index = 0;
-            Weight Min = 0;
-            Weight Max = 255;
         }
     }
 
@@ -1821,7 +1731,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Purr-Meow-4_1;
-            Index = 4;
+            Index = 3;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1829,7 +1739,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Purr-Meow-3_1;
-            Index = 5;
+            Index = 4;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1837,7 +1747,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Purr-Meow-2_1;
-            Index = 6;
+            Index = 5;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1845,7 +1755,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Purr-Meow-1_1;
-            Index = 8;
+            Index = 7;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1865,7 +1775,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Meow-4_1;
-            Index = 12;
+            Index = 11;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1873,7 +1783,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Meow-Long-1_1;
-            Index = 13;
+            Index = 12;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1881,7 +1791,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Meow-2_1;
-            Index = 14;
+            Index = 13;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1889,7 +1799,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Meow-3_1;
-            Index = 15;
+            Index = 14;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1897,7 +1807,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Meow-1_1;
-            Index = 18;
+            Index = 17;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1917,7 +1827,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Purr-Shocked_1;
-            Index = 3;
+            Index = 2;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1937,7 +1847,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Monster-3_1;
-            Index = 9;
+            Index = 8;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1945,7 +1855,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Monster-2_1;
-            Index = 10;
+            Index = 9;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1953,7 +1863,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Monster-1_1;
-            Index = 11;
+            Index = 10;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1973,7 +1883,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Monster-Laugh_1;
-            Index = 7;
+            Index = 6;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1993,7 +1903,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Come-Here-Kitty_1;
-            Index = 19;
+            Index = 18;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2001,7 +1911,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Get-Over-Here_1;
-            Index = 16;
+            Index = 15;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2009,7 +1919,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits-Here-Kitty-Kitty-Kitty_1;
-            Index = 17;
+            Index = 16;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2029,7 +1939,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits2-QuietLoop_1;
-            Index = 1;
+            Index = 0;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2049,7 +1959,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits2-Intro_1;
-            Index = 2;
+            Index = 1;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -2069,7 +1979,7 @@ Sound Bank
         Sound Entry
         {
             Name = Suits2-LoudLoop_1;
-            Index = 20;
+            Index = 19;
             Weight Min = 0;
             Weight Max = 255;
         }

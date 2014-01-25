@@ -13,6 +13,7 @@ namespace GGJ2014.Game.Logic
         private static readonly Random random = new Random();
         private Player player;
         private List<Monster> monsters;
+        private List<Antelope> antelope;
         private SpriteBatch spriteBatch;
         private Level level;
 
@@ -42,6 +43,16 @@ namespace GGJ2014.Game.Logic
                 this.monsters.Add(monster);
             }
 
+            this.antelope = new List<Antelope>();
+
+            for (int i = 0; i < 1; i++)
+            {
+                Antelope antelope = new Antelope();
+                antelope.Initialize(new AntelopeController(antelope, player, random), 200f, 200f);
+                this.level.RegisterCharacter(antelope);
+                this.antelope.Add(antelope);
+            }
+
             AudioManager.Instance.PlayMusic(Music.Intro);
             AudioManager.Instance.QueueMusic(Music.QuietLoop);
         }
@@ -67,6 +78,11 @@ namespace GGJ2014.Game.Logic
                     Color.Green);
             }
 
+            foreach (var antelope in this.antelope)
+            {
+                antelope.Draw(spriteBatch, cameraPos);
+            }
+
             this.player.Draw(spriteBatch, cameraPos);
 
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "PlayerPos: " + this.player.Position, new Vector2(10f, 10f), Color.White);
@@ -76,17 +92,22 @@ namespace GGJ2014.Game.Logic
             this.spriteBatch.End();
         }
 
-        public override void Update(GameTime time)
+        public override void Update(GameTime gameTime)
         {
             this.level.SetDrawsWalkLayer(Keyboard.GetState().IsKeyDown(Keys.W));
-            this.level.Update(time);
+            this.level.Update(gameTime);
 
             foreach (var monster in this.monsters)
             {
-                monster.Update(time);
+                monster.Update(gameTime);
             }
 
-            player.Update(time);
+            foreach (var antelope in this.antelope)
+            {
+                antelope.Update(gameTime);
+            }
+
+            player.Update(gameTime);
 
             if (Keyboard.GetState().IsKeyDown(Keys.F2))
             {

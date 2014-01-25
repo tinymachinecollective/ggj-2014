@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework.Audio;
         private Delay gameEnd = new Delay(1000);
         private Cue humanVoice;
         private Cue endGame;
+        private Cue purrMeow;
 
         public Player() : base(BigEvilStatic.Content.Load<Texture2D>("cog"), 16, 16)
         {
@@ -26,6 +27,7 @@ using Microsoft.Xna.Framework.Audio;
             this.fade.Initialize();
             this.humanVoice = AudioManager.Instance.LoadCue("human");
             this.endGame = AudioManager.Instance.LoadCue("monster-laugh");
+            this.purrMeow = AudioManager.Instance.LoadCue("purr-meow");
         }
 
         public override void OnCollision(Character character)
@@ -42,6 +44,13 @@ using Microsoft.Xna.Framework.Audio;
                 {
                     InputFrozen = true;
                 }
+            }
+
+            if (character is Antelope)
+            {
+                AudioManager.Instance.PlayCue(ref purrMeow, false);
+                this.Effects.Add(new GrowShrinkEffect(500, 0.2f, false));
+                (character as Antelope).NomNomNom();
             }
         }
 

@@ -109,7 +109,7 @@
   <ItemGroup>
     <Compile Include="Engine\Antelope.cs" />
     <Compile Include="Engine\Character.cs" />
-    <Compile Include="Engine\Controls\FleeController.cs" />
+    <Compile Include="Engine\Controls\AntelopeController.cs" />
     <Compile Include="Engine\Graphics\Fade.cs" />
     <Compile Include="Engine\Graphics\Layer.cs" />
     <Compile Include="Editor\Placer.cs" />
