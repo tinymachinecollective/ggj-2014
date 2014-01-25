@@ -14,9 +14,6 @@ namespace GGJ2014.Game.Engine.Controls
         private const int lower = 0;
         private const int upper = 100;
 
-        //  Limiting factors
-        private const float fogOfWarDistance = 200;
-
         //  persistence
         private float lastDirection = 0;
 
@@ -43,7 +40,7 @@ namespace GGJ2014.Game.Engine.Controls
             float distanceFromPlayer = GetDistanceFromPlayer(playerPosition);
             Vector2 move;
 
-            if (distanceFromPlayer > fogOfWarDistance) 
+            if (distanceFromPlayer > monster.Sight) 
             {
                 //  player is too far away
                 //  random movement

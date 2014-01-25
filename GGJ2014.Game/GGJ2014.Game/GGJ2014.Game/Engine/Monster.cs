@@ -23,7 +23,8 @@ namespace GGJ2014.Game.Engine
         public Vector2 MovementDirection { get; set; }
 
         //  Monster control
-        public const float MaxSpeed = 50;
+        public float Speed { get; set; }
+        public float Sight { get; set; }
 
         //  Private constants
         private const int ShieldMaxHealth = 5;
@@ -39,7 +40,6 @@ namespace GGJ2014.Game.Engine
 
 
 
-        public float Speed { get; set; }
 
         public float TimeSinceLastDash { get; set; }
 
@@ -59,10 +59,9 @@ namespace GGJ2014.Game.Engine
 
 
         //  Core functions
-        public Monster() : base(BigEvilStatic.Content.Load<Texture2D>("user"), 54, 54)
+        public Monster(string texture) : base(BigEvilStatic.Content.Load<Texture2D>(texture), 16, 16)
         {
             this.TimeSinceLastDash = 100;
-            this.Speed = Monster.MaxSpeed;
             this.direction = new Vector2(0, 1);
             this.effect = new GrowShrinkEffect(750f, 0.02f);
 
@@ -70,9 +69,12 @@ namespace GGJ2014.Game.Engine
             this.yPenetrations = new List<float>();
         }
 
-        public void Initialize(AIController controller)
+        public void Initialize(AIController controller, float MoveSpeed=50, float SightRange=300)
         {
             this.inputController = controller;
+
+            this.Speed = MoveSpeed;
+            this.Sight = SightRange;
             this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
         }
 
@@ -92,7 +94,6 @@ namespace GGJ2014.Game.Engine
         {
             this.position = this.Level.FindSpawnPoint(true);
             this.LastPosition = this.position;
-            this.Speed = Monster.MaxSpeed;
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
