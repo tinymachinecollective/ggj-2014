@@ -19,6 +19,8 @@ namespace GGJ2014.Game.Engine.Graphics
         public Action OnComplete { get; set; }
         public bool FadeOut;
 
+        public bool Fading { get { return this.started; } }
+
         public void Initialize()
         {
             texture = BigEvilStatic.Content.Load<Texture2D>("utility-images/black");
