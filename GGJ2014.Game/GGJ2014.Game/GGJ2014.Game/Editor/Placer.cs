@@ -108,7 +108,7 @@ namespace GGJ2014.Game.Editor
                 spawn.X = x;
                 spawn.Y = y;
 
-                this.level.spawnPoints.Add(spawn);
+                this.level.SpawnPoints.Add(spawn);
 
 
                 spawned = true;
@@ -269,11 +269,11 @@ namespace GGJ2014.Game.Editor
 
             //  draw spawn points
             int h = 0;
-            for (int i = 0; i < this.level.spawnPoints.Count; i++ )
+            for (int i = 0; i < this.level.SpawnPoints.Count; i++ )
             {
                 h = h - 23;
                 spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
-                    "SpawnPoint:" + i + " " + this.level.spawnPoints[i], 
+                    "SpawnPoint:" + i + " " + this.level.SpawnPoints[i], 
                     new Vector2(10f, BigEvilStatic.Viewport.Height + h), 
                     Color.Green);
             }

@@ -32,16 +32,11 @@ namespace GGJ2014.Game.Logic
 
             this.monsters = new List<Monster>();
 
-            //  find how many spawns there are in this level
-            int numSpawns = this.level.spawnPoints.Count;
-
             //  Create monsters
-            for (int i = 0; i < 4; i++)
+            foreach (var spawnPoint in this.level.SpawnPoints)
             {
-                SpawnPoint spawn = this.level.spawnPoints[i%numSpawns];
-
                 var monster = new Monster("user", 16, 16, 150, 200, 10);
-                monster.Initialize(new AIController(monster, player, random), spawn.X, spawn.Y);
+                monster.Initialize(new AIController(monster, player, random), spawnPoint.X, spawnPoint.Y);
                 //monster.Initialize(new AIController(monster, player, random));
 
                 /*
@@ -73,7 +68,7 @@ namespace GGJ2014.Game.Logic
             this.level.Draw(spriteBatch, cameraPos);
 
             //  draw monsters
-            int h = 0;
+            int h = -10;
             foreach (var monster in this.monsters)
             {
                 monster.Draw(spriteBatch, cameraPos);
@@ -82,6 +77,7 @@ namespace GGJ2014.Game.Logic
                 spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
                     "Monster: " + monster.Position + " started @ " + monster.StartPosition + " leash " + monster.TetherLength,
                     new Vector2(10f, BigEvilStatic.Viewport.Height + h),
+                    Color.Green);
             }
 
             this.player.Draw(spriteBatch, cameraPos);
