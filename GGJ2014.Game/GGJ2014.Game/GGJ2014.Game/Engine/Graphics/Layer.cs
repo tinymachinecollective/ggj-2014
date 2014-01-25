@@ -25,7 +25,7 @@ namespace GGJ2014.Engine.Graphics
             int row = index / tilesPerRow;
             int column = index % tilesPerRow;
 
-            return new Rectangle(row * TileSetWidth, column * TileSetHeight, TileSetWidth, TileSetHeight);
+            return new Rectangle(column * TileSetHeight, row * TileSetWidth, TileSetWidth, TileSetHeight);
         }
 
         public int MaxIndex()
@@ -43,6 +43,9 @@ namespace GGJ2014.Engine.Graphics
 
         public void DrawTile(SpriteBatch spriteBatch, Tile tile, Color color, Vector2 cameraPos)
         {
+            int tileX = (int)(tile.Position.X);
+            int tileY = (int)(tile.Position.Y);
+
             spriteBatch.Draw(
                 texture2d,
                 new Rectangle((int)(tile.Position.X - cameraPos.X), (int)(tile.Position.Y - cameraPos.Y), TileSetWidth, TileSetHeight),
