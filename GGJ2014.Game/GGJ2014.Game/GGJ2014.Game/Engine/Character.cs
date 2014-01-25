@@ -21,6 +21,8 @@ namespace GGJ2014.Game.Engine
         private Rectangle collisionRectangle;
         private float actualSpeed;
 
+        public Vector2 StartPosition { get; set; }
+
         public Character(Texture2D texture, int width, int height)
             : base(texture, width, height)
         {
@@ -28,10 +30,12 @@ namespace GGJ2014.Game.Engine
             this.Maneuverability = 5f;
         }
 
-        public virtual void Initialize(InputController controller)
+        public virtual void Initialize(InputController controller, float startX = 0, float startY = 0)
         {
             this.InputController = controller;
             this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
+
+            this.StartPosition = new Vector2(startX, startY);
         }
 
         protected void UpdateMovement(GameTime gameTime)

@@ -156,6 +156,7 @@
     <Compile Include="Engine\ScreenEventArgs.cs" />
     <Compile Include="Engine\ScreenManager.cs" />
     <Compile Include="Engine\ScreenTypeEventArgs.cs" />
+    <Compile Include="Engine\SpawnPoint.cs" />
     <Compile Include="Engine\UI\Button.cs" />
     <Compile Include="Engine\UI\Clock.cs" />
     <Compile Include="Engine\UI\Control.cs" />

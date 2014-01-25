@@ -7,12 +7,14 @@ namespace GGJ2014.Game.Engine
     public class Monster : Character
     {
         public float LineOfSight { get; set; }
+        public float TetherLength { get; set; }
 
-        public Monster(string texture, int width, int height, float speed, float lineOfSight)
+        public Monster(string texture, int width, int height, float speed, float lineOfSight, float tetherLength)
             : base(BigEvilStatic.Content.Load<Texture2D>(texture), width, height)
         {
             this.Speed = speed;
             this.LineOfSight = lineOfSight;
+            this.TetherLength = tetherLength;
         }
 
         public void Destroy()

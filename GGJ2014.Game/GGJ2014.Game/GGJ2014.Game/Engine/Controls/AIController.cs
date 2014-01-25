@@ -35,7 +35,14 @@ namespace GGJ2014.Game.Engine.Controls
 
             timeSinceMove += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (distanceFromPlayer > monster.LineOfSight) 
+            if ((monster.LastPosition - monster.StartPosition).Length() > monster.TetherLength)
+            {
+                //  monster is at its leash
+                //  turn around
+                lastDirection = -lastDirection;
+                move = MoveToRandomLocation(gameTime);
+            }
+            else if (distanceFromPlayer > monster.LineOfSight) 
             {
                 //  player is too far away
                 //  random movement
@@ -78,15 +85,14 @@ namespace GGJ2014.Game.Engine.Controls
             {
                 direction = lastDirection;
             }
-            float distance = rng.Next(lower, upper);
 
             lastDirection = direction;
 
-            Vector2 move;
-
+            float distance = rng.Next(lower, upper);
             float offsetX = distance * (float)Math.Cos(direction);
             float offsetY = distance * (float)Math.Sin(direction);
 
+            Vector2 move;
             move = new Vector2(offsetX, offsetY);
 
             if (move.Length() > 10)

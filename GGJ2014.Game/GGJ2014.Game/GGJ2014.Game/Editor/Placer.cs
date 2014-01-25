@@ -15,6 +15,8 @@ namespace GGJ2014.Game.Editor
         private List<TileSet> tilesets = new List<TileSet>();
         private Level level = new Level();
 
+        private bool spawned = false;
+
         private int currentIndex;
         private int currentTileSet;
         private int currentLayer;
@@ -99,6 +101,23 @@ namespace GGJ2014.Game.Editor
                 placed = false;
             }
 
+            if (!spawned && Keyboard.GetState().IsKeyDown(Keys.P))
+            {
+                //  place a spawn point here
+                SpawnPoint spawn = new SpawnPoint();
+                spawn.X = x;
+                spawn.Y = y;
+
+                this.level.spawnPoints.Add(spawn);
+
+
+                spawned = true;
+            }
+            else if (Keyboard.GetState().IsKeyUp(Keys.P))
+            {
+                spawned = false;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
                 this.snap = false;
@@ -174,6 +193,7 @@ namespace GGJ2014.Game.Editor
                 }
             }
 
+            //  save level
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 XmlSerializer xs = new XmlSerializer(typeof(Level));
@@ -199,6 +219,7 @@ namespace GGJ2014.Game.Editor
 
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
+
                 if (this.editWalkLayer)
                 {
                     this.editWalkLayer = false;
@@ -244,6 +265,17 @@ namespace GGJ2014.Game.Editor
             if (saved)
             {
                 spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Saved!", new Vector2(10f, 79f), Color.Yellow);
+            }
+
+            //  draw spawn points
+            int h = 0;
+            for (int i = 0; i < this.level.spawnPoints.Count; i++ )
+            {
+                h = h - 23;
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                    "SpawnPoint:" + i + " " + this.level.spawnPoints[i], 
+                    new Vector2(10f, BigEvilStatic.Viewport.Height + h), 
+                    Color.Green);
             }
         }
     }
