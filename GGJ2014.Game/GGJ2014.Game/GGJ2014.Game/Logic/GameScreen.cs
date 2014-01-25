@@ -36,7 +36,7 @@ namespace GGJ2014.Game.Logic
             //  Create monsters
             foreach (var spawnPoint in this.level.SpawnPoints)
             {
-                var monster = new Monster("user", 16, 16, 150, 200, 10);
+                var monster = new Monster("user", 16, 16, 50, 200, 100);
                 monster.Initialize(new AIController(monster, player, random), spawnPoint.X, spawnPoint.Y);
 
                 this.level.RegisterCharacter(monster);
@@ -73,7 +73,7 @@ namespace GGJ2014.Game.Logic
 
                 h = h - 23;
                 spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
-                    "Monster: " + monster.Position + " started @ " + monster.StartPosition + " leash " + monster.TetherLength,
+                    "Monster: " + monster.Position + " started @ " + monster.StartPosition + " dist " + (monster.Position-monster.StartPosition).Length(),
                     new Vector2(10f, BigEvilStatic.Viewport.Height + h),
                     Color.Green);
             }
