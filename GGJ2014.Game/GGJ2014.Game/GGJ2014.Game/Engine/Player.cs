@@ -10,7 +10,8 @@ using Microsoft.Xna.Framework.Audio;
     public class Player : Character
     {
         private Fade fade = new Fade();
-        private int lives = 3;
+        public int lives = 3;
+        public int score = 0;
         private Delay gameEnd = new Delay(1000);
         private Cue humanVoice;
         private Cue endGame;
@@ -51,6 +52,7 @@ using Microsoft.Xna.Framework.Audio;
                 AudioManager.Instance.PlayCue(ref purrMeow, false);
                 this.Effects.Add(new GrowShrinkEffect(500, 0.2f, false));
                 (character as Antelope).NomNomNom();
+                score += 1;
             }
         }
 

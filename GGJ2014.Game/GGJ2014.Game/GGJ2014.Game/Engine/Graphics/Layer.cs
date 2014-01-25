@@ -58,12 +58,13 @@ namespace GGJ2014.Engine.Graphics
                 SpriteEffects.None,
                 1f);
 
+            /*
             //  display index on tile
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
                 "" + tile.Index,
                 new Vector2(tile.Position.X - cameraPos.X - TileSetWidth / 4f, tile.Position.Y - cameraPos.Y - TileSetHeight / 4f),
                 Color.White);
-
+            */
         }
 
         public class Tile
@@ -74,7 +75,6 @@ namespace GGJ2014.Engine.Graphics
 
         public class TileComp : Comparer<Tile>
         {
-
             public override int Compare(Tile a, Tile b)
             {
                 if (a.Position.Y.CompareTo(b.Position.Y) != 0)
@@ -89,19 +89,6 @@ namespace GGJ2014.Engine.Graphics
                 {
                     return 0;
                 }
-                    /*
-                if (a.Position.X < b.Position.X) 
-                {
-                    if (a.Position.Y > b.Position.Y) return 1;
-                    else return -1;
-                }
-                else if (a.Position.X > b.Position.X)
-                {
-                    if (a.Position.Y < b.Position.Y) return -1;
-                    else return 1;
-                }
-                return 0;
-                     */
             }
         }
 
