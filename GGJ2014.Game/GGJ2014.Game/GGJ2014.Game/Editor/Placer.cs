@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using GGJ2014.Engine.Graphics;
 using GGJ2014.Game.Engine;
@@ -169,7 +170,24 @@ namespace GGJ2014.Game.Editor
 
             if (Keyboard.GetState().IsKeyDown(Keys.Back))
             {
-                currentLayer.RemoveLastTile();
+                List<int> indicesToKill = new List<int>();
+
+                foreach (var tile in currentLayer.Tiles)
+                {
+                    foreach (var otherTile in currentLayer.Tiles)
+                    {
+                        if (tile != otherTile && tile.Position == otherTile.Position)
+                        {
+                            indicesToKill.Add(currentLayer.Tiles.IndexOf(tile));
+                            indicesToKill.Add(currentLayer.Tiles.IndexOf(otherTile));
+                        }
+                    }
+                }
+
+                foreach (var index in indicesToKill.Distinct().OrderByDescending(x => x))
+                {
+                    currentLayer.Tiles.RemoveAt(index);
+                }
             }
 
             if (!this.editWalkLayer)
