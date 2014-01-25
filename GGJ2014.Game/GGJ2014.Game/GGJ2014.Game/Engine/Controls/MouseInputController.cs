@@ -14,7 +14,7 @@ namespace GGJ2014.Game.Engine.Controls
             this.player = player;
         }
 
-        protected override Vector2 GetMovementDirection()
+        protected override Vector2 GetMovementDirection(GameTime gameTime)
         {
             MouseState mouseState = Mouse.GetState();
 

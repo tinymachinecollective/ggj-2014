@@ -13,7 +13,7 @@ namespace GGJ2014.Game.Engine.Controls
             this.playerIndex = player;
         }
 
-        protected override Vector2 GetMovementDirection()
+        protected override Vector2 GetMovementDirection(GameTime gameTime)
         {
             GamePadState state = GamePad.GetState(this.playerIndex);
             return state.ThumbSticks.Left * new Vector2(1f, -1f);
