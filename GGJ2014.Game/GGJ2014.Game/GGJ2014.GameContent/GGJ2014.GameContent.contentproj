@@ -243,6 +243,41 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="textures\grassland_tiles_64_32.png">
+      <Name>grassland_tiles_64_32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\grassland_tiles_64_64.png">
+      <Name>grassland_tiles_64_64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\grassland_tiles_64_96.png">
+      <Name>grassland_tiles_64_96</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\grassland_tiles_132_132.png">
+      <Name>grassland_tiles_132_132</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\grassland_tiles_132_164.png">
+      <Name>grassland_tiles_132_164</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\grassland_tiles_132_196.png">
+      <Name>grassland_tiles_132_196</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\grassland_tiles_132_228.png">
+      <Name>grassland_tiles_132_228</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="textures\image_index.csv">
       <Name>image_index</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

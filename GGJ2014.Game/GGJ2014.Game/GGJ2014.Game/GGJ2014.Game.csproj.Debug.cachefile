@@ -13,6 +13,13 @@ Content\textures\grass_and_water.xnb
 Content\DefaultFont.xnb
 Content\textures\WALK.xnb
 Content\utility-images\black.xnb
+Content\textures\grassland_tiles_64_32.xnb
+Content\textures\grassland_tiles_64_64.xnb
+Content\textures\grassland_tiles_64_96.xnb
+Content\textures\grassland_tiles_132_132.xnb
+Content\textures\grassland_tiles_132_164.xnb
+Content\textures\grassland_tiles_132_196.xnb
+Content\textures\grassland_tiles_132_228.xnb
 Content\XACT.xgs
 Content\Wave Bank.xwb
 Content\Sound Bank.xsb
