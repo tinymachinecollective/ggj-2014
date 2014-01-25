@@ -17,6 +17,7 @@ namespace GGJ2014.Game.Engine
         public List<Layer> Layers = new List<Layer>();
         public Layer WalkLayer = new Layer();
         private List<Character> registeredCharacters = new List<Character>();
+        private List<Rectangle> collisionRectangles = new List<Rectangle>();
 
         public Level()
         {
@@ -31,6 +32,7 @@ namespace GGJ2014.Game.Engine
         {
             this.registeredCharacters.Add(character);
             character.Level = this;
+
         }
 
         public virtual void Update(GameTime gameTime)
@@ -97,12 +99,31 @@ namespace GGJ2014.Game.Engine
 
         public IEnumerable<Rectangle> GetCollisionRectangles()
         {
-            throw new NotImplementedException();
+            collisionRectangles.Clear();
+
+            foreach (var character in this.registeredCharacters)
+            {
+                collisionRectangles.Add(character.CollisionRectangle);
+            }
+
+            return collisionRectangles;
         }
 
-        public bool PositionIsValid(Vector2 newPosition)
+        public bool PositionIsValid(Vector2 lastPosition, Vector2 position)
         {
-            return true;
+            bool canWalk = true;
+
+            foreach (var noWalkTile in this.WalkLayer.Tiles)
+            {
+                Vector2 betweenVector = noWalkTile.Position - position;
+
+                if (betweenVector.Length() < this.WalkLayer.TileSetWidth / 2f)
+                {
+                    canWalk = false;
+                }
+            }
+
+            return canWalk;
         }
     }
 }

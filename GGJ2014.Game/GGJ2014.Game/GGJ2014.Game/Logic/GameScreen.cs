@@ -57,6 +57,8 @@ namespace GGJ2014.Game.Logic
 
         public override void Update(GameTime time)
         {
+            this.level.SetDrawsWalkLayer(Keyboard.GetState().IsKeyDown(Keys.W));
+
             this.level.Update(time);
             player.Update(time);
             monster.Update(time);

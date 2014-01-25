@@ -52,8 +52,9 @@ namespace GGJ2014.Game.Engine
 
             Vector2 newPosition = Position + (MovementDirection * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-            if (this.Level.PositionIsValid(newPosition))
+            if (this.Level.PositionIsValid(LastPosition, newPosition))
             {
+                LastPosition = this.Position;
                 this.Position = newPosition;
             }
         }
@@ -78,6 +79,11 @@ namespace GGJ2014.Game.Engine
 
                 foreach (Rectangle r in possibleRectangles)
                 {
+                    if ((this.Position - new Vector2(r.Center.X, r.Center.Y)).Length() > (2 * r.Width + 2 * this.Width))
+                    {
+                        continue;
+                    }
+
                     Vector2 penetration = CollisionSolver.SolveCollision(this, r);
                     if (penetration.X != 0)
                     {

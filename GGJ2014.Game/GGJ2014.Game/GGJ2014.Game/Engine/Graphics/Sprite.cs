@@ -126,7 +126,7 @@ namespace GGJ2014.Game.Engine.Graphics
         private Vector2 GetOrigin(bool fromTopLeft)
         {
             if (fromTopLeft) return Vector2.Zero;
-            else return new Vector2(this.Width / 2f, this.Height / 2f);
+            else return new Vector2(-this.Width / 2f, -this.Height / 2f);
         }
 
         private Rectangle? GetSourceRectangle()
