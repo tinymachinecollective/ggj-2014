@@ -67,6 +67,7 @@ namespace GGJ2014.Game.Engine
             XmlSerializer xs = new XmlSerializer(typeof(Level));
             Level level = null;
 
+
             if (File.Exists("level.xml"))
             {
                 using (var fileStream = File.Open("level.xml", FileMode.Open))
@@ -128,5 +129,6 @@ namespace GGJ2014.Game.Engine
         }
 
         public IEnumerable<Character> RegisteredCharacters { get { return this.registeredCharacters; } }
+
     }
 }

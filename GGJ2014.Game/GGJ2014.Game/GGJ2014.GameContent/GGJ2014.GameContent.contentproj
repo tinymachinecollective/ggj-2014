@@ -138,6 +138,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="utility-images\water_tile.png">
+      <Name>water_tile</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <None Include="audio\Suits-Come-Here-Kitty_1.wav">
       <Name>Suits-Come-Here-Kitty_1</Name>
       <Importer>WavImporter</Importer>

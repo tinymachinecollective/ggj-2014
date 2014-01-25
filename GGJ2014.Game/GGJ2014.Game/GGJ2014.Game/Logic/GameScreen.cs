@@ -25,6 +25,9 @@ namespace GGJ2014.Game.Logic
         //  Graphics
         private SpriteBatch spriteBatch;
         private Level level;
+        private Texture2D baseTile = BigEvilStatic.Content.Load<Texture2D>("utility-images\\water_tile");
+        private int baseTileHeight = 32;
+        private int baseTileWidth = 64;
 
         //  Core functionality
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)
@@ -77,8 +80,15 @@ namespace GGJ2014.Game.Logic
 
         public override void Draw(Bounds bounds)
         {
-            this.spriteBatch.Begin();
+            //  Draw background
+            this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Opaque, SamplerState.LinearWrap,
+                DepthStencilState.Default, RasterizerState.CullNone);
+            Rectangle baseRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, BigEvilStatic.Viewport.Width, BigEvilStatic.Viewport.Height);
+            spriteBatch.Draw(baseTile, Vector2.Zero, baseRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+            this.spriteBatch.End();
 
+            //  Draw the rest of it
+            this.spriteBatch.Begin();
             //  player
             Vector2 cameraPos = player.Position - BigEvilStatic.GetScreenCentre();
             this.level.Draw(spriteBatch, cameraPos);
