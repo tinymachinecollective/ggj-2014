@@ -26,8 +26,6 @@ namespace GGJ2014.Game.Logic
         private SpriteBatch spriteBatch;
         private Level level;
         private Texture2D baseTile = BigEvilStatic.Content.Load<Texture2D>("utility-images\\water_tile");
-        private int baseTileHeight = 32;
-        private int baseTileWidth = 64;
 
         //  Core functionality
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)

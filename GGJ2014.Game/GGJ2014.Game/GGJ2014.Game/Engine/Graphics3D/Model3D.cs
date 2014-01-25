@@ -15,16 +15,16 @@ namespace GGJ2014.Game.Engine.Graphics3D
         public float Scale { get; set; }
         public Vector3 Offset;
         public Vector3 Translation { get; set; }
-        private List<Animation3D> animations = new List<Animation3D>();
+        private List<Effect3D> animations = new List<Effect3D>();
 
-        public void Initialize(string model, Vector3 offset, float scale)
+        public virtual void Initialize(string model, Vector3 offset, float scale)
         {
             this.Model = BigEvilStatic.Content.Load<Model>(model);
             this.Offset = offset;
             this.Scale = scale;
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             foreach (var animation in this.animations)
             {
@@ -32,7 +32,7 @@ namespace GGJ2014.Game.Engine.Graphics3D
             }
         }
 
-        public void AddAnimation(Animation3D animation)
+        public void AddAnimation(Effect3D animation)
         {
             this.animations.Add(animation);
         }

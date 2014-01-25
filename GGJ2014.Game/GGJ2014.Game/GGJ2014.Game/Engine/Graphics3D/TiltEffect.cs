@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework;
 
 namespace GGJ2014.Game.Engine.Graphics3D
 {
-    public class TiltAnimation : Animation3D
+    public class TiltEffect : Effect3D
     {
         private float animationTime = 5f;
         private float elapsedTime;
         public float TargetTilt = MathHelper.PiOver4;
         private float initialTilt;
 
-        public TiltAnimation(float initialTilt)
+        public TiltEffect(float initialTilt)
         {
             this.initialTilt = initialTilt;
         }

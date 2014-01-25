@@ -17,7 +17,7 @@ namespace GGJ2014.Game.Engine
         public int lives = 3;
         public int score = 0;
         private Delay gameEnd = new Delay(1000);
-        private Model3D model;
+        private AnimatedModel3D model;
 
         private Cue humanVoice;
         private Cue endGame;
@@ -38,8 +38,9 @@ namespace GGJ2014.Game.Engine
             this.endGame = AudioManager.Instance.LoadCue("monster-laugh");
             this.purrMeow = AudioManager.Instance.LoadCue("purr-meow");
 
-            this.model = new Model3D();
+            this.model = new AnimatedModel3D();
             this.model.Initialize("leopard", new Vector3(5f, -15f, 15f), 0.06f);
+            this.model.PlayAnimation("Take 001");
 
             this.Effects.Add(new GrowShrinkEffect(500, -0.05f, true));
 
@@ -77,6 +78,7 @@ namespace GGJ2014.Game.Engine
             this.fade.Update(gameTime);
 
             this.PauseEffects = !Moving;
+            this.model.Update(gameTime);
 
             if (lives <= 0 && !fade.Fading)
             {

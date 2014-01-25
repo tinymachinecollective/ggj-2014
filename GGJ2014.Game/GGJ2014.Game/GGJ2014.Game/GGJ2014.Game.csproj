@@ -110,8 +110,9 @@
     <Compile Include="Engine\Antelope.cs" />
     <Compile Include="Engine\Character.cs" />
     <Compile Include="Engine\Controls\AntelopeController.cs" />
-    <Compile Include="Engine\Graphics3D\Animation3D.cs" />
-    <Compile Include="Engine\Graphics3D\TiltAnimation.cs" />
+    <Compile Include="Engine\Graphics3D\AnimatedModel3D.cs" />
+    <Compile Include="Engine\Graphics3D\Effect3D.cs" />
+    <Compile Include="Engine\Graphics3D\TiltEffect.cs" />
     <Compile Include="Engine\Graphics\Fade.cs" />
     <Compile Include="Engine\Graphics\Layer.cs" />
     <Compile Include="Editor\Placer.cs" />
@@ -179,6 +180,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SkinnedModel\SkinnedModelWindows.csproj">
+      <Project>{0D41E29B-829F-4255-BCA5-64DC2677DA6D}</Project>
+      <Name>SkinnedModelWindows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GGJ2014.GameContent\GGJ2014.GameContent.contentproj">
       <Name>GGJ2014.GameContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
