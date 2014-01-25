@@ -2,6 +2,7 @@
 using GGJ2014.Game.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace GGJ2014.Engine.Graphics
 {
@@ -33,8 +34,10 @@ namespace GGJ2014.Engine.Graphics
             return (texture2d.Width / TileSetWidth) * (texture2d.Height / TileSetHeight) - 1;
         }
 
+
         public void Draw(SpriteBatch spriteBatch, Vector2 cameraPos, Color color)
         {
+            this.Tiles.Sort(new TileComp());
             foreach (var tile in this.Tiles)
             {
                 this.DrawTile(spriteBatch, tile, color, cameraPos);
@@ -67,6 +70,39 @@ namespace GGJ2014.Engine.Graphics
         {
             public int Index;
             public Vector2 Position;
+        }
+
+        public class TileComp : Comparer<Tile>
+        {
+
+            public override int Compare(Tile a, Tile b)
+            {
+                if (a.Position.Y.CompareTo(b.Position.Y) != 0)
+                {
+                    return a.Position.Y.CompareTo(b.Position.Y);
+                }
+                else if (a.Position.X.CompareTo(b.Position.X) != 0)
+                {
+                    return a.Position.X.CompareTo(b.Position.X);
+                }
+                else
+                {
+                    return 0;
+                }
+                    /*
+                if (a.Position.X < b.Position.X) 
+                {
+                    if (a.Position.Y > b.Position.Y) return 1;
+                    else return -1;
+                }
+                else if (a.Position.X > b.Position.X)
+                {
+                    if (a.Position.Y < b.Position.Y) return -1;
+                    else return 1;
+                }
+                return 0;
+                     */
+            }
         }
 
         public void AddTile(Vector2 position, int currentIndex)
