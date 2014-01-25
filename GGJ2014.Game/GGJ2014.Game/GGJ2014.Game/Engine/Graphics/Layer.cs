@@ -43,6 +43,7 @@ namespace GGJ2014.Engine.Graphics
 
         public void DrawTile(SpriteBatch spriteBatch, Tile tile, Color color, Vector2 cameraPos)
         {
+
             spriteBatch.Draw(
                 texture2d,
                 new Rectangle((int)(tile.Position.X - cameraPos.X), (int)(tile.Position.Y - cameraPos.Y), TileSetWidth, TileSetHeight),
@@ -53,6 +54,12 @@ namespace GGJ2014.Engine.Graphics
                 new Vector2(TileSetWidth / 2f, TileSetHeight / 2f),
                 SpriteEffects.None,
                 1f);
+
+            //  display index on tile
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                "" + tile.Index,
+                new Vector2(tile.Position.X - cameraPos.X - TileSetWidth / 4f, tile.Position.Y - cameraPos.Y - TileSetHeight / 4f),
+                Color.White);
 
         }
 

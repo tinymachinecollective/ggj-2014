@@ -189,7 +189,8 @@ namespace GGJ2014.Game.Editor
                 if (Keyboard.GetState().IsKeyDown(Keys.End))
                 {
                     this.currentLayer--;
-                    if (this.currentLayer == 0) this.currentLayer = this.level.LayerCount - 1;
+                    if (this.currentLayer < 0) this.currentLayer = this.level.LayerCount - 1;
+                    if (this.level.LayerCount == 0) this.currentIndex = 0;
                 }
             }
 
