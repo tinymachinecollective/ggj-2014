@@ -46,14 +46,12 @@ namespace GGJ2014.Game.Engine.Controls
                 move = MoveTowardsPlayer(player.Position);
             }
 
-            
             if (move.Length() > 10)
             {
                 return move;
             }
-            return Vector2.Zero;
 
-            
+            return Vector2.Zero;
         }
 
         //  AI code
@@ -64,7 +62,6 @@ namespace GGJ2014.Game.Engine.Controls
 
         private Vector2 MoveToRandomLocation()
         {
-
             float direction = (float)((lastDirection + rng.NextDouble() - 0.5) % 360); 
             float distance = rng.Next(lower, upper);
 
@@ -76,6 +73,7 @@ namespace GGJ2014.Game.Engine.Controls
             float offsetY = distance * (float)Math.Sin(direction);
 
             move = new Vector2(offsetX, offsetY);
+
             if (move.Length() > 10)
             {
                 return move;
