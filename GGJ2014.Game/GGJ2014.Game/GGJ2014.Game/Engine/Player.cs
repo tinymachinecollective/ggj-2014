@@ -17,7 +17,7 @@ namespace GGJ2014.Game.Engine
             this.Speed = 350;
         }
 
-        public override void Initialize(Controls.InputController controller)
+        public override void Initialize(Controls.InputController controller, float startX = 0, float startY = 0)
         {
             base.Initialize(controller);
             this.fade.Initialize();
