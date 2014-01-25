@@ -62,9 +62,15 @@ namespace GGJ2014.Game.Logic
 
             this.level.Draw(spriteBatch, cameraPos);
 
+            int h = -10;
             foreach (var monster in this.monsters)
             {
                 monster.Draw(spriteBatch, cameraPos);
+                h = h - 23;
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                    "Monster: " + monster.Position,
+                    new Vector2(10f, BigEvilStatic.Viewport.Height + h),
+                    Color.Green);
             }
 
             this.player.Draw(spriteBatch, cameraPos);
