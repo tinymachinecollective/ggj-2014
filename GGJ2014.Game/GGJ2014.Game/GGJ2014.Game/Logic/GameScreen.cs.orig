@@ -24,11 +24,21 @@ namespace GGJ2014.Game.Logic
             this.player = new Player();
             this.player.Initialize(new MouseInputController(player));
 
+<<<<<<< HEAD
             this.monster = new Monster();
-            this.monster.Initialize(new AIController(monster));
+            this.monster.Initialize(new AIController(monster, player));
+=======
+            //  Create monsters
+            this.monster = new Monster("user");
+            this.monster.Initialize(new AIController(monster), 50, 200);
+>>>>>>> 45b080acd130117b974806784be972f60dbeb0e7
 
-            this.level = new Level();
-            this.level.Load();
+            this.level = Level.Load();
+            this.level.RegisterCharacter(this.player);
+            this.level.RegisterCharacter(this.monster);
+
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.LoadCue("music-Intro"));
+            AudioManager.Instance.QueueMusic(AudioManager.Instance.LoadCue("music-QuietLoop"));
         }
 
         public override void Draw(Bounds bounds)
@@ -41,6 +51,12 @@ namespace GGJ2014.Game.Logic
             this.player.Draw(spriteBatch, cameraPos);
             this.monster.Draw(spriteBatch, cameraPos);
 
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "PlayerPos: " + this.player.Position, new Vector2(10f, 10f), Color.White);
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "MonsterPos: " + this.monster.Position, new Vector2(10f, 33f), Color.White);
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Distance: " + (this.monster.Position - this.player.Position).Length(), new Vector2(10f, 56f), Color.White);
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Mouse: " + Mouse.GetState(), new Vector2(10f, 79f), Color.White);
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Track: " + AudioManager.Instance.CurrentTrack, new Vector2(10f, 102f), Color.White);
+
             this.spriteBatch.End();
         }
 
@@ -48,8 +64,7 @@ namespace GGJ2014.Game.Logic
         {
             this.level.Update(time);
             player.Update(time);
-<<<<<<< Updated upstream
-            monster.Update(time, player.Position);
+            monster.Update(time);
 
             if (Keyboard.GetState().IsKeyDown(Keys.F2))
             {
@@ -58,14 +73,3 @@ namespace GGJ2014.Game.Logic
         }
     }
 }
-=======
-            monster.Update(time, player.LastPosition);
-
-            if (Keyboard.GetState().IsKeyDown(Keys.F2))
-            {
-                BigEvilStatic.ScreenManager.OpenScreen(new EditorScreen(this.Device));
-            }
-        }
-    }
-}
->>>>>>> Stashed changes

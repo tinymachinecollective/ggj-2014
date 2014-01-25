@@ -30,7 +30,7 @@ namespace GGJ2014.Game.Engine.Controls
             float distanceFromPlayer = GetDistanceFromPlayer(this.player.Position);
             Vector2 move;
 
-            if (distanceFromPlayer > monster.Sight) 
+            if (distanceFromPlayer > monster.LineOfSight) 
             {
                 //  player is too far away
                 //  random movement

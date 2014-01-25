@@ -25,8 +25,8 @@ namespace GGJ2014.Game.Logic
             this.player.Initialize(new MouseInputController(player));
 
             //  Create monsters
+            this.monster = new Monster("user", 16, 16, 150, 200); 
             this.monster.Initialize(new AIController(monster, player));
-            this.monster.Initialize(new AIController(monster), 50, 200);
 
             this.level = Level.Load();
             this.level.RegisterCharacter(this.player);

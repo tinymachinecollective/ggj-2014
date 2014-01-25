@@ -5,9 +5,13 @@ namespace GGJ2014.Game.Engine
 
     public class Monster : Character
     {
-        public Monster() : base(BigEvilStatic.Content.Load<Texture2D>("user"), 54, 54)
+        public float LineOfSight { get; set; }
+
+        public Monster(string texture, int width, int height, float speed, float lineOfSight)
+            : base(BigEvilStatic.Content.Load<Texture2D>(texture), width, height)
         {
-            this.Speed = 50;
+            this.Speed = speed;
+            this.LineOfSight = lineOfSight;
         }
     }
 }
