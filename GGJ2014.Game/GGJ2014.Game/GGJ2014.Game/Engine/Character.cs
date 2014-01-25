@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GGJ2014.Game.Engine.Controls;
+﻿using GGJ2014.Game.Engine.Controls;
 using GGJ2014.Game.Engine.Graphics;
 using GGJ2014.Game.Engine.Physics;
 using Microsoft.Xna.Framework;
@@ -12,21 +11,23 @@ namespace GGJ2014.Game.Engine
         public static bool InputFrozen = false;
         public InputController InputController { get; set; }
         public Vector2 MovementDirection { get; set; }
+        public Vector2 TargetDirection { get; set; }
         public float Speed { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 LastPosition { get; set; }
-        private Rectangle collisionRectangle;
-        private Vector2 direction;
         public Level Level { get; set; }
         public bool CanCollide { get; protected set; }
+        public float Maneuverability { get; set; }
+        private Rectangle collisionRectangle;
+        private float actualSpeed;
 
         public Vector2 StartPosition { get; set; }
 
         public Character(Texture2D texture, int width, int height)
             : base(texture, width, height)
         {
-            this.direction = new Vector2(0, 1);
             this.CanCollide = true;
+            this.Maneuverability = 10f;
         }
 
         public virtual void Initialize(InputController controller, float startX = 0, float startY = 0)
@@ -40,19 +41,23 @@ namespace GGJ2014.Game.Engine
         protected void UpdateMovement(GameTime gameTime)
         {
             this.InputController.UpdateMovement(this, gameTime);
+            this.MovementDirection += (this.TargetDirection - this.MovementDirection) * Maneuverability * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (!InputFrozen)
+            if (this.TargetDirection.Length() > 0.1f)
             {
-                // Update player direction. Dont change if movement direction has no length
-                if (MovementDirection.LengthSquared() != 0)
-                {
-                    this.direction = MovementDirection;
-                }
+                this.MovementDirection = Vector2.Normalize(this.MovementDirection);
+                actualSpeed += Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (actualSpeed >= Speed) actualSpeed = Speed;
+            }
+            else
+            {
+                actualSpeed -= Maneuverability * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (actualSpeed < 0) actualSpeed = 0;
             }
 
-            Vector2 newPosition = Position + (MovementDirection * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+            Vector2 newPosition = Position + (MovementDirection * actualSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-            if (this.Level.PositionIsValid(LastPosition, newPosition))
+            if (!InputFrozen && this.Level.PositionIsValid(LastPosition, newPosition))
             {
                 LastPosition = this.Position;
                 this.Position = newPosition;
