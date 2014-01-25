@@ -12,12 +12,21 @@ namespace GGJ2014.Game.Logic
     public class GameScreen : Screen
     {
         private static readonly Random random = new Random();
+
+        //  Characters
         private Player player;
         private List<Monster> monsters;
         private List<Antelope> antelope;
+
+        //  game config
+        private int numMonsters = 3;
+        private int numAntelopes = 5;
+
+        //  Graphics
         private SpriteBatch spriteBatch;
         private Level level;
 
+        //  Core functionality
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {
             this.spriteBatch = new SpriteBatch(graphicsDevice);
@@ -29,14 +38,19 @@ namespace GGJ2014.Game.Logic
             this.level = Level.Load();
 
             this.player = new Player();
-            this.player.Initialize(new MouseInputController(player), 0 , 0);
+            this.player.Initialize(new MouseInputController(player), BigEvilStatic.Viewport.Width/2, BigEvilStatic.Viewport.Height/2);
             this.level.RegisterCharacter(this.player);
 
-            this.monsters = new List<Monster>();
+            //  manage spawn points
+            int numSpawns = this.level.SpawnPoints.Count;
 
             //  Create monsters
-            foreach (var spawnPoint in this.level.SpawnPoints)
+            this.monsters = new List<Monster>();
+            //foreach (var spawnPoint in this.level.SpawnPoints)
+            for (int i=0; i < numMonsters; i++)
             {
+                SpawnPoint spawnPoint = this.level.SpawnPoints[i % numSpawns];
+
                 var monster = new Monster("user", 16, 16, 50, 200, 100);
                 monster.Initialize(new AIController(monster, player, random), spawnPoint.X, spawnPoint.Y);
 
@@ -44,12 +58,15 @@ namespace GGJ2014.Game.Logic
                 this.monsters.Add(monster);
             }
 
+            //  Create antelope
             this.antelope = new List<Antelope>();
-
-            for (int i = 0; i < 1; i++)
+            for (int i =numMonsters; i < numMonsters + numAntelopes; i++)
             {
+
+                SpawnPoint spawnPoint = this.level.SpawnPoints[i % numSpawns];
+
                 Antelope antelope = new Antelope();
-                antelope.Initialize(new AntelopeController(antelope, player, random), 200f, 200f);
+                antelope.Initialize(new AntelopeController(antelope, player, random), spawnPoint.X, spawnPoint.Y);
                 this.level.RegisterCharacter(antelope);
                 this.antelope.Add(antelope);
             }
@@ -62,11 +79,11 @@ namespace GGJ2014.Game.Logic
         {
             this.spriteBatch.Begin();
 
+            //  player
             Vector2 cameraPos = player.Position - BigEvilStatic.GetScreenCentre();
-
             this.level.Draw(spriteBatch, cameraPos);
 
-            //  draw monsters
+            //  draw monsters and antelope
             int h = -10;
             foreach (var monster in this.monsters)
             {
@@ -86,9 +103,28 @@ namespace GGJ2014.Game.Logic
 
             this.player.Draw(spriteBatch, cameraPos);
 
+            //  debug
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "PlayerPos: " + this.player.Position, new Vector2(10f, 10f), Color.White);
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Mouse: " + Mouse.GetState(), new Vector2(10f, 33f), Color.White);
             spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), "Current Track: " + AudioManager.Instance.CurrentTrack, new Vector2(10f, 56f), Color.White);
+
+            //  Display player stats
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), 
+                "PlayerLives: " + player.lives,
+                new Vector2(BigEvilStatic.Viewport.Width - 180, 0), 
+                Color.Yellow);
+            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                "PlayerScore: " + player.score,
+                new Vector2(BigEvilStatic.Viewport.Width - 180, 23),
+                Color.Yellow);
+
+            if (player.score == numAntelopes)
+            {
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                    "YOU WIN!",
+                    new Vector2(BigEvilStatic.Viewport.Width / 2, BigEvilStatic.Viewport.Height / 2),
+                    Color.Green);
+            }
 
             this.spriteBatch.End();
 

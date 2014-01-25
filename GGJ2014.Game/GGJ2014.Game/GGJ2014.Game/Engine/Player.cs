@@ -14,7 +14,8 @@ namespace GGJ2014.Game.Engine
     public class Player : Character
     {
         private Fade fade = new Fade();
-        private int lives = 3;
+        public int lives = 3;
+        public int score = 0;
         private Delay gameEnd = new Delay(1000);
         private Model3D model;
 
@@ -66,6 +67,7 @@ namespace GGJ2014.Game.Engine
             {
                 AudioManager.Instance.PlayCue(ref purrMeow, false);
                 (character as Antelope).NomNomNom();
+                score += 1;
             }
         }
 

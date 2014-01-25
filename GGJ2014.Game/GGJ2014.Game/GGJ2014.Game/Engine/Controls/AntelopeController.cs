@@ -31,6 +31,7 @@ namespace GGJ2014.Game.Engine.Controls
             this.random = random;
         }
 
+
         protected override Vector2 GetMovementDirection(GameTime gameTime)
         {
             timeUntilNextEvaluation -= (float)gameTime.ElapsedGameTime.TotalSeconds;

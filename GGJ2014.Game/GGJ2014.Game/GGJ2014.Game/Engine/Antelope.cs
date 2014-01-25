@@ -27,6 +27,8 @@ namespace GGJ2014.Game.Engine
         {
             this.CanCollide = false;
             this.Effects.Add(new FadeEffect(500, true));
+
+
         }
     }
 }
