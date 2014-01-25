@@ -99,7 +99,11 @@ namespace GGJ2014.Game.Engine.Controls
 
         private Vector2 MoveTowardsPlayer(Vector2 playerPosition)
         {
-            return playerPosition - monster.Position;
+            Vector2 move = playerPosition - monster.Position;
+
+            lastDirection = -(float)Math.Atan(move.Y / move.X);
+
+            return move;
         }
 
     }
