@@ -9,6 +9,7 @@ namespace GGJ2014.Game.Logic
     public class GameScreen : Screen
     {
         private Player player;
+        private Monster monster;
         private SpriteBatch spriteBatch;
 
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)
@@ -21,6 +22,10 @@ namespace GGJ2014.Game.Logic
         {
             this.player = new Player();
             this.player.Initialize(new MouseInputController(player));
+
+            this.monster = new Monster();
+            this.monster.Initialize(new AIController(monster));
+
         }
 
         public override void Draw(Bounds bounds)
@@ -28,6 +33,7 @@ namespace GGJ2014.Game.Logic
             this.spriteBatch.Begin();
 
             this.player.Draw(spriteBatch);
+            this.monster.Draw(spriteBatch);
 
             this.spriteBatch.End();
         }
@@ -35,6 +41,7 @@ namespace GGJ2014.Game.Logic
         public override void Update(GameTime time)
         {
             player.Update(time);
+            monster.Update(time, player.Position);
 
             if (Keyboard.GetState().IsKeyDown(Keys.F2))
             {

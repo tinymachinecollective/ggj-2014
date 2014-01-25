@@ -12,50 +12,59 @@ namespace GGJ2014.Game.Engine
 
     public class Monster : Sprite, IMoveable
     {
+        //  Core variables
+        private AIController inputController;
+        private Rectangle collisionRectangle;
+        private GrowShrinkEffect effect;
+        private Vector2 position;
+
+        //  Public constants
         public static bool InputFrozen = false;
-        private const int ShieldMaxHealth = 5;
         public const int MaxHealth = 12;
         public const float MaxEnergy = 10;
-        private const float EnergyRegenChargeTime = 3f;
-        private const float MinEnergyPerSecond = 2f;
-        private const float MaxEnergyPerSecond = 10f;
         public const float MaxSpeed = 350;
         public const int MaxBounce = 20;
         public const float BulletSpeed = 500f;
-        private int deathNum;
-
         public const float EnergyPerShot = 1f;
-        public float Speed { get; set; }
+        public const float DashCooldownTime = 1;
+        public const float SpiralShotTime = 5;
 
+        //  Private constants
+        private const int ShieldMaxHealth = 5;
+        private const float EnergyRegenChargeTime = 3f;
+        private const float MinEnergyPerSecond = 2f;
+        private const float MaxEnergyPerSecond = 10f;
+
+        //  Variables
+        private int deathNum;
         private Vector2 direction;
-        public Vector2 MovementDirection { get; set; }
         private List<float> xPenetrations;
         private List<float> yPenetrations;
 
-        public const float DashCooldownTime = 1;
+
+
+        public float Speed { get; set; }
+
+        public Vector2 MovementDirection { get; set; }
         public float TimeSinceLastDash { get; set; }
 
-        public const float SpiralShotTime = 5;
         public float TimeSinceSpiralBegan { get; set; }
 
         public Sprite BulletSprite { get; set; }
         public string BulletSpriteName { get; private set; }
-        private InputController inputController;
 
         public int Health { get; set; }
         public float Energy { get; set; }
 
         public int BulletBounce { get; set; }
-        
+
         public int ShieldHealth { get; set; }
 
         public TimeSpan NoClipTime { get; set; }
 
-        private GrowShrinkEffect effect;
 
-        private Rectangle collisionRectangle;
-
-        public Monster() : base(BigEvilStatic.Content.Load<Texture2D>("lion_placeholder"), 27, 27)
+        //  Core functions
+        public Monster() : base(BigEvilStatic.Content.Load<Texture2D>("user"), 54, 54)
         {
             this.TimeSinceLastDash = 100;
             this.Speed = Monster.MaxSpeed;
@@ -68,7 +77,7 @@ namespace GGJ2014.Game.Engine
             this.yPenetrations = new List<float>();
         }
 
-        public void Initialize(InputController controller)
+        public void Initialize(AIController controller)
         {
             this.inputController = controller;
             this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
@@ -83,9 +92,8 @@ namespace GGJ2014.Game.Engine
         }
 
         public Vector2 LastPosition { get; set; }
-        public Level Level{ get; set; }
+        public Level Level { get; set; }
 
-        private Vector2 position;
 
         public void Spawn()
         {
@@ -96,9 +104,9 @@ namespace GGJ2014.Game.Engine
             this.Speed = Monster.MaxSpeed;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-            this.UpdateMovement(gameTime);
+            this.MonsterUpdateMovement(gameTime, playerPosition);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -106,9 +114,9 @@ namespace GGJ2014.Game.Engine
             this.Draw(spriteBatch, this.position);
         }
 
-        private void UpdateMovement(GameTime gameTime)
+        private void MonsterUpdateMovement(GameTime gameTime, Vector2 playerPosition)
         {
-            //this.inputController.UpdateMovement(this, gameTime);
+            this.inputController.MonsterUpdateMovement(this, gameTime, playerPosition);
 
             if (!InputFrozen)
             {

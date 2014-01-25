@@ -124,6 +124,7 @@
     <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\BigEvilStatic.cs" />
     <Compile Include="Engine\Bounds.cs" />
+    <Compile Include="Engine\Controls\AIController.cs" />
     <Compile Include="Engine\Controls\InputController.cs" />
     <Compile Include="Engine\Controls\KeyboardInputController.cs" />
     <Compile Include="Engine\Controls\KeyboardManager.cs" />
