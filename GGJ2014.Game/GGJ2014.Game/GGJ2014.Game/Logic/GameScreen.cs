@@ -63,7 +63,6 @@ namespace GGJ2014.Game.Logic
             this.antelope = new List<Antelope>();
             for (int i =numMonsters; i < numMonsters + numAntelopes; i++)
             {
-
                 SpawnPoint spawnPoint = this.level.SpawnPoints[i % numSpawns];
 
                 Antelope antelope = new Antelope();

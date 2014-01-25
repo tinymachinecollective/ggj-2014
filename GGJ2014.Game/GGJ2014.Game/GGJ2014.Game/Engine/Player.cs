@@ -10,6 +10,7 @@ namespace GGJ2014.Game.Engine
     using System;
     using GGJ2014.Game.Engine.Controls;
     using Microsoft.Xna.Framework.Input;
+    using SkinnedModel;
 
     public class Player : Character
     {
@@ -22,6 +23,8 @@ namespace GGJ2014.Game.Engine
         private Cue humanVoice;
         private Cue endGame;
         private Cue purrMeow;
+
+        private bool wasMoving;
 
         public Player()
             : base(BigEvilStatic.Content.Load<Texture2D>("shadow"), 64, 64)
@@ -40,7 +43,7 @@ namespace GGJ2014.Game.Engine
 
             this.model = new AnimatedModel3D();
             this.model.Initialize("leopard", new Vector3(5f, -15f, 15f), 0.06f);
-            this.model.PlayAnimation("Take 001");
+            this.model.PlayAnimation("Idle");
 
             this.Effects.Add(new GrowShrinkEffect(500, -0.05f, true));
 
@@ -90,6 +93,18 @@ namespace GGJ2014.Game.Engine
                     fade.Start();
                 }
             }
+
+            if (this.Moving && !wasMoving)
+            {
+                this.model.PlayAnimation("Run");
+            }
+
+            if (!this.Moving && wasMoving)
+            {
+                this.model.PlayAnimation("Idle");
+            }
+
+            wasMoving = this.Moving;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)

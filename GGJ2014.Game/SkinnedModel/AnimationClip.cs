@@ -25,10 +25,12 @@ namespace SkinnedModel
         /// <summary>
         /// Constructs a new animation clip object.
         /// </summary>
-        public AnimationClip(TimeSpan duration, List<Keyframe> keyframes)
+        public AnimationClip(TimeSpan duration, List<Keyframe> keyframes, List<AnimationEvent> events, string name)
         {
             Duration = duration;
             Keyframes = keyframes;
+            Events = events;
+            Name = name;
         }
 
 
@@ -53,5 +55,17 @@ namespace SkinnedModel
         /// </summary>
         [ContentSerializer]
         public List<Keyframe> Keyframes { get; private set; }
+
+        /// <summary>
+        /// Callback events for the animation clips
+        /// </summary>
+        [ContentSerializer]
+        public List<AnimationEvent> Events { get; private set; }
+
+        /// <summary>
+        /// The name of the clip
+        /// </summary>
+        [ContentSerializer]
+        public string Name { get; private set; }
     }
 }

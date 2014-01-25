@@ -288,6 +288,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <None Include="leopard_Anims.xml">
+      <Name>leopard_Anims</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
     <Content Include="textures\image_index.csv">
       <Name>image_index</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
