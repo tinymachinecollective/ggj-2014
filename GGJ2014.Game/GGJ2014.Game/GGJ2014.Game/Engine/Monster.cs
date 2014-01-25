@@ -2,8 +2,7 @@
 namespace GGJ2014.Game.Engine
 {
     using Microsoft.Xna.Framework.Graphics;
-    using GGJ2014.Game.Engine.Controls;
-    using Microsoft.Xna.Framework;
+    using GGJ2014.Game.Engine.Animation;
 
     public class Monster : Character
     {
@@ -16,12 +15,10 @@ namespace GGJ2014.Game.Engine
             this.LineOfSight = lineOfSight;
         }
 
-        public override void Draw(SpriteBatch spriteBatch, Microsoft.Xna.Framework.Vector2 cameraPos)
+        public void Destroy()
         {
-            base.Draw(spriteBatch, cameraPos);
-
-            var aiController = this.InputController as AIController;
-            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), aiController.timeSinceMove.ToString(), new Microsoft.Xna.Framework.Vector2(500, 10f), Color.HotPink);
+            this.CanCollide = false;
+            this.Effects.Add(new ExpandDeathEffect(500, 2.0f));
         }
     }
 }

@@ -18,20 +18,16 @@ namespace GGJ2014.Game.Engine
         private Rectangle collisionRectangle;
         private Vector2 direction;
         public Level Level { get; set; }
-
-        private List<float> xPenetrations;
-        private List<float> yPenetrations;
+        public bool CanCollide { get; protected set; }
 
         public Character(Texture2D texture, int width, int height)
             : base(texture, width, height)
         {
             this.direction = new Vector2(0, 1);
-
-            this.xPenetrations = new List<float>();
-            this.yPenetrations = new List<float>();
+            this.CanCollide = true;
         }
 
-        public void Initialize(InputController controller)
+        public virtual void Initialize(InputController controller)
         {
             this.InputController = controller;
             this.collisionRectangle = new Rectangle(0, 0, this.Width, this.Height);
@@ -62,6 +58,9 @@ namespace GGJ2014.Game.Engine
         public virtual void Update(GameTime gameTime)
         {
             this.UpdateMovement(gameTime);
+            this.UpdateEffects(gameTime);
+            this.UpdateAnimation(gameTime);
+            this.CheckForCollisions();
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)
@@ -71,55 +70,25 @@ namespace GGJ2014.Game.Engine
 
         private void CheckForCollisions()
         {
-            if (this.Position != this.LastPosition)
+            if (!this.CanCollide) return;
+
+            foreach (var character in this.Level.RegisteredCharacters)
             {
-                this.xPenetrations.Clear();
-                this.yPenetrations.Clear();
-                var possibleRectangles = this.Level.GetCollisionRectangles(); // other collision rectangles
-
-                foreach (Rectangle r in possibleRectangles)
+                if (character.CanCollide && this.CollisionRectangle.Intersects(character.CollisionRectangle))
                 {
-                    if ((this.Position - new Vector2(r.Center.X, r.Center.Y)).Length() > (2 * r.Width + 2 * this.Width))
-                    {
-                        continue;
-                    }
-
-                    Vector2 penetration = CollisionSolver.SolveCollision(this, r);
-                    if (penetration.X != 0)
-                    {
-                        this.xPenetrations.Add(penetration.X);
-                    }
-                    if (penetration.Y != 0)
-                    {
-                        this.yPenetrations.Add(penetration.Y);
-                    }
+                    this.OnCollision(character);
                 }
-
-                //this.position = tempPosition;
-
-                if (xPenetrations.Count != 0 || yPenetrations.Count != 0)
-                {
-                    if (xPenetrations.Count >= yPenetrations.Count)
-                    {
-                        this.xPenetrations.Sort();
-                        this.Position -= new Vector2(-xPenetrations[0], 0);
-                        CheckForCollisions();
-                    }
-                    else
-                    {
-                        this.yPenetrations.Sort();
-                        this.Position -= new Vector2(0, -yPenetrations[0]);
-                        CheckForCollisions();
-                    }
-                }
-
-                //collisionRectangle.Height = tempHeight;
             }
         }
 
         public Rectangle CollisionRectangle
         {
             get { return GeometryUtility.GetAdjustedRectangle(this.Position, this.collisionRectangle); }
+        }
+
+        public virtual void OnCollision(Character character)
+        {
+
         }
     }
 }

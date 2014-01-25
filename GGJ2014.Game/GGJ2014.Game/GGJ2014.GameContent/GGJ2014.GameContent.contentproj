@@ -133,6 +133,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="utility-images\black.png">
+      <Name>black</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <None Include="audio\Suits-Come-Here-Kitty_1.wav">
       <Name>Suits-Come-Here-Kitty_1</Name>
       <Importer>WavImporter</Importer>

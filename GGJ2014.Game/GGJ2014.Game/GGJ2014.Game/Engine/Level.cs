@@ -11,7 +11,6 @@ namespace GGJ2014.Game.Engine
 
     public class Level
     {
-        private static readonly Random rng = new Random();
         private bool drawWalkLayer;
 
         public List<Layer> Layers = new List<Layer>();
@@ -125,5 +124,7 @@ namespace GGJ2014.Game.Engine
 
             return canWalk;
         }
+
+        public IEnumerable<Character> RegisteredCharacters { get { return this.registeredCharacters; } }
     }
 }

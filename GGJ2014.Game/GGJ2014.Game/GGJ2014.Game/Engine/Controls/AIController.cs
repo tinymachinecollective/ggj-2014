@@ -13,7 +13,7 @@ namespace GGJ2014.Game.Engine.Controls
         private Random rng = new Random();
         private const int lower = 0;
         private const int upper = 100;
-        public float timeSinceMove = 0;
+        private float timeSinceMove = 0;
 
         //  persistence
         private float lastDirection = 0;
@@ -31,8 +31,7 @@ namespace GGJ2014.Game.Engine.Controls
             float distanceFromPlayer = GetDistanceFromPlayer(this.player.Position);
             Vector2 move;
 
-
-            timeSinceMove += gameTime.ElapsedGameTime.Seconds;
+            timeSinceMove += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (distanceFromPlayer > monster.LineOfSight) 
             {
@@ -68,7 +67,7 @@ namespace GGJ2014.Game.Engine.Controls
         {
             float direction;
 
-            if (timeSinceMove > 10.0)
+            if (timeSinceMove > 4.0)
             {
                 direction = (float)((lastDirection + (rng.NextDouble()-0.5)*10) % 360);
                 timeSinceMove = 0;

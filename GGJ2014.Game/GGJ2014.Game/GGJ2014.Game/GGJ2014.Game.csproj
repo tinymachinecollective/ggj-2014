@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Character.cs" />
+    <Compile Include="Engine\Graphics\Fade.cs" />
     <Compile Include="Engine\Graphics\Layer.cs" />
     <Compile Include="Editor\Placer.cs" />
     <Compile Include="Editor\TileSet.cs" />
