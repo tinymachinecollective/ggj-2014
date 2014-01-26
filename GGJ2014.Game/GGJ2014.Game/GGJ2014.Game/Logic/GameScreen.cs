@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GGJ2014.Game.Engine.Graphics3D;
+using GGJ2014.Game.Engine.Graphics;
 
 namespace GGJ2014.Game.Logic
 {
@@ -26,6 +27,7 @@ namespace GGJ2014.Game.Logic
         private SpriteBatch spriteBatch;
         private Level level;
         private Texture2D baseTile = BigEvilStatic.Content.Load<Texture2D>("utility-images\\water_tile");
+        private Fade fade = new Fade();
 
         //  Core functionality
         public GameScreen(GraphicsDevice graphicsDevice) : base(graphicsDevice)
@@ -74,6 +76,10 @@ namespace GGJ2014.Game.Logic
 
             AudioManager.Instance.PlayMusic(Music.Intro);
             AudioManager.Instance.QueueMusic(Music.QuietLoop);
+
+            this.fade.FadeOut = true;
+            this.fade.Initialize();
+            this.fade.Start();
         }
 
         public override void Draw(Bounds bounds)
@@ -133,6 +139,7 @@ namespace GGJ2014.Game.Logic
                     Color.Green);
             }
 
+            this.fade.Draw(spriteBatch);
             this.spriteBatch.End();
 
             BigEvilStatic.Renderer.Draw();
@@ -142,6 +149,8 @@ namespace GGJ2014.Game.Logic
         {
             this.level.SetDrawsWalkLayer(Keyboard.GetState().IsKeyDown(Keys.W));
             this.level.Update(gameTime);
+
+            this.fade.Update(gameTime);
 
             foreach (var monster in this.monsters)
             {

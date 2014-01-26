@@ -24,6 +24,7 @@ namespace GGJ2014.Game.Engine.Graphics
         public void Initialize()
         {
             texture = BigEvilStatic.Content.Load<Texture2D>("utility-images/black");
+            if (this.FadeOut) t = 1;
         }
 
         public void Start()
