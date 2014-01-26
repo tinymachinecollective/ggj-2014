@@ -8,7 +8,7 @@ namespace GGJ2014.Game.Engine
 
     public class Antelope : Character
     {
-        public Antelope() : base(BigEvilStatic.Content.Load<Texture2D>("sport_basketball"), 16, 16)
+        public Antelope() : base(BigEvilStatic.Content.Load<Texture2D>("antelope"), 32, 32)
         {
         }
 

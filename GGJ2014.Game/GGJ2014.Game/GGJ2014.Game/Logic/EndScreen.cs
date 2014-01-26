@@ -43,12 +43,12 @@ namespace GGJ2014.Game.Logic
             this.fade.Update(time);
             var mouseState = Mouse.GetState();
 
-            if (mouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released && !this.fade.Fading)
+            if (mouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
             {
                 this.CloseUntil(typeof(SplashScreen));
             }
 
-            this.lastMouseState = Mouse.GetState();
+            this.lastMouseState = mouseState;
         }
     }
 }
