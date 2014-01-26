@@ -171,6 +171,7 @@
     <Compile Include="Logic\EditorScreen.cs" />
     <Compile Include="Logic\GameScreen.cs" />
     <Compile Include="Logic\Music.cs" />
+    <Compile Include="Logic\SplashScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

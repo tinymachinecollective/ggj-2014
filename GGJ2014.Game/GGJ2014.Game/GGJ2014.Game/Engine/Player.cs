@@ -123,13 +123,14 @@ namespace GGJ2014.Game.Engine
             if (this.state != PlayerState.Pouncing)
             {
                 if (this.Moving) this.state = PlayerState.Running;
+                else this.state = PlayerState.Idle;
 
-                if (this.Moving && oldState != PlayerState.Running)
+                if (this.state == PlayerState.Running && oldState != PlayerState.Running)
                 {
                     this.model.PlayAnimation("Run");
                 }
 
-                if (!this.Moving && oldState == PlayerState.Running)
+                if (this.state != PlayerState.Running && oldState == PlayerState.Running)
                 {
                     this.model.PlayAnimation("Idle");
                 }
