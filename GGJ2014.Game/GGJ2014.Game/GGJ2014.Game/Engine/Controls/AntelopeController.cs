@@ -42,7 +42,7 @@ namespace GGJ2014.Game.Engine.Controls
 
                 if (goal == AntelopeGoal.Graze)
                 {
-                    timeUntilNextEvaluation = (float)this.random.NextDouble() * 5 + 7;
+                    timeUntilNextEvaluation = (float)this.random.NextDouble() * 5 + 4;
                 }
                 else
                 {

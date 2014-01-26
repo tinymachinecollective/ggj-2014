@@ -288,6 +288,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="leopard.FBX">
+      <Name>leopard</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="leopard_Anims.xml">
       <Name>leopard_Anims</Name>
       <Importer>XmlImporter</Importer>
@@ -302,8 +307,8 @@
       <Name>image_index</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Compile Include="leopard.FBX">
-      <Name>leopard</Name>
+    <Compile Include="leopard.bak.FBX">
+      <Name>leopard.bak</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
