@@ -448,6 +448,13 @@
           </Position>
         </Tile>
         <Tile>
+          <Index>10</Index>
+          <Position>
+            <X>-16</X>
+            <Y>352</Y>
+          </Position>
+        </Tile>
+        <Tile>
           <Index>23</Index>
           <Position>
             <X>224</X>
@@ -501,6 +508,20 @@
           <Position>
             <X>672</X>
             <Y>352</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>13</Index>
+          <Position>
+            <X>-48</X>
+            <Y>368</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>14</Index>
+          <Position>
+            <X>16</X>
+            <Y>368</Y>
           </Position>
         </Tile>
         <Tile>
@@ -564,6 +585,27 @@
           <Position>
             <X>704</X>
             <Y>368</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>13</Index>
+          <Position>
+            <X>-80</X>
+            <Y>384</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>1</Index>
+          <Position>
+            <X>-16</X>
+            <Y>384</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>14</Index>
+          <Position>
+            <X>48</X>
+            <Y>384</Y>
           </Position>
         </Tile>
         <Tile>
@@ -634,6 +676,34 @@
           <Position>
             <X>800</X>
             <Y>384</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>13</Index>
+          <Position>
+            <X>-112</X>
+            <Y>400</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-48</X>
+            <Y>400</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>2</Index>
+          <Position>
+            <X>16</X>
+            <Y>400</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>11</Index>
+          <Position>
+            <X>80</X>
+            <Y>400</Y>
           </Position>
         </Tile>
         <Tile>
@@ -711,6 +781,41 @@
           <Position>
             <X>832</X>
             <Y>400</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>13</Index>
+          <Position>
+            <X>-144</X>
+            <Y>416</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-80</X>
+            <Y>416</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>3</Index>
+          <Position>
+            <X>-16</X>
+            <Y>416</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>15</Index>
+          <Position>
+            <X>48</X>
+            <Y>416</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>10</Index>
+          <Position>
+            <X>96</X>
+            <Y>416</Y>
           </Position>
         </Tile>
         <Tile>
@@ -805,6 +910,48 @@
           </Position>
         </Tile>
         <Tile>
+          <Index>13</Index>
+          <Position>
+            <X>-176</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-112</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>4</Index>
+          <Position>
+            <X>-48</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>15</Index>
+          <Position>
+            <X>16</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>17</Index>
+          <Position>
+            <X>64</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>18</Index>
+          <Position>
+            <X>128</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
           <Index>8</Index>
           <Position>
             <X>192</X>
@@ -884,6 +1031,48 @@
         <Tile>
           <Index>9</Index>
           <Position>
+            <X>-208</X>
+            <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-144</X>
+            <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>7</Index>
+          <Position>
+            <X>-80</X>
+            <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>8</Index>
+          <Position>
+            <X>-16</X>
+            <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>17</Index>
+          <Position>
+            <X>32</X>
+            <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>4</Index>
+          <Position>
+            <X>96</X>
+            <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>21</Index>
+          <Position>
             <X>160</X>
             <Y>448</Y>
           </Position>
@@ -956,6 +1145,48 @@
           <Position>
             <X>800</X>
             <Y>448</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>12</Index>
+          <Position>
+            <X>-176</X>
+            <Y>464</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-112</X>
+            <Y>464</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>6</Index>
+          <Position>
+            <X>-48</X>
+            <Y>464</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>21</Index>
+          <Position>
+            <X>16</X>
+            <Y>464</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>19</Index>
+          <Position>
+            <X>64</X>
+            <Y>464</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>8</Index>
+          <Position>
+            <X>128</X>
+            <Y>464</Y>
           </Position>
         </Tile>
         <Tile>
@@ -1033,6 +1264,34 @@
           <Position>
             <X>832</X>
             <Y>464</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>12</Index>
+          <Position>
+            <X>-144</X>
+            <Y>480</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-80</X>
+            <Y>480</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>15</Index>
+          <Position>
+            <X>-16</X>
+            <Y>480</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>8</Index>
+          <Position>
+            <X>32</X>
+            <Y>480</Y>
           </Position>
         </Tile>
         <Tile>
@@ -1120,6 +1379,20 @@
           </Position>
         </Tile>
         <Tile>
+          <Index>16</Index>
+          <Position>
+            <X>-112</X>
+            <Y>496</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>15</Index>
+          <Position>
+            <X>-48</X>
+            <Y>496</Y>
+          </Position>
+        </Tile>
+        <Tile>
           <Index>12</Index>
           <Position>
             <X>192</X>
@@ -1194,6 +1467,13 @@
           <Position>
             <X>832</X>
             <Y>496</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>8</Index>
+          <Position>
+            <X>-80</X>
+            <Y>512</Y>
           </Position>
         </Tile>
         <Tile>
@@ -4958,6 +5238,20 @@
         <Tile>
           <Index>0</Index>
           <Position>
+            <X>-96</X>
+            <Y>352</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
+            <X>-32</X>
+            <Y>368</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>0</Index>
+          <Position>
             <X>429</X>
             <Y>410</Y>
           </Position>
@@ -5096,6 +5390,20 @@
           </Position>
         </Tile>
         <Tile>
+          <Index>18</Index>
+          <Position>
+            <X>-32</X>
+            <Y>384</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>22</Index>
+          <Position>
+            <X>-96</X>
+            <Y>416</Y>
+          </Position>
+        </Tile>
+        <Tile>
           <Index>24</Index>
           <Position>
             <X>304</X>
@@ -5103,10 +5411,31 @@
           </Position>
         </Tile>
         <Tile>
+          <Index>20</Index>
+          <Position>
+            <X>-144</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>18</Index>
+          <Position>
+            <X>-48</X>
+            <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
           <Index>25</Index>
           <Position>
             <X>608</X>
             <Y>432</Y>
+          </Position>
+        </Tile>
+        <Tile>
+          <Index>18</Index>
+          <Position>
+            <X>-176</X>
+            <Y>448</Y>
           </Position>
         </Tile>
         <Tile>
@@ -6170,6 +6499,20 @@
       <Tile>
         <Index>0</Index>
         <Position>
+          <X>912</X>
+          <Y>112</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-960</X>
+          <Y>128</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
           <X>288</X>
           <Y>128</Y>
         </Position>
@@ -6317,13 +6660,6 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>656</X>
-          <Y>288</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
           <X>864</X>
           <Y>288</Y>
         </Position>
@@ -6338,14 +6674,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>624</X>
-          <Y>304</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>688</X>
+          <X>656</X>
           <Y>304</Y>
         </Position>
       </Tile>
@@ -6366,13 +6695,6 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>656</X>
-          <Y>320</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
           <X>864</X>
           <Y>320</Y>
         </Position>
@@ -6380,7 +6702,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-64</X>
+          <X>-128</X>
           <Y>336</Y>
         </Position>
       </Tile>
@@ -6394,21 +6716,63 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-32</X>
+          <X>976</X>
+          <Y>336</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1296</X>
+          <Y>336</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-160</X>
           <Y>352</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>928</X>
+          <X>944</X>
           <Y>352</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-64</X>
+          <X>976</X>
+          <Y>352</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1072</X>
+          <Y>352</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1088</X>
+          <Y>352</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1648</X>
+          <Y>352</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-192</X>
           <Y>368</Y>
         </Position>
       </Tile>
@@ -6422,7 +6786,14 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-96</X>
+          <X>1152</X>
+          <Y>368</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-224</X>
           <Y>384</Y>
         </Position>
       </Tile>
@@ -6436,259 +6807,266 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-128</X>
-          <Y>400</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1024</X>
-          <Y>400</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-96</X>
-          <Y>416</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1056</X>
-          <Y>416</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-64</X>
-          <Y>432</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1024</X>
-          <Y>432</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-96</X>
-          <Y>448</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1056</X>
-          <Y>448</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-128</X>
-          <Y>464</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1088</X>
-          <Y>464</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-160</X>
-          <Y>480</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1056</X>
-          <Y>480</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-128</X>
-          <Y>496</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1024</X>
-          <Y>496</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-96</X>
-          <Y>512</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1056</X>
-          <Y>512</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-128</X>
-          <Y>528</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1088</X>
-          <Y>528</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-224</X>
-          <Y>544</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>-160</X>
-          <Y>544</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1120</X>
-          <Y>544</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
           <X>-256</X>
-          <Y>560</Y>
+          <Y>400</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-192</X>
-          <Y>560</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
-          <X>1152</X>
-          <Y>560</Y>
+          <X>1024</X>
+          <Y>400</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-288</X>
-          <Y>576</Y>
+          <Y>416</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>1184</X>
-          <Y>576</Y>
+          <X>1056</X>
+          <Y>416</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-320</X>
-          <Y>592</Y>
+          <Y>432</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>1216</X>
-          <Y>592</Y>
+          <X>1024</X>
+          <Y>432</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-352</X>
-          <Y>608</Y>
+          <Y>448</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>1248</X>
-          <Y>608</Y>
+          <X>1056</X>
+          <Y>448</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-384</X>
-          <Y>624</Y>
+          <Y>464</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>1216</X>
-          <Y>624</Y>
+          <X>1088</X>
+          <Y>464</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-416</X>
-          <Y>640</Y>
+          <Y>480</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>1184</X>
-          <Y>640</Y>
+          <X>1056</X>
+          <Y>480</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-448</X>
-          <Y>656</Y>
+          <Y>496</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>1216</X>
-          <Y>656</Y>
+          <X>1024</X>
+          <Y>496</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
           <X>-480</X>
+          <Y>512</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1056</X>
+          <Y>512</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-512</X>
+          <Y>528</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1088</X>
+          <Y>528</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-544</X>
+          <Y>544</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1120</X>
+          <Y>544</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-576</X>
+          <Y>560</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1040</X>
+          <Y>560</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1152</X>
+          <Y>560</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-608</X>
+          <Y>576</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1184</X>
+          <Y>576</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-640</X>
+          <Y>592</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1216</X>
+          <Y>592</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1584</X>
+          <Y>592</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-672</X>
+          <Y>608</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1248</X>
+          <Y>608</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-704</X>
+          <Y>624</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1216</X>
+          <Y>624</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-736</X>
+          <Y>640</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1184</X>
+          <Y>640</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-768</X>
+          <Y>656</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1168</X>
+          <Y>656</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1216</X>
+          <Y>656</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-800</X>
           <Y>672</Y>
         </Position>
       </Tile>
@@ -6702,7 +7080,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-512</X>
+          <X>-832</X>
           <Y>688</Y>
         </Position>
       </Tile>
@@ -6716,7 +7094,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-544</X>
+          <X>-864</X>
           <Y>704</Y>
         </Position>
       </Tile>
@@ -6730,7 +7108,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-512</X>
+          <X>-832</X>
           <Y>720</Y>
         </Position>
       </Tile>
@@ -6744,7 +7122,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-544</X>
+          <X>-800</X>
           <Y>736</Y>
         </Position>
       </Tile>
@@ -6758,7 +7136,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-512</X>
+          <X>-768</X>
           <Y>752</Y>
         </Position>
       </Tile>
@@ -6772,7 +7150,14 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-544</X>
+          <X>1200</X>
+          <Y>752</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-736</X>
           <Y>768</Y>
         </Position>
       </Tile>
@@ -6786,7 +7171,14 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-576</X>
+          <X>1312</X>
+          <Y>768</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>-704</X>
           <Y>784</Y>
         </Position>
       </Tile>
@@ -6800,7 +7192,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-608</X>
+          <X>-736</X>
           <Y>800</Y>
         </Position>
       </Tile>
@@ -6814,7 +7206,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-640</X>
+          <X>-704</X>
           <Y>816</Y>
         </Position>
       </Tile>
@@ -6822,6 +7214,13 @@
         <Index>0</Index>
         <Position>
           <X>1024</X>
+          <Y>816</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1312</X>
           <Y>816</Y>
         </Position>
       </Tile>
@@ -6884,6 +7283,20 @@
       <Tile>
         <Index>0</Index>
         <Position>
+          <X>1120</X>
+          <Y>880</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
+          <X>1680</X>
+          <Y>880</Y>
+        </Position>
+      </Tile>
+      <Tile>
+        <Index>0</Index>
+        <Position>
           <X>-544</X>
           <Y>896</Y>
         </Position>
@@ -6968,14 +7381,14 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-352</X>
-          <Y>992</Y>
+          <X>1216</X>
+          <Y>976</Y>
         </Position>
       </Tile>
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-288</X>
+          <X>-352</X>
           <Y>992</Y>
         </Position>
       </Tile>
@@ -6996,13 +7409,6 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-256</X>
-          <Y>1008</Y>
-        </Position>
-      </Tile>
-      <Tile>
-        <Index>0</Index>
-        <Position>
           <X>1024</X>
           <Y>1008</Y>
         </Position>
@@ -7010,7 +7416,7 @@
       <Tile>
         <Index>0</Index>
         <Position>
-          <X>-224</X>
+          <X>-288</X>
           <Y>1024</Y>
         </Position>
       </Tile>
