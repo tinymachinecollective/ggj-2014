@@ -33,7 +33,6 @@ namespace GGJ2014.Game.Engine
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
             if (spawnTime != null)
             {
                 spawnTime.Update((float)gameTime.TotalGameTime.TotalSeconds);
@@ -42,12 +41,16 @@ namespace GGJ2014.Game.Engine
                 {
                     //  respawn
                     this.Effects.Add(new FadeEffect(500, false));
+                    
                     this.Position = this.StartPosition;
                     this.CanCollide = true;
+                    this.MovementFrozen = false;
 
+                    spawnTime = null;
                 }
 
             }
+            base.Update(gameTime);
 
         }
     }
