@@ -12,7 +12,7 @@ namespace GGJ2014.Game.Logic
         private Texture2D splash;
         private Fade fade;
         private int score;
-        private MouseState lastMouseState;
+        private MouseState lastMouseState = new MouseState(0, 0, 0, ButtonState.Pressed, ButtonState.Released, ButtonState.Released, ButtonState.Released, ButtonState.Released);
 
         public EndScreen(int score, GraphicsDevice device)
             : base(device)
@@ -23,6 +23,8 @@ namespace GGJ2014.Game.Logic
             fade.FadeOut = true;
             this.fade.Initialize();
             this.fade.Start();
+
+            Character.InputFrozen = false;
         }
 
         public override void Draw(Bounds bounds)
