@@ -74,7 +74,7 @@ namespace GGJ2014.Game.Logic
                 this.antelope.Add(antelope);
             }
 
-            AudioManager.Instance.PlayMusic(Music.Intro);
+            if (!AudioManager.Instance.PlayingMusic) AudioManager.Instance.PlayMusic(Music.Intro);
             AudioManager.Instance.QueueMusic(Music.QuietLoop);
 
             this.fade.FadeOut = true;

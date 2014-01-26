@@ -45,7 +45,7 @@ namespace GGJ2014.Game.Logic
 
             if (mouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
             {
-                this.CloseUntil(typeof(SplashScreen));
+                BigEvilStatic.ScreenManager.CloseAllScreensAndLaunch(new SplashScreen(BigEvilStatic.GraphicsDevice));
             }
 
             this.lastMouseState = mouseState;

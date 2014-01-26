@@ -61,6 +61,12 @@ namespace GGJ2014.Game.Engine
             AudioManager.Instance.Update(gameTime);
         }
 
+        public void CloseAllScreensAndLaunch(Screen screen)
+        {
+            this.screenStack.Clear();
+            this.OpenScreen(screen);
+        }
+
         public event EventHandler ScreensEmpty;
     }
 }
