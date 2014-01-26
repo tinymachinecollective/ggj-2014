@@ -169,6 +169,7 @@
     <Compile Include="Engine\UI\NumberFont.cs" />
     <Compile Include="Engine\UI\SpriteControl.cs" />
     <Compile Include="Logic\EditorScreen.cs" />
+    <Compile Include="Logic\EndScreen.cs" />
     <Compile Include="Logic\GameScreen.cs" />
     <Compile Include="Logic\Music.cs" />
     <Compile Include="Logic\SplashScreen.cs" />
