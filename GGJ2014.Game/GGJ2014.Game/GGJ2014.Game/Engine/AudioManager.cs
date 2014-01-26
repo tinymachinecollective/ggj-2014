@@ -405,6 +405,8 @@
         }
 
         public string CurrentTrack { get { return this.currentMusic.Name; } }
+
+        public bool PlayingMusic { get { return this.currentMusic != null && this.currentMusic.IsPlaying; } }
     }
 
     public class FadeInfo
