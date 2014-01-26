@@ -106,8 +106,8 @@ namespace GGJ2014.Game.Editor
             {
                 //  place a spawn point here
                 SpawnPoint spawn = new SpawnPoint();
-                spawn.X = x;
-                spawn.Y = y;
+                spawn.X = x + cameraPos.X;
+                spawn.Y = y + cameraPos.Y;
 
                 this.level.SpawnPoints.Add(spawn);
 
