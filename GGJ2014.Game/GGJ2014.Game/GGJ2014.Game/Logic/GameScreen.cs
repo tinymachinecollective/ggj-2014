@@ -55,7 +55,7 @@ namespace GGJ2014.Game.Logic
                 SpawnPoint spawnPoint = this.level.SpawnPoints[i % numSpawns];
 
                 var monster = new Monster("user", 16, 16, 50, 200, 100);
-                monster.Initialize(new AIController(monster, player, random), spawnPoint.Y, spawnPoint.X);
+                monster.Initialize(new AIController(monster, player, random), spawnPoint.X, spawnPoint.Y);
 
                 this.level.RegisterCharacter(monster);
                 this.monsters.Add(monster);
@@ -69,7 +69,7 @@ namespace GGJ2014.Game.Logic
                 SpawnPoint spawnPoint = this.level.SpawnPoints[i % numSpawns];
 
                 Antelope antelope = new Antelope();
-                antelope.Initialize(new AntelopeController(antelope, player, random), spawnPoint.Y, spawnPoint.X);
+                antelope.Initialize(new AntelopeController(antelope, player, random), spawnPoint.X, spawnPoint.Y);
                 this.level.RegisterCharacter(antelope);
                 this.antelope.Add(antelope);
             }
