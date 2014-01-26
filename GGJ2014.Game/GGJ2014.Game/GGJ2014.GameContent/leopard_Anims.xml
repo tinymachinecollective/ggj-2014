@@ -23,14 +23,19 @@
         <ClipName>Run</ClipName>
         <StartFrame>45</StartFrame>
         <EndFrame>64</EndFrame>
+      </Item>
 
-        <!-- We can register events in this clip, so we can know when certain frames are hit
+      <Item>
+        <ClipName>Pounce</ClipName>
+        <StartFrame>65</StartFrame>
+        <EndFrame>89</EndFrame>
+
         <Events>
           <Item>
-            <Name>FireFrame</Name>
-            <Keyframe>70</Keyframe>
+            <Name>PounceComplete</Name>
+            <Keyframe>89</Keyframe>
           </Item>
-        </Events> -->
+        </Events>
 
       </Item>
 

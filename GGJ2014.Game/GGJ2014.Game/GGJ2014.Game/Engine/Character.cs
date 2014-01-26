@@ -9,6 +9,7 @@ namespace GGJ2014.Game.Engine
     public abstract class Character : Sprite, IMoveable
     {
         public static bool InputFrozen = false;
+        public bool MovementFrozen { get; set; }
         public InputController InputController { get; set; }
         public Vector2 MovementDirection { get; set; }
         public Vector2 TargetDirection { get; set; }
@@ -65,7 +66,7 @@ namespace GGJ2014.Game.Engine
             Vector2 delta = MovementDirection * ActualSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 newPosition = Position + delta;
 
-            if (!InputFrozen)
+            if (!MovementFrozen)
             {
                 if (this.Level.PositionIsValid(LastPosition, newPosition))
                 {

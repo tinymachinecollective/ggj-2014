@@ -15,7 +15,7 @@ namespace GGJ2014.Game.Engine.Graphics3D
         public float Scale { get; set; }
         public Vector3 Offset;
         public Vector3 Translation { get; set; }
-        private List<Effect3D> animations = new List<Effect3D>();
+        private List<Effect3D> effects = new List<Effect3D>();
 
         public virtual void Initialize(string model, Vector3 offset, float scale)
         {
@@ -26,15 +26,15 @@ namespace GGJ2014.Game.Engine.Graphics3D
 
         public virtual void Update(GameTime gameTime)
         {
-            foreach (var animation in this.animations)
+            foreach (var animation in this.effects)
             {
                 animation.ApplyTransformation(this);
             }
         }
 
-        public void AddAnimation(Effect3D animation)
+        public void AddEffect(Effect3D animation)
         {
-            this.animations.Add(animation);
+            this.effects.Add(animation);
         }
 
         public Matrix Transformation

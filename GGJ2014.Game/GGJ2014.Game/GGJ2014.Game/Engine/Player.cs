@@ -12,6 +12,13 @@ namespace GGJ2014.Game.Engine
     using Microsoft.Xna.Framework.Input;
     using SkinnedModel;
 
+    public enum PlayerState
+    {
+        Idle,
+        Running,
+        Pouncing
+    }
+
     public class Player : Character
     {
         private Fade fade = new Fade();
@@ -23,8 +30,10 @@ namespace GGJ2014.Game.Engine
         private Cue humanVoice;
         private Cue endGame;
         private Cue purrMeow;
+        private Cue attack;
 
-        private bool wasMoving;
+        private PlayerState state;
+        private PlayerState oldState;
 
         public Player()
             : base(BigEvilStatic.Content.Load<Texture2D>("shadow"), 64, 64)
@@ -40,6 +49,7 @@ namespace GGJ2014.Game.Engine
             this.humanVoice = AudioManager.Instance.LoadCue("human");
             this.endGame = AudioManager.Instance.LoadCue("monster-laugh");
             this.purrMeow = AudioManager.Instance.LoadCue("purr-meow");
+            this.attack = AudioManager.Instance.LoadCue("purr-shocked");
 
             this.model = new AnimatedModel3D();
             this.model.Initialize("leopard", new Vector3(5f, -15f, 15f), 0.06f);
@@ -49,6 +59,13 @@ namespace GGJ2014.Game.Engine
 
             // initial rotation
             this.Rotation = -(MathHelper.PiOver4 / 2f);
+
+            this.model.RegisterEventListener("Pounce", "PounceComplete", x =>
+                {
+                    this.Speed = 350;
+                    this.model.PlayAnimation("Idle");
+                    this.state = PlayerState.Idle;
+                });
         }
 
         public override void OnCollision(Character character)
@@ -59,17 +76,21 @@ namespace GGJ2014.Game.Engine
 
                 AudioManager.Instance.PlayCue(ref humanVoice, false);
                 this.Effects.Add(new PainEffect());
+                character.MovementFrozen = true;
                 (character as Monster).Destroy();
 
                 if (lives <= 0)
                 {
+                    this.MovementFrozen = true;
+                    this.model.PlayAnimation("Idle");
                     InputFrozen = true;
                 }
             }
 
-            if (character is Antelope)
+            if (character is Antelope && this.state == PlayerState.Pouncing)
             {
                 AudioManager.Instance.PlayCue(ref purrMeow, false);
+                character.MovementFrozen = true;
                 (character as Antelope).NomNomNom();
                 score += 1;
             }
@@ -94,17 +115,35 @@ namespace GGJ2014.Game.Engine
                 }
             }
 
-            if (this.Moving && !wasMoving)
+            this.UpdateStates();
+        }
+
+        private void UpdateStates()
+        {
+            if (this.state != PlayerState.Pouncing)
             {
-                this.model.PlayAnimation("Run");
+                if (this.Moving) this.state = PlayerState.Running;
+
+                if (this.Moving && oldState != PlayerState.Running)
+                {
+                    this.model.PlayAnimation("Run");
+                }
+
+                if (!this.Moving && oldState == PlayerState.Running)
+                {
+                    this.model.PlayAnimation("Idle");
+                }
             }
 
-            if (!this.Moving && wasMoving)
+            if (this.Moving && Keyboard.GetState().IsKeyDown(Keys.Space) && this.oldState != PlayerState.Pouncing)
             {
-                this.model.PlayAnimation("Idle");
+                this.state = PlayerState.Pouncing;
+                this.model.PlayAnimation("Pounce");
+                AudioManager.Instance.PlayCue(ref attack, false);
+                this.Speed = 500;
             }
 
-            wasMoving = this.Moving;
+            oldState = this.state;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Vector2 cameraPos)

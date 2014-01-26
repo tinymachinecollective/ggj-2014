@@ -20,6 +20,11 @@ namespace GGJ2014.Game.Engine.Graphics3D
             this.Player = new AnimationPlayer(skinningData);
         }
 
+        public void RegisterEventListener(string clip, string animationHook, Action<string> listener)
+        {
+            this.Player.RegisteredEvents[clip].Add(animationHook, new AnimationPlayer.EventCallback(listener));
+        }
+
         public void PlayAnimation(string animation)
         {
             AnimationClip clip = skinningData.AnimationClips[animation];
