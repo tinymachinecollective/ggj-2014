@@ -303,6 +303,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="endscreen.png">
+      <Name>endscreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="textures\image_index.csv">
       <Name>image_index</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -311,6 +316,12 @@
       <Name>leopard.bak</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="ribeye.spritefont">
+      <Name>ribeye</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
