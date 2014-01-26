@@ -12,13 +12,17 @@ namespace GGJ2014.Game.Logic
         private Texture2D splash;
         private GameScreen gameScreen;
         private Fade fade;
+        private int score;
+        private MouseState lastMouseState;
 
-        public EndScreen(GraphicsDevice device)
+        public EndScreen(int score, GraphicsDevice device)
             : base(device)
         {
             this.gameScreen = new GameScreen(this.Device);
-            this.splash = BigEvilStatic.Content.Load<Texture2D>("splash");
+            this.splash = BigEvilStatic.Content.Load<Texture2D>("endscreen");
+            this.score = score;
             this.fade = new Fade();
+            fade.FadeOut = true;
             this.fade.Initialize();
             this.fade.OnComplete = () => BigEvilStatic.ScreenManager.OpenScreen(gameScreen);
         }
@@ -29,6 +33,9 @@ namespace GGJ2014.Game.Logic
 
             spriteBatch.Begin();
             spriteBatch.Draw(splash, Vector2.Zero, Color.White);
+
+            spriteBatch.DrawString(BigEvilStatic.Content.Load<SpriteFont>("ribeye"), score + " cat toys murdered", new Vector2(350, 600), Color.Black);
+
             fade.Draw(spriteBatch);
             spriteBatch.End();
         }
@@ -36,11 +43,14 @@ namespace GGJ2014.Game.Logic
         public override void Update(GameTime time)
         {
             this.fade.Update(time);
+            var mouseState = Mouse.GetState();
 
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && !this.fade.Fading)
+            if (mouseState.LeftButton == ButtonState.Pressed && !this.fade.Fading)
             {
-                this.fade.Start();
+                this.CloseUntil(typeof(SplashScreen));
             }
+
+            this.lastMouseState = Mouse.GetState();
         }
     }
 }

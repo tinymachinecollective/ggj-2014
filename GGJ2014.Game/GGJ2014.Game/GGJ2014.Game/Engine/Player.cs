@@ -11,6 +11,7 @@ namespace GGJ2014.Game.Engine
     using GGJ2014.Game.Engine.Controls;
     using Microsoft.Xna.Framework.Input;
     using SkinnedModel;
+    using GGJ2014.Game.Logic;
 
     public enum PlayerState
     {
@@ -66,6 +67,8 @@ namespace GGJ2014.Game.Engine
                     this.model.PlayAnimation("Idle");
                     this.state = PlayerState.Idle;
                 });
+
+            fade.OnComplete = () => BigEvilStatic.ScreenManager.OpenScreen(new EndScreen(this.score, BigEvilStatic.GraphicsDevice));
         }
 
         public override void OnCollision(Character character)
