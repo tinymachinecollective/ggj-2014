@@ -127,14 +127,17 @@ namespace GGJ2014.Game.Logic
             */
 
             //  Display player stats
-            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(), 
-                "Lives: " + player.lives,
-                new Vector2(10, 0), 
-                Color.Yellow);
-            spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
-                "Score: " + player.score,
-                new Vector2(10, 23),
-                Color.Yellow);
+            if (player.lives > 0)
+            {
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                    "Lives: " + player.lives,
+                    new Vector2(10, 0),
+                    Color.Yellow);
+                spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
+                    "Score: " + player.score,
+                    new Vector2(10, 23),
+                    Color.Yellow);
+            }
 
             /*
             if (player.score == numAntelopes)
