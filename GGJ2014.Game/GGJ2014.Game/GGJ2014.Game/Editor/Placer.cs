@@ -292,9 +292,9 @@ namespace GGJ2014.Game.Editor
             {
                 h = h - 23;
                 spriteBatch.DrawString(BigEvilStatic.GetDefaultFont(),
-                    "SpawnPoint:" + i + " " + this.level.SpawnPoints[i].GetPosition, 
-                    new Vector2(10f, BigEvilStatic.Viewport.Height + h), 
-                    Color.Green);
+                    "s" + i,
+                    this.level.SpawnPoints[i].GetPosition - cameraPos, 
+                    Color.White);
             }
         }
     }
