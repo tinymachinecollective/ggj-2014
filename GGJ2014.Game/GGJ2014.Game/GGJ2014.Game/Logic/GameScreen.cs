@@ -53,7 +53,7 @@ namespace GGJ2014.Game.Logic
             {
                 SpawnPoint spawnPoint = this.level.SpawnPoints[i % numSpawns];
 
-                var monster = new Monster("user", 16, 16, 100, 200, 200);
+                var monster = new Monster("monster", 30,30, 100, 200, 200);
                 monster.Initialize(new AIController(monster, player, random), spawnPoint.X, spawnPoint.Y);
 
                 this.level.RegisterCharacter(monster);
