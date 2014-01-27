@@ -8,6 +8,7 @@ namespace GGJ2014.Game.Engine
     using Microsoft.Xna.Framework.Graphics;
     using System.Xml.Serialization;
     using System.IO;
+    using System.Deployment.Application;
 
     public class Level
     {
@@ -67,6 +68,16 @@ namespace GGJ2014.Game.Engine
             XmlSerializer xs = new XmlSerializer(typeof(Level));
             Level level = null;
 
+            string prefix = "";
+
+            try
+            {
+                prefix = ApplicationDeployment.CurrentDeployment.DataDirectory + "\\";
+            }
+            catch (InvalidDeploymentException) // not installed via ClickOnce
+            {
+                prefix = string.Empty;
+            }
 
             if (File.Exists("level.xml"))
             {
