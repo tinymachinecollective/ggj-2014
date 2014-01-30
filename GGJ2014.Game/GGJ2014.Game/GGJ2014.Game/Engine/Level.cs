@@ -79,9 +79,9 @@ namespace GGJ2014.Game.Engine
                 prefix = string.Empty;
             }
 
-            if (File.Exists("level.xml"))
+            if (File.Exists(prefix + "level.xml"))
             {
-                using (var fileStream = File.Open("level.xml", FileMode.Open))
+                using (var fileStream = File.Open(prefix + "level.xml", FileMode.Open))
                 {
                     level = xs.Deserialize(fileStream) as Level;
 
